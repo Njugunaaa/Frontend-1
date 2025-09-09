@@ -77,7 +77,7 @@ const CurvedLoader = ({ done, duration = 5000 }) => {
 
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-50 overflow-hidden transition-opacity duration-700"
+      className="fixed inset-x-0 bottom-0 z-100 overflow-hidden transition-opacity duration-700"
       style={{ height: `${height}vh`, opacity }}
     >
       <svg
@@ -85,7 +85,7 @@ const CurvedLoader = ({ done, duration = 5000 }) => {
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
-        <path d={createSVGPath()} fill="#780000" />
+        <path d={createSVGPath()} fill="#C1121F" />
       </svg>
 
       {/* Circular spinner with cross in center */}

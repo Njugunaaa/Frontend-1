@@ -1,8 +1,10 @@
 import React, { lazy, Suspense, useState, useEffect } from "react";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import Preloader from "./components/Loading";
+import AboutUs from "./pages/AboutUs";
 
 const Layout = lazy(() => import("./pages/Layout"));
+const MainPage = lazy(() => import("./pages/MainPage"));
 
 function App() {
   const [appReady, setAppReady] = useState(false);
@@ -13,9 +15,12 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const routes = createBrowserRouter(
-    createRoutesFromElements(<Route path="/" element={<Layout />} />)
-  );
+  const routes = createBrowserRouter(createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<MainPage />} />
+      <Route path="about" element={<AboutUs />} />
+    </Route>
+  ))
 
   return (
     <>

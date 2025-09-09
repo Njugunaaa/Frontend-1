@@ -1,1 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import "tailwindcss";
+
+/* Add Google Font */
+@theme {
+  --font-lobster: "Lobster", cursive;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #FDF0D5;
+}
+
