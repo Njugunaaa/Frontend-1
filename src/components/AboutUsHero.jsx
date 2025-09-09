@@ -7,7 +7,10 @@ import BreadCrumb from './BreadCrump';
 export default function AboutUsHero() {
   return (
     <section className="bg-gray-50 py-12 lg:py-20">
-        <BreadCrumb />
+        <BreadCrumb items={[
+          { name: 'Home', href: '/' },
+          { name: 'About Us', href: '/about' },
+        ]}/>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content */}

@@ -2,6 +2,7 @@ import React, { lazy, Suspense, useState, useEffect } from "react";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import Preloader from "./components/Loading";
 import AboutUs from "./pages/AboutUs";
+import EventPage from "./pages/EventPage";
 
 const Layout = lazy(() => import("./pages/Layout"));
 const MainPage = lazy(() => import("./pages/MainPage"));
@@ -19,6 +20,7 @@ function App() {
     <Route path="/" element={<Layout />}>
       <Route index element={<MainPage />} />
       <Route path="about" element={<AboutUs />} />
+      <Route path="events" element={<EventPage />} />
     </Route>
   ))
 

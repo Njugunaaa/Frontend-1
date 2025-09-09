@@ -2,17 +2,12 @@ import React from 'react';
 import { ChevronRight, Home } from 'lucide-react';
 
 export default function BreadCrumb({ items = [] }) {
-  // Default breadcrumb if no items provided
-  const defaultItems = [
-    { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about' },
-  ];
 
-  const breadcrumbItems = items.length > 0 ? items : defaultItems;
+  const breadcrumbItems = items 
 
   return (
     <nav className="py-3">
-      <div className="container mx-auto mt-[2rem] px-4">
+      <div className="container mx-auto mt-[3rem] px-4">
         <ol className="flex flex-wrap justify-center items-center text-sm sm:text-base">
           {breadcrumbItems.map((item, index) => (
             <li key={index} className="flex items-center">

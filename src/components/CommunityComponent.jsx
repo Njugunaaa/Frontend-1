@@ -1,5 +1,6 @@
 import React from 'react';
 import { Users, Heart, UserCheck } from 'lucide-react';
+import ch_2 from '../assets/images/people-inchurch.jpg'
 
 export default function CommunityComponent() {
   const stats = [
@@ -56,10 +57,7 @@ export default function CommunityComponent() {
               <div className="aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden">
                 {/* Placeholder for church interior image */}
                 <div className="w-full h-full bg-gradient-to-br from-amber-100 via-amber-50 to-stone-100 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <div className="text-6xl mb-4">🏛️</div>
-                    <p className="text-sm">Church Interior Image</p>
-                  </div>
+                 <img src={ch_2} alt='' />
                 </div>
               </div>
               

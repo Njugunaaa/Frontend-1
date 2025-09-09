@@ -62,9 +62,6 @@ function Nav() {
               ? 'bg-[#FDF0D5] shadow-lg backdrop-blur-sm' 
               : 'bg-[#FDF0D5]/80 backdrop-blur-sm shadow-none'
           }`}
-          style={{
-            borderRadius: isScrolled ? '0px' : '12px',
-          }}
         >
           {/* Logo */}
           <div className="overflow-hidden w-[10rem] h-[10rem] flex justify-center items-center">
@@ -181,21 +178,6 @@ function Nav() {
         /* Smooth scrolling for the page */
         html {
           scroll-behavior: smooth;
-        }
-
-        /* Custom scrollbar for webkit browsers */
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-          background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: #780000;
-          border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-          background: #a00000;
         }
       `}</style>
     </>
