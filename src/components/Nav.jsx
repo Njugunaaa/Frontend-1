@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useMemo } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import Logo from "../assets/images/logo.png";
+import Logo from "../assets/mainlogo.png";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isActive, setIsActive] = useState("Home");
 
   const navItems = [
     { id: 0, name: "Home", link: "/" },
     { id: 1, name: "About us", link: "/about" },
+    { id: 1, name: "Community Impact", link: "/community" },
     { id: 3, name: "Events", link: "/events" },
     { id: 4, name: "Contact", link: "/contact" },
   ];
@@ -19,10 +21,10 @@ function Nav() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Update scroll position
       setScrollY(currentScrollY);
-      
+
       // Determine visibility based on scroll direction
       if (currentScrollY < lastScrollY || currentScrollY < 100) {
         // Scrolling up or near top - show navbar
@@ -31,12 +33,12 @@ function Nav() {
         // Scrolling down and past threshold - hide navbar
         setIsVisible(false);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
@@ -51,44 +53,54 @@ function Nav() {
 
   return (
     <>
-      <section 
+      <section
         className={`w-full p-2 h-fit flex items-center justify-center fixed z-60 transition-all duration-300 ease-in-out ${
-          isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+          isVisible
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-full opacity-0"
         }`}
       >
-        <section 
+        <section
           className={`nav-container w-[70%] h-[5rem] flex justify-between items-center px-4 relative transition-all duration-300 ease-in-out ${
-            isScrolled 
-              ? 'bg-[#FDF0D5] shadow-lg backdrop-blur-sm' 
-              : 'bg-[#FDF0D5]/80 backdrop-blur-sm shadow-none'
+            isScrolled
+              ? "bg-[#FDF0D5] shadow-lg backdrop-blur-sm"
+              : "bg-[#FDF0D5]/80 backdrop-blur-sm shadow-none"
           }`}
         >
           {/* Logo */}
-          <div className="overflow-hidden w-[10rem] h-[10rem] flex justify-center items-center">
+          <Link
+            to="/"
+            className="overflow-hidden w-[6rem] h-[6rem] p-2 flex justify-center items-center"
+          >
             <img src={Logo} alt="Logo" />
-          </div>
+          </Link>
 
+          
           {/* Nav items (desktop only) */}
           <ul className="nav-items flex items-center gap-6 font-semibold">
             {navItems.map((item) => (
-              <Link 
-                key={item.id} 
+              <NavLink
+                key={item.id}
                 to={item.link}
-                className="hover:text-[#780000] transition-colors duration-200"
+                className={({ isActive }) =>
+                  `hover:text-secondary transition-colors duration-200 ${
+                    isActive ? "text-secondary" : ""
+                  }`
+                }
               >
                 {item.name}
-              </Link>
+              </NavLink>
             ))}
           </ul>
 
           {/* Desktop button */}
-          <button className="give-btn mr-4 bg-[#780000] flex justify-center items-center w-[7rem] h-[3rem] cursor-pointer text-white rounded-full hover:bg-[#a00000] transition-colors duration-200 transform hover:scale-105">
+          <button className="give-btn mr-4 bg-primary flex justify-center items-center w-[7rem] h-[3rem] cursor-pointer text-white rounded-full hover:bg-secondary transition-colors duration-200 transform hover:scale-105">
             Give now
           </button>
 
           {/* Hamburger (mobile only) */}
           <button
-            className="hamburger text-[#780000] transition-transform duration-200 hover:scale-110"
+            className="hamburger text-secondary transition-transform duration-200 hover:scale-110"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={32} /> : <Menu size={32} />}
@@ -96,20 +108,25 @@ function Nav() {
         </section>
       </section>
 
+
       {/* Mobile Side Nav */}
       <div className={`side-nav ${isOpen ? "open" : ""}`}>
         <div className="flex flex-col gap-6 font-semibold p-6 pt-20">
           {navItems.map((item) => (
-            <Link
+            <NavLink
               key={item.id}
               to={item.link}
               onClick={() => setIsOpen(false)}
-              className="text-lg hover:text-[#780000] transition-colors duration-200"
+              className={({ isActive }) =>
+                `text-lg hover:text-secondary transition-colors duration-200 ${
+                  isActive ? "text-secondary" : ""
+                }`
+              }
             >
               {item.name}
-            </Link>
+            </NavLink>
           ))}
-          <button className="bg-[#780000] w-[7rem] h-[3rem] cursor-pointer text-white rounded-full hover:bg-[#a00000] transition-colors duration-200 transform hover:scale-105">
+          <button className="bg-secondary w-[7rem] h-[3rem] cursor-pointer text-white rounded-full hover:bg-[#a00000] transition-colors duration-200 transform hover:scale-105">
             Give now
           </button>
         </div>
@@ -117,10 +134,7 @@ function Nav() {
 
       {/* Dark overlay when menu is open */}
       {isOpen && (
-        <div
-          className="overlay"
-          onClick={() => setIsOpen(false)}
-        ></div>
+        <div className="overlay" onClick={() => setIsOpen(false)}></div>
       )}
 
       {/* Custom breakpoint + side nav styles */}
@@ -159,9 +173,71 @@ function Nav() {
           animation: fadeIn 0.3s ease-in-out;
         }
 
+        /* Banner Animation Styles - ONLY NEW ADDITION */
+        .banner-curtain {
+          overflow: hidden;
+          height: 0;
+          animation: curtainPull 1.2s ease-out 0.8s forwards;
+        }
+
+        .banner-content {
+          transform: translateY(-100%);
+          animation: contentReveal 1s ease-out 1.5s forwards;
+        }
+
+        .banner-shape {
+          height: 50px;
+          position: relative;
+          clip-path: polygon(
+            30px 0,
+            calc(100% - 30px) 0,
+            calc(100% - 60px) 100%,
+            60px 100%
+          );
+        }
+
+        .banner-text {
+          opacity: 0;
+          transform: scale(0.8);
+          animation: textFadeIn 0.6s ease-out 2s forwards;
+        }
+
+        @keyframes curtainPull {
+          0% {
+            height: 0;
+          }
+          100% {
+            height: 50px;
+          }
+        }
+
+        @keyframes contentReveal {
+          0% {
+            transform: translateY(-100%);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes textFadeIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
 
         /* Responsive breakpoint */

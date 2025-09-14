@@ -31,6 +31,9 @@ export default function TestimonialsComponent() {
 
   return (
     <div className="bg-gray-50 py-16 px-4">
+      <div className="w-full flex justify-center">
+        <div className="w-[10rem] h-[0.4rem] bg-primary mb-[3rem]"/>
+      </div>
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">

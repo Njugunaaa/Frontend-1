@@ -59,7 +59,7 @@ const EventCountdownTimer = ({
               cx={(size + margin * 2) / 2}
               cy={(size + margin * 2) / 2}
               r={outerRadius}
-              stroke="#3a2f1a"
+              stroke="#656A1D"
               strokeWidth={strokeWidth}
               fill="transparent"
               opacity="0.3"
@@ -68,7 +68,7 @@ const EventCountdownTimer = ({
               cx={(size + margin * 2) / 2}
               cy={(size + margin * 2) / 2}
               r={outerRadius}
-              stroke="#f59e0b"
+              stroke="#EB3237"
               strokeWidth={strokeWidth}
               fill="transparent"
               strokeDasharray={circumference}
@@ -79,10 +79,10 @@ const EventCountdownTimer = ({
           </svg>
 
           <div
-            className="bg-amber-800 rounded-full border-2 border-amber-700 shadow-lg absolute flex flex-col items-center justify-center"
+            className="bg-primary rounded-full border-2 border-secondary shadow-lg absolute flex flex-col items-center justify-center"
             style={{ width: size, height: size }}
           >
-            <span className="text-lg sm:text-xl md:text-2xl font-bold text-amber-100">
+            <span className="text-lg sm:text-xl md:text-2xl font-bold text-secondary">
               {String(value).padStart(2, "0")}
             </span>
             <span className="text-amber-200 text-[10px] sm:text-xs font-medium capitalize">
@@ -95,10 +95,13 @@ const EventCountdownTimer = ({
   });
 
   return (
-    <div className="bg-gradient-to-br from-[#780000] via-[#8b0202ef] to-[#aa03039c] p-6 sm:p-8 w-full">
+    <div className=" bg-white p-6 sm:p-8 w-full">
+      <div className="w-full flex justify-center">
+        <div className="w-[10rem] h-[0.4rem] bg-primary mb-[3rem]"/>
+      </div>
       {/* Event Title */}
       <div className="text-center mb-6 sm:mb-8">
-        <h2 className="font-lobster text-xl sm:text-2xl md:text-3xl font-bold text-amber-200 italic">
+        <h2 className="font-lobster text-xl sm:text-2xl md:text-3xl font-bold text-green/90 italic">
           {eventTitle}
         </h2>
       </div>
@@ -110,7 +113,7 @@ const EventCountdownTimer = ({
         <CircularProgressRing value={timeLeft.minutes} maxValue={60} unit="Minutes" />
         <CircularProgressRing value={timeLeft.seconds} maxValue={60} unit="Seconds" />
 
-        <button className="font-serif w-full sm:w-auto mt-4 sm:mt-0 bg-amber-600 hover:bg-amber-500 text-amber-100 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 shadow-md hover:shadow-lg">
+        <button className="font-serif w-full sm:w-auto mt-4 sm:mt-0 bg-primary cursor-pointer hover:bg-secondary text-amber-100 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 shadow-md hover:shadow-lg">
           ALL EVENTS
         </button>
       </div>

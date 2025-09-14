@@ -1,22 +1,22 @@
 import React from 'react';
-import { Users, Heart, UserCheck } from 'lucide-react';
+import { HandHeart, PersonStanding, HeartHandshake } from 'lucide-react';
 
 export default function MinistryCards() {
   const ministries = [
     {
-      icon: <Users className="w-6 h-6 text-white" />,
+      icon: <PersonStanding className="w-8 h-8 text-white" />,
       title: "Children Ministry",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sit amet lorem et rutrum.",
       link: "Learn More"
     },
     {
-      icon: <Heart className="w-6 h-6 text-white" />,
+      icon: <HeartHandshake className="w-8 h-8 text-white" />,
       title: "Charity Ministry",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sit amet lorem et rutrum.",
       link: "Learn More"
     },
     {
-      icon: <UserCheck className="w-6 h-6 text-white" />,
+      icon: <HandHeart className="w-8 h-8 text-white" />,
       title: "Elderly Ministry",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sit amet lorem et rutrum.",
       link: "Learn More"
@@ -25,10 +25,13 @@ export default function MinistryCards() {
 
   return (
     <div className="bg-gray-50 py-16 px-4">
+      <div className="w-full flex justify-center">
+        <div className="w-[10rem] h-[0.4rem] bg-primary mb-[3rem]"/>
+      </div>
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <p className="text-red-500 text-sm font-medium uppercase tracking-wider mb-2">
+          <p className="text-primary text-sm font-medium uppercase tracking-wider mb-2">
             OUR MINISTRIES
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
@@ -41,8 +44,10 @@ export default function MinistryCards() {
           {ministries.map((ministry, index) => (
             <div key={index} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-8 text-center">
               {/* Icon */}
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-red-600 rounded-full mb-6">
-                {ministry.icon}
+              <div className='relative top-[-3rem] h-[2rem] '>
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary rounded-full mb-6">
+                  {ministry.icon}
+                </div>
               </div>
               
               {/* Title */}
@@ -58,7 +63,7 @@ export default function MinistryCards() {
               {/* Learn More Link */}
               <a 
                 href="#" 
-                className="inline-flex items-center text-red-500 text-sm font-medium hover:text-red-600 transition-colors duration-200"
+                className="inline-flex items-center text-primary/90 text-sm font-medium hover:text-secondary transition-colors duration-200"
               >
                 {ministry.link}
                 <svg 

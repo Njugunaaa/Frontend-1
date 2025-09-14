@@ -3,6 +3,8 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Preloader from "./components/Loading";
 import AboutUs from "./pages/AboutUs";
 import EventPage from "./pages/EventPage";
+import ContactPage from "./pages/ContactPage";
+import Outreach from "./pages/Outreach";
 
 const Layout = lazy(() => import("./pages/Layout"));
 const MainPage = lazy(() => import("./pages/MainPage"));
@@ -21,13 +23,15 @@ function App() {
       <Route index element={<MainPage />} />
       <Route path="about" element={<AboutUs />} />
       <Route path="events" element={<EventPage />} />
+      <Route path="contact" element={<ContactPage />} />
+      <Route path="community" element={<Outreach />} />
     </Route>
   ))
 
   return (
     <>
       {/* Preloader runs until BOTH app is ready & its own 5s animation is done */}
-      <Preloader done={appReady} duration={5000} />
+      {/* <Preloader done={appReady} duration={5000} /> */}
 
       {/* Show routes immediately behind preloader (but hidden by it) */}
       <Suspense fallback={null}>

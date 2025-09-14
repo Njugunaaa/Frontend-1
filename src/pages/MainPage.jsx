@@ -4,6 +4,7 @@ import EventCountdownTimer from '../components/EventCountdownTimer'
 import MinistryCards from '../components/MinistryCards'
 import CommunityComponent from '../components/CommunityComponent'
 import TestimonialsComponent from '../components/TestimonialsComponent'
+import Banner from '../components/Banner'
 
 function MainPage() {
   return (
@@ -13,6 +14,7 @@ function MainPage() {
         <MinistryCards />
         <CommunityComponent />
         <TestimonialsComponent />
+        <Banner />
     </section>
   )
 }
