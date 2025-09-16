@@ -15,9 +15,21 @@ export default function Footer() {
             </div>
             <h2 className="text-2xl font-bold">Agrace</h2>
           </div>
-          <p className="text-red-100 text-sm leading-relaxed mb-4 max-w-md">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
+              <p className="text-red-100 text-sm leading-relaxed mb-4 max-w-md">
+                Elim Pentecostal Church of Kenya - HQ, was found in 1990.
+                <br />
+                We believe in Jesus Christ as the <strong>SAVIOR, HEALER, BAPTISER with the HOLYSPIRIT and SOON COMING KING</strong>.
+                <br />
+                The Name ELIM is from Exodus 15:27... a place Nourishment and Shading from the heat of Life.
+                <br />
+                Page · Religious organisation
+                <br />
+                Manyanja Road- A few metres after Gertrudes Hospital, Nairobi, Kenya
+                <br />
+                0726 496396
+                <br />
+                elimtenachurch@gmail.com
+              </p>
           {/* Social Icons */}
           <div className="flex space-x-3">
             <a href="#" className="w-8 h-8 bg-red-800 hover:bg-red-700 rounded flex items-center justify-center transition-colors">
