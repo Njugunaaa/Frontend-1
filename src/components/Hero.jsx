@@ -8,19 +8,19 @@ function Hero() {
 
   const heroContent = [
     {
-      title: "Welcome to the Church Of Sacred Heart Of Jesus",
-      subtitle: "A community of faith, hope, and love.",
+      title: "Welcome to Elim Pentecostal Church of Kenya (EPCK)",
+      subtitle: "Rooted in the rich heritage of the global Elim movement, we are a Christ-centered, Spirit-filled church committed to transforming lives and communities holistically.",
       buttons: [
-        { text: "Join In Person", link: "/join" },
-        { text: "Watch Online", link: "/watch" }
+        { text: "Join Us", link: "/join" },
+        { text: "Our Ministries", link: "/ministries" }
       ]
     },
     {
-      title: "Experience God's Love",
-      subtitle: "Come as you are, leave transformed by grace.",
+      title: "Transforming Lives and Communities",
+      subtitle: "Join us as we raise healthy churches, nurture strong families, and extend the love of Christ through service, compassion, and impact-driven programs across Kenya and beyond.",
       buttons: [
-        { text: "Plan Your Visit", link: "/visit" },
-        { text: "Our Services", link: "/services" }
+        { text: "Learn More", link: "/about" },
+        { text: "Contact Us", link: "/contact" }
       ]
     }
   ]

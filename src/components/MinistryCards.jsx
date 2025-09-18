@@ -1,24 +1,60 @@
 import React from 'react';
-import { HandHeart, PersonStanding, HeartHandshake } from 'lucide-react';
+import { HandHeart, PersonStanding, HeartHandshake, Users, GraduationCap, BookOpen, MapPin, Building } from 'lucide-react';
 
 export default function MinistryCards() {
   const ministries = [
     {
-      icon: <PersonStanding className="w-8 h-8 text-white" />,
-      title: "Children Ministry",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sit amet lorem et rutrum.",
+      icon: <Users className="w-8 h-8 text-white" />,
+      title: "Dorcas Ministry (Women's Ministry)",
+      description: "Empowering women spiritually, socially, and economically through training, fellowship, and outreach.",
       link: "Learn More"
     },
     {
-      icon: <HeartHandshake className="w-8 h-8 text-white" />,
-      title: "Charity Ministry",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sit amet lorem et rutrum.",
+      icon: <PersonStanding className="w-8 h-8 text-white" />,
+      title: "Youth Ministry",
+      description: "Equipping young people (13–35 years) with biblical teaching, leadership skills, and opportunities to serve and lead in society.",
+      link: "Learn More"
+    },
+    {
+      icon: <Users className="w-8 h-8 text-white" />,
+      title: "Caleb Ministry (Men's Fellowship)",
+      description: "Building strong, responsible men of faith who influence families, communities, and the nation.",
+      link: "Learn More"
+    },
+    {
+      icon: <PersonStanding className="w-8 h-8 text-white" />,
+      title: "Children & Sunday School Ministry",
+      description: "Nurturing the next generation in biblical truth and holistic development.",
+      link: "Learn More"
+    },
+    {
+      icon: <GraduationCap className="w-8 h-8 text-white" />,
+      title: "Elim Bible College",
+      description: "Training leaders and workers for effective ministry and mission.",
+      link: "Learn More"
+    },
+    {
+      icon: <BookOpen className="w-8 h-8 text-white" />,
+      title: "Education Board (ENEB)",
+      description: "Advancing Christian education and equipping students for holistic transformation.",
+      link: "Learn More"
+    },
+    {
+      icon: <MapPin className="w-8 h-8 text-white" />,
+      title: "Missions & Church Growth Department",
+      description: "Driving evangelism, discipleship, and church planting across Kenya and beyond.",
+      link: "Learn More"
+    },
+    {
+      icon: <Building className="w-8 h-8 text-white" />,
+      title: "General Development & Projects Department",
+      description: "Overseeing sustainable projects, infrastructure, and community development initiatives.",
       link: "Learn More"
     },
     {
       icon: <HandHeart className="w-8 h-8 text-white" />,
-      title: "Elderly Ministry",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sit amet lorem et rutrum.",
+      title: "Pastors' Welfare & Elim Welfare",
+      description: "Ensuring the holistic well-being of our ministers and members through fellowship, support systems, and empowerment programs.",
       link: "Learn More"
     }
   ];
@@ -35,7 +71,7 @@ export default function MinistryCards() {
             OUR MINISTRIES
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
-            Empowering Faith, Embracing<br />Diversity
+            Key Community Ministries &<br />Programs
           </h2>
         </div>
 

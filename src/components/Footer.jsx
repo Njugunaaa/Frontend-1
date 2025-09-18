@@ -1,5 +1,6 @@
 import React from 'react';
 import { Facebook, Twitter, Mail, Linkedin } from 'lucide-react';
+import Logo from '../assets/logo-white.svg';
 
 export default function Footer() {
   return (
@@ -8,28 +9,11 @@ export default function Footer() {
         {/* Logo and Social */}
         <div className="mb-8">
           <div className="flex items-center mb-4">
-            <div className="w-8 h-8 mr-3">
-              <svg viewBox="0 0 24 24" className="w-full h-full fill-current text-red-400">
-                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
-              </svg>
+            <div className="w-16 h-16 mr-3">
+              <img src={Logo} alt="Elim Pentecostal Church of Kenya Logo" className="w-full h-full object-contain" />
             </div>
-            <h2 className="text-2xl font-bold">Agrace</h2>
+            <h2 className="text-2xl font-bold">Elim Pentecostal Church of Kenya</h2>
           </div>
-              <p className="text-red-100 text-sm leading-relaxed mb-4 max-w-md">
-                Elim Pentecostal Church of Kenya - HQ, was found in 1990.
-                <br />
-                We believe in Jesus Christ as the <strong>SAVIOR, HEALER, BAPTISER with the HOLYSPIRIT and SOON COMING KING</strong>.
-                <br />
-                The Name ELIM is from Exodus 15:27... a place Nourishment and Shading from the heat of Life.
-                <br />
-                Page · Religious organisation
-                <br />
-                Manyanja Road- A few metres after Gertrudes Hospital, Nairobi, Kenya
-                <br />
-                0726 496396
-                <br />
-                elimtenachurch@gmail.com
-              </p>
           {/* Social Icons */}
           <div className="flex space-x-3">
             <a href="#" className="w-8 h-8 bg-red-800 hover:bg-red-700 rounded flex items-center justify-center transition-colors">
@@ -53,8 +37,8 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <div className="space-y-2 text-red-100 text-sm">
-              <p>+1 (234) 567 890 00</p>
-              <p>agrace.church@gmail.com</p>
+              <p>0726 496396</p>
+              <p>elimtenachurch@gmail.com</p>
             </div>
           </div>
 
@@ -62,8 +46,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Address</h3>
             <div className="text-red-100 text-sm">
-              <p>323 New Valley Lane, Austin</p>
-              <p className="mt-1">07:00 AM - 19:00 PM</p>
+              <p>Manyanja Road - A few metres after Gertrudes Hospital, Nairobi, Kenya</p>
             </div>
           </div>
 
@@ -83,11 +66,10 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Support</h3>
             <ul className="space-y-2 text-red-100 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Disclaimer</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">FAQs</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+              <li>Elim Pentecostal Church of Kenya - HQ, was found in 1990.</li>
+              <li>We believe in Jesus Christ as the SAVIOR, HEALER, BAPTISER with the HOLYSPIRIT and SOON COMING KING.</li>
+              <li>The Name ELIM is from Exodus 15:27... a place Nourishment and Shading from the heat of Life.</li>
+              <li>Page · Religious organisation</li>
             </ul>
           </div>
         </div>
@@ -98,11 +80,10 @@ export default function Footer() {
             Living the Gospel, Sharing God's Grace
           </h3>
           <p className="text-gray-600 mb-6 max-w-md mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Ut sit tellus, luctus nec.
+            Manyanja Road- A few metres after Gertrudes Hospital, Nairobi, Kenya
           </p>
           <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded font-medium transition-colors inline-flex items-center">
-            Join Us Now
+            Call Us Now
             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
