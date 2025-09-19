@@ -8,23 +8,27 @@ import Outreach from "./pages/Outreach";
 
 const Layout = lazy(() => import("./pages/Layout"));
 const MainPage = lazy(() => import("./pages/MainPage"));
+const Dashbaord = lazy(() => import('./pages/Dashbaord'));
 
 function App() {
   const [appReady, setAppReady] = useState(false);
 
   useEffect(() => {
     // Simulate your app load (API, assets, etc.)
-    const timer = setTimeout(() => setAppReady(true), 2000); 
+    const timer = setTimeout(() => setAppReady(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
   const routes = createBrowserRouter(createRoutesFromElements(
+    <Route>
     <Route path="/" element={<Layout />}>
       <Route index element={<MainPage />} />
       <Route path="about" element={<AboutUs />} />
       <Route path="events" element={<EventPage />} />
       <Route path="contact" element={<ContactPage />} />
       <Route path="community" element={<Outreach />} />
+    </Route>
+    <Route path="dashboard" element={<Dashbaord />} />
     </Route>
   ))
 
