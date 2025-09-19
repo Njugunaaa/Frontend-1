@@ -3,7 +3,9 @@ import Hero from '../components/Hero'
 import EventCountdownTimer from '../components/EventCountdownTimer'
 import MinistryCards from '../components/MinistryCards'
 import CommunityComponent from '../components/CommunityComponent'
+import StatementOfFaith from '../components/StatementOfFaith'
 import TestimonialsComponent from '../components/TestimonialsComponent'
+import Banner from '../components/Banner'
 
 function MainPage() {
   return (
@@ -12,7 +14,9 @@ function MainPage() {
         <EventCountdownTimer />
         <MinistryCards />
         <CommunityComponent />
+        <StatementOfFaith />
         <TestimonialsComponent />
+        <Banner />
     </section>
   )
 }

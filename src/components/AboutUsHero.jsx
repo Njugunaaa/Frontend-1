@@ -66,14 +66,6 @@ export default function AboutUsHero() {
           </div>
         </div>
 
-        {/* Scroll Button */}
-        <div className="fixed bottom-8 right-8">
-          <button className="w-12 h-12 bg-amber-600 hover:bg-amber-700 rounded-full flex items-center justify-center shadow-lg transition-colors">
-            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </button>
-        </div>
       </div>
     </section>
   );

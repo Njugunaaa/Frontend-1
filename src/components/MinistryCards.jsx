@@ -1,38 +1,77 @@
 import React from 'react';
-import { Users, Heart, UserCheck } from 'lucide-react';
+import { HandHeart, PersonStanding, HeartHandshake, Users, GraduationCap, BookOpen, MapPin, Building } from 'lucide-react';
 
 export default function MinistryCards() {
   const ministries = [
     {
-      icon: <Users className="w-6 h-6 text-white" />,
-      title: "Children Ministry",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sit amet lorem et rutrum.",
+      icon: <Users className="w-8 h-8 text-white" />,
+      title: "Dorcas Ministry (Women's Ministry)",
+      description: "Empowering women spiritually, socially, and economically through training, fellowship, and outreach.",
       link: "Learn More"
     },
     {
-      icon: <Heart className="w-6 h-6 text-white" />,
-      title: "Charity Ministry",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sit amet lorem et rutrum.",
+      icon: <PersonStanding className="w-8 h-8 text-white" />,
+      title: "Youth Ministry",
+      description: "Equipping young people (13–35 years) with biblical teaching, leadership skills, and opportunities to serve and lead in society.",
       link: "Learn More"
     },
     {
-      icon: <UserCheck className="w-6 h-6 text-white" />,
-      title: "Elderly Ministry",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sit amet lorem et rutrum.",
+      icon: <Users className="w-8 h-8 text-white" />,
+      title: "Caleb Ministry (Men's Fellowship)",
+      description: "Building strong, responsible men of faith who influence families, communities, and the nation.",
+      link: "Learn More"
+    },
+    {
+      icon: <PersonStanding className="w-8 h-8 text-white" />,
+      title: "Children & Sunday School Ministry",
+      description: "Nurturing the next generation in biblical truth and holistic development.",
+      link: "Learn More"
+    },
+    {
+      icon: <GraduationCap className="w-8 h-8 text-white" />,
+      title: "Elim Bible College",
+      description: "Training leaders and workers for effective ministry and mission.",
+      link: "Learn More"
+    },
+    {
+      icon: <BookOpen className="w-8 h-8 text-white" />,
+      title: "Education Board (ENEB)",
+      description: "Advancing Christian education and equipping students for holistic transformation.",
+      link: "Learn More"
+    },
+    {
+      icon: <MapPin className="w-8 h-8 text-white" />,
+      title: "Missions & Church Growth Department",
+      description: "Driving evangelism, discipleship, and church planting across Kenya and beyond.",
+      link: "Learn More"
+    },
+    {
+      icon: <Building className="w-8 h-8 text-white" />,
+      title: "General Development & Projects Department",
+      description: "Overseeing sustainable projects, infrastructure, and community development initiatives.",
+      link: "Learn More"
+    },
+    {
+      icon: <HandHeart className="w-8 h-8 text-white" />,
+      title: "Pastors' Welfare & Elim Welfare",
+      description: "Ensuring the holistic well-being of our ministers and members through fellowship, support systems, and empowerment programs.",
       link: "Learn More"
     }
   ];
 
   return (
     <div className="bg-gray-50 py-16 px-4">
+      <div className="w-full flex justify-center">
+        <div className="w-[10rem] h-[0.4rem] bg-primary mb-[3rem]"/>
+      </div>
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <p className="text-red-500 text-sm font-medium uppercase tracking-wider mb-2">
+          <p className="text-primary text-sm font-medium uppercase tracking-wider mb-2">
             OUR MINISTRIES
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
-            Empowering Faith, Embracing<br />Diversity
+            Key Community Ministries &<br />Programs
           </h2>
         </div>
 
@@ -41,8 +80,10 @@ export default function MinistryCards() {
           {ministries.map((ministry, index) => (
             <div key={index} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 p-8 text-center">
               {/* Icon */}
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-red-600 rounded-full mb-6">
-                {ministry.icon}
+              <div className='relative top-[-3rem] h-[2rem] '>
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary rounded-full mb-6">
+                  {ministry.icon}
+                </div>
               </div>
               
               {/* Title */}
@@ -58,7 +99,7 @@ export default function MinistryCards() {
               {/* Learn More Link */}
               <a 
                 href="#" 
-                className="inline-flex items-center text-red-500 text-sm font-medium hover:text-red-600 transition-colors duration-200"
+                className="inline-flex items-center text-primary/90 text-sm font-medium hover:text-secondary transition-colors duration-200"
               >
                 {ministry.link}
                 <svg 
