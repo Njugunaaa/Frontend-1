@@ -16,12 +16,7 @@ export default function InvestmentHero() {
     <div className="h-fit bg-gray-50 p-4 md:p-6 relative">
       {/* Breadcrumb */}
       <div className="mt-5" />
-      <BreadCrumb
-        items={[
-          { name: "Home", href: "/" },
-          { name: "community", href: "/community" },
-        ]}
-      />
+      
 
       <div className="mt-3" />
       <div className="max-w-7xl mx-auto mb-4">
