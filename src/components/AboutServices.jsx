@@ -1,6 +1,6 @@
 import React from 'react';
 import { Church, Heart, Users, Video, Calendar, Baby } from 'lucide-react';
-import Ch_1 from '../assets/images/church-about-img-two.webp'
+import Ch_1 from '/images/church-about-img-two.webp'
 
 export default function AboutServices() {
   const services = [

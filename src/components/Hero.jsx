@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const heroImages = [
-  "src/assets/images/1.jpg",
-  "src/assets/images/2.jpg",
-  "src/assets/images/3.jpg",
+  "/images/1.jpg",
+  "/images/2.jpg",
+  "/images/3.jpg",
 ];
 
 const heroContent = [
