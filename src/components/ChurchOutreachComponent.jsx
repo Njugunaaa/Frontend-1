@@ -53,7 +53,7 @@ const ChurchOutreachComponent = () => {
             transition={{ duration: 0.3 }}
           >
             <img
-              src="/src/assets/images/9.jpg"
+              src="/images/9.jpg"
               alt="Elim Pentecostal Church Tena Community Outreach"
               className="w-full h-auto rounded-3xl shadow-2xl object-cover"
             />
@@ -172,41 +172,41 @@ const ChurchOutreachComponent = () => {
 
 export default function EnhancedCommunityPage() {
   const filmstripImages = [
-    "/src/assets/images/5.jpg",
-    "/src/assets/images/6.jpg",
-    "/src/assets/images/7.jpg",
-    "/src/assets/images/8.jpg",
-    "/src/assets/images/9.jpg",
+    "/images/5.jpg",
+    "/images/6.jpg",
+    "/images/7.jpg",
+    "/images/8.jpg",
+    "/images/9.jpg",
   ];
 
   const communityImages = [
     {
-      src: "/src/assets/images/7.jpg",
+      src: "/images/7.jpg",
       title: "Fellowship Meals",
       description: "Building community through shared meals"
     },
     {
-      src: "/src/assets/images/5.jpg", 
+      src: "/images/5.jpg", 
       title: "Youth Ministry",
       description: "Vacation Bible School and youth programs"
     },
     {
-      src: "/src/assets/images/9.jpg",
+      src: "/images/9.jpg",
       title: "Prayer & Worship",
       description: "Holy Spirit ministry and worship nights"
     },
     {
-      src: "/src/assets/images/8.jpg",
+      src: "/images/8.jpg",
       title: "Family Support",
       description: "Strengthening families in faith"
     },
     {
-      src: "/src/assets/images/4.jpg",
+      src: "/images/4.jpg",
       title: "Community Events",
       description: "Nairobi Metropolitan Conference"
     },
     {
-      src: "/src/assets/images/3.jpg",
+      src: "/images/3.jpg",
       title: "Church Fellowship", 
       description: "Holy communion and gatherings"
     }

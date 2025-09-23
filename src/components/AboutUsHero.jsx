@@ -1,7 +1,7 @@
 import React from 'react';
 import { Clock, MapPin, Phone } from 'lucide-react';
-import Ch_1 from '../assets/images/church-about-img.webp'
-import sig from '../assets/images/sig-img.webp'
+import Ch_1 from '/images/church-about-img.webp'
+import sig from '/images/sig-img.webp'
 import BreadCrumb from './BreadCrump';
 
 export default function AboutUsHero() {
