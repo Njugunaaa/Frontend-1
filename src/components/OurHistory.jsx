@@ -36,7 +36,7 @@ export default function OurHistory() {
                   <img
                     key={index}
                     src={image}
-                    alt={`Church history ${index + 1}`}
+                    alt={`Elim Pentecostal Church Tena history ${index + 1}`}
                     className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
                       index === currentImageIndex
                         ? 'translate-x-0 opacity-100'
@@ -67,30 +67,64 @@ export default function OurHistory() {
           <div className="lg:pl-8">
             <div className="mb-6">
               <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">
-                Our History
+                Our History Since 1990
               </span>
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              We Live to Glorify<br />
-              God in All We Do
+              Over 30 Years of<br />
+              Faithful Ministry<br />
+              in Tena
             </h2>
 
-            <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-            </p>
+            <div className="space-y-6 mb-8">
+              <p className="text-gray-600 text-lg leading-relaxed">
+                Since our founding in 1990, Elim Pentecostal Church of Kenya (EPCK) 
+                Headquarters has been a beacon of hope and faith in the Tena community. 
+                For over three decades, we have remained steadfast in our mission to 
+                spread the Gospel and serve our neighbors.
+              </p>
+
+              <p className="text-gray-600 text-base leading-relaxed">
+                Our church family has grown from humble beginnings to a vibrant 
+                community of believers who gather to worship, fellowship, and support 
+                one another. We continue to believe in Jesus Christ as our Savior, 
+                Healer, Baptiser with the Holy Spirit, and Soon Coming King.
+              </p>
+
+              {/* Church Milestones */}
+              <div className="bg-white rounded-lg p-6 shadow-sm">
+                <h4 className="font-semibold text-gray-900 mb-4">Our Journey</h4>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-3 h-3 bg-amber-600 rounded-full flex-shrink-0"></div>
+                    <span className="text-gray-700"><strong>1990:</strong> Elim Pentecostal Church founded</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-3 h-3 bg-amber-600 rounded-full flex-shrink-0"></div>
+                    <span className="text-gray-700"><strong>2020s:</strong> Expanded to online ministries and live streaming</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-3 h-3 bg-amber-600 rounded-full flex-shrink-0"></div>
+                    <span className="text-gray-700"><strong>Today:</strong> 1,500+ followers and growing community</span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* Additional navigation arrows for consistency */}
             <div className="flex space-x-4">
               <button
                 onClick={prevImage}
                 className="w-12 h-12 border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+                aria-label="Previous image"
               >
                 <ChevronLeft className="w-5 h-5 text-gray-600" />
               </button>
               <button
                 onClick={nextImage}
                 className="w-12 h-12 border border-gray-300 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+                aria-label="Next image"
               >
                 <ChevronRight className="w-5 h-5 text-gray-600" />
               </button>

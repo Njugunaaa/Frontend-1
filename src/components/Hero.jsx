@@ -49,7 +49,7 @@ function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[32rem] md:h-[36rem] px-4 mt-[6rem]">
+    <section className="relative w-full h-[32rem] md:h-[36rem] px-4 mt-[6rem] mb-5">
       <div className="relative w-full h-full overflow-hidden rounded-xl shadow-lg">
         {/* Background carousel */}
         <AnimatePresence mode="wait">

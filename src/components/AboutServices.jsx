@@ -1,40 +1,70 @@
 import React from 'react';
-import { Church, Heart, Users } from 'lucide-react';
+import { Church, Heart, Users, Video, Calendar, Baby } from 'lucide-react';
 import Ch_1 from '../assets/images/church-about-img-two.webp'
 
 export default function AboutServices() {
   const services = [
     {
-      icon: Church,
-      title: "Sunday Worship",
-      description: "Join us every Sunday for inspiring worship services, powerful sermons, and fellowship with our church family."
+      icon: Video,
+      title: "Live Worship Services",
+      description: "Experience our vibrant worship services streamed live online. Join us for powerful praise, worship, and inspiring sermons from our pastors every week."
     },
     {
-      icon: Heart,
-      title: "Community Outreach",
-      description: "We serve our local community through various programs, helping those in need and sharing God's love."
+      icon: Calendar,
+      title: "Special Conferences & Events",
+      description: "Participate in our Nairobi Metropolitan Conference and other special events that strengthen our faith community and deepen our spiritual growth."
+    },
+    {
+      icon: Baby,
+      title: "Children's Programs",
+      description: "Our Vacation Bible School and children-focused programs provide a nurturing environment for young ones to learn about God's love and grow in faith."
     },
     {
       icon: Users,
-      title: "Bible Study Groups",
-      description: "Grow in faith together through our weekly Bible study groups and discipleship programs for all ages."
+      title: "Church Fellowship",
+      description: "Build meaningful relationships through our regular fellowship gatherings, holy communion services, and community activities that unite our church family."
+    },
+    {
+      icon: Heart,
+      title: "Holy Spirit Ministry",
+      description: "Experience the baptism with the Holy Spirit as we believe in Jesus Christ as our Healer and the transformative power of God's Spirit in our lives."
+    },
+    {
+      icon: Church,
+      title: "Worship Nights",
+      description: "Join our special worship nights filled with praise, prayer, and spiritual renewal as we prepare for Christ's soon return as our Coming King."
     }
   ];
 
   return (
     <section className="bg-white py-12 lg:py-20">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Left Content - Illustration (Hidden on small screens) */}
-          <div className="hidden lg:block">
-            <img src={Ch_1} alt='' />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          {/* Left Content - Illustration */}
+          <div className="order-2 lg:order-1">
+            <img 
+              src={Ch_1} 
+              alt='Elim Pentecostal Church Community Activities' 
+              className="w-full h-auto rounded-lg "
+            />
+            
+            {/* Church Stats Card */}
+            <div className="mt-6 bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Since 1990</h3>
+              <p className="text-gray-700 text-sm leading-relaxed">
+                Over 30 years of faithful service to the Tena community, 
+                believing in Jesus Christ as our Savior, Healer, Baptiser with 
+                the Holy Spirit, and Soon Coming King.
+              </p>
+            </div>
           </div>
 
           {/* Right Content - Services List */}
-          <div>
+          <div className="order-1 lg:order-2">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-12 leading-tight">
-              Watch our church<br />
-              services online
+              Experience our<br />
+              church services<br />
+              & programs
             </h2>
 
             <div className="space-y-8">
@@ -53,6 +83,18 @@ export default function AboutServices() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Call to Action */}
+            <div className="mt-12 p-6 bg-amber-600 rounded-lg text-white">
+              <h4 className="text-lg font-semibold mb-2">Join Us Online!</h4>
+              <p className="text-amber-100 mb-4">
+                Follow us on social media for live updates and service announcements.
+              </p>
+              <div className="flex space-x-4 text-sm">
+                <span className="bg-white bg-opacity-20 px-3 py-1 rounded">Facebook: 1,542+ followers</span>
+                <span className="bg-white bg-opacity-20 px-3 py-1 rounded">Instagram: @elim.p.church_tena</span>
+              </div>
             </div>
           </div>
         </div>

@@ -13,7 +13,6 @@ function AboutUs() {
         <AboutServices />
         <OurHistory />
         <WhatWeDo />
-        <ChurchStats />
         <TestimonialsComponent />
     </>
   )
