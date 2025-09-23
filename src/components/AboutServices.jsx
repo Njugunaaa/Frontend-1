@@ -1,23 +1,23 @@
 import React from 'react';
-import { Church, Heart, Gift } from 'lucide-react';
+import { Church, Heart, Users } from 'lucide-react';
 import Ch_1 from '../assets/images/church-about-img-two.webp'
 
 export default function AboutServices() {
   const services = [
     {
       icon: Church,
-      title: "Funeral ceremony",
-      description: "il odio amet nibh vulputate cursus laccumsan ipsuy vel ibh vulputatet nibh."
+      title: "Sunday Worship",
+      description: "Join us every Sunday for inspiring worship services, powerful sermons, and fellowship with our church family."
     },
     {
       icon: Heart,
-      title: "Wedding Concert",
-      description: "il odio amet nibh vulputate cursus laccumsan ipsuy vel ibh vulputatet nibh."
+      title: "Community Outreach",
+      description: "We serve our local community through various programs, helping those in need and sharing God's love."
     },
     {
-      icon: Gift,
-      title: "Donation Messages",
-      description: "il odio amet nibh vulputate cursus laccumsan ipsuy vel ibh vulputatet nibh."
+      icon: Users,
+      title: "Bible Study Groups",
+      description: "Grow in faith together through our weekly Bible study groups and discipleship programs for all ages."
     }
   ];
 
