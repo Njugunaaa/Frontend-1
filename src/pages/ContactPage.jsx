@@ -2,6 +2,19 @@ import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+const BreadCrumb = ({ items }) => (
+  <nav className="flex space-x-2 text-sm text-gray-600 mb-8">
+    {items.map((item, index) => (
+      <span key={index} className="flex items-center">
+        {index > 0 && <span className="mx-2">/</span>}
+        <a href={item.href} className="hover:text-amber-600 transition-colors">
+          {item.name}
+        </a>
+      </span>
+    ))}
+  </nav>
+);
+
 const CompleteContactPage = () => {
   const [prayerData, setPrayerData] = useState({
     name: '',
@@ -112,12 +125,13 @@ const CompleteContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gray-50">
+
       {/* Hero Contact Section */}
       <div 
         className="relative min-h-screen py-20 px-6"
         style={{
-          backgroundImage: `linear-gradient(135deg, rgba(30, 58, 138, 0.9), rgba(99, 102, 241, 0.8)), url('https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80')`,
+          backgroundImage: `linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(75, 85, 99, 0.8)), url('/src/assets/images/church-about-img.webp')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
@@ -132,13 +146,14 @@ const CompleteContactPage = () => {
           >
             {/* Contact Information */}
             <motion.div 
-              className="lg:col-span-2 bg-white/10 backdrop-blur-md border border-white/20 p-10 rounded-2xl shadow-2xl"
+              className="lg:col-span-2 bg-white/10 backdrop-blur-md border border-white/20 p-10 rounded-2xl shadow-2xl mt-[2rem]"
               variants={itemVariants}
             >
-              <h1 className="text-5xl font-bold text-white mb-6 tracking-tight">Connect With Us</h1>
-              <p className="text-xl text-blue-100 mb-10 leading-relaxed">
+              <h1 className="text-5xl font-bold text-white mb-6 tracking-tight">Connect With Our Church Family</h1>
+              <p className="text-xl text-gray-100 mb-10 leading-relaxed">
                 We'd love to hear from you! Whether you have questions about our services, 
-                want to learn more about our community, or need prayer support, don't hesitate to reach out.
+                want to learn more about our community, or need prayer support, our church family at 
+                Elim Pentecostal Church – Tena is here for you.
               </p>
 
               <motion.div 
@@ -152,12 +167,12 @@ const CompleteContactPage = () => {
                   <h3 className="font-semibold text-white mb-3 text-lg">General Inquiries</h3>
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
-                      <Phone className="w-5 h-5 text-blue-300" />
-                      <span className="text-blue-100">(555) 123-4567</span>
+                      <Phone className="w-5 h-5 text-amber-300" />
+                      <span className="text-amber-100">+254 726 496396</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Mail className="w-5 h-5 text-blue-300" />
-                      <span className="text-blue-100">info@gracechurch.org</span>
+                      <Mail className="w-5 h-5 text-amber-300" />
+                      <span className="text-amber-100">info@elimtena.org</span>
                     </div>
                   </div>
                 </motion.div>
@@ -169,12 +184,12 @@ const CompleteContactPage = () => {
                   <h3 className="font-semibold text-white mb-3 text-lg">Pastor's Office</h3>
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
-                      <Phone className="w-5 h-5 text-blue-300" />
-                      <span className="text-blue-100">(555) 123-4568</span>
+                      <Phone className="w-5 h-5 text-amber-300" />
+                      <span className="text-amber-100">+254 726 496396</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <Mail className="w-5 h-5 text-blue-300" />
-                      <span className="text-blue-100">pastor@gracechurch.org</span>
+                      <Mail className="w-5 h-5 text-amber-300" />
+                      <span className="text-amber-100">pastor@elimtena.org</span>
                     </div>
                   </div>
                 </motion.div>
@@ -183,11 +198,11 @@ const CompleteContactPage = () => {
                   variants={itemVariants}
                   className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
                 >
-                  <h3 className="font-semibold text-white mb-3 text-lg">Office Hours</h3>
-                  <div className="space-y-2 text-blue-100">
-                    <div>Mon - Thu: 9AM - 4PM</div>
-                    <div>Friday: 9AM - 2PM</div>
-                    <div>Sat - Sun: Closed</div>
+                  <h3 className="font-semibold text-white mb-3 text-lg">Service Hours</h3>
+                  <div className="space-y-2 text-gray-100">
+                    <div>Live Services: Online</div>
+                    <div>Church: Open until 8:00 PM</div>
+                    <div>Prayer Line: 24/7</div>
                   </div>
                 </motion.div>
               </motion.div>
@@ -195,12 +210,13 @@ const CompleteContactPage = () => {
 
             {/* Prayer Request Form */}
             <motion.div 
-              className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl shadow-2xl h-fit"
+              className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl shadow-2xl h-fit mt-[2rem]"
               variants={itemVariants}
             >
               <h2 className="text-3xl font-bold text-white mb-4">Prayer Request</h2>
-              <p className="text-blue-100 mb-8 text-sm leading-relaxed">
-                We believe in the power of prayer. Share your prayer request with us and our prayer team will lift you up.
+              <p className="text-amber-100 mb-8 text-sm leading-relaxed">
+                We believe in the power of prayer and the ministry of the Holy Spirit. Share your prayer request 
+                with us and our prayer team will lift you up, believing in Jesus as our Healer.
               </p>
               <motion.div 
                 className="space-y-5"
@@ -213,7 +229,7 @@ const CompleteContactPage = () => {
                     placeholder="Your Name (Optional)"
                     value={prayerData.name}
                     onChange={handlePrayerChange}
-                    className="w-full px-5 py-4 bg-white/10 border border-white/30 rounded-xl text-white placeholder-blue-200 focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
+                    className="w-full px-5 py-4 bg-white/10 border border-white/30 rounded-xl text-white placeholder-amber-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
                   />
                 </motion.div>
                 <motion.div variants={itemVariants}>
@@ -223,7 +239,7 @@ const CompleteContactPage = () => {
                     placeholder="Email Address (Optional)"
                     value={prayerData.email}
                     onChange={handlePrayerChange}
-                    className="w-full px-5 py-4 bg-white/10 border border-white/30 rounded-xl text-white placeholder-blue-200 focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
+                    className="w-full px-5 py-4 bg-white/10 border border-white/30 rounded-xl text-white placeholder-amber-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
                   />
                 </motion.div>
                 <motion.div variants={itemVariants}>
@@ -233,16 +249,16 @@ const CompleteContactPage = () => {
                     rows="5"
                     value={prayerData.request}
                     onChange={handlePrayerChange}
-                    className="w-full px-5 py-4 bg-white/10 border border-white/30 rounded-xl text-white placeholder-blue-200 focus:ring-2 focus:ring-blue-400 focus:border-transparent backdrop-blur-sm resize-none transition-all duration-200"
+                    className="w-full px-5 py-4 bg-white/10 border border-white/30 rounded-xl text-white placeholder-amber-200 focus:ring-2 focus:ring-amber-400 focus:border-transparent backdrop-blur-sm resize-none transition-all duration-200"
                   ></textarea>
                 </motion.div>
                 <motion.div className="flex items-start space-x-3" variants={itemVariants}>
-                  <input type="checkbox" className="mt-1.5 bg-white/10 border-white/30 text-blue-400 rounded" />
-                  <label className="text-sm text-blue-100">I would like updates on how God answers this prayer</label>
+                  <input type="checkbox" className="mt-1.5 bg-white/10 border-white/30 text-amber-400 rounded" />
+                  <label className="text-sm text-amber-100">I would like updates on how God answers this prayer</label>
                 </motion.div>
                 <motion.button
                   onClick={handlePrayerSubmit}
-                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 px-8 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
+                  className="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white py-4 px-8 rounded-xl hover:from-amber-700 hover:to-orange-700 transition duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
                   variants={itemVariants}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -259,23 +275,24 @@ const CompleteContactPage = () => {
       <div className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <motion.div 
-            className="bg-white/60 backdrop-blur-lg rounded-3xl shadow-2xl p-12 border border-white/50"
+            className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-12 border border-white/50"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
           >
             <div className="max-w-3xl mx-auto">
               <motion.h2 
-                className="text-4xl font-bold text-slate-800 mb-6 text-center tracking-tight"
+                className="text-4xl font-bold text-gray-800 mb-6 text-center tracking-tight"
                 variants={itemVariants}
               >
                 Get in Touch
               </motion.h2>
               <motion.p 
-                className="text-slate-600 mb-12 text-center text-lg leading-relaxed"
+                className="text-gray-600 mb-12 text-center text-lg leading-relaxed"
                 variants={itemVariants}
               >
-                Have questions about our church, want to learn more about our ministries, or need assistance? We're here to help!
+                Have questions about our church, want to learn more about our ministries, or need assistance? 
+                Our church family at Elim Pentecostal Church – Tena is here to help!
               </motion.p>
               
               <motion.div 
@@ -289,7 +306,7 @@ const CompleteContactPage = () => {
                     placeholder="Your Name *"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-6 py-4 bg-white/70 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-slate-800 placeholder-slate-500"
+                    className="w-full px-6 py-4 bg-white/70 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200 text-gray-800 placeholder-gray-500"
                   />
                 </motion.div>
                 <motion.div variants={itemVariants}>
@@ -299,7 +316,7 @@ const CompleteContactPage = () => {
                     placeholder="Email Address *"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-6 py-4 bg-white/70 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-slate-800 placeholder-slate-500"
+                    className="w-full px-6 py-4 bg-white/70 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200 text-gray-800 placeholder-gray-500"
                   />
                 </motion.div>
                 <motion.div variants={itemVariants}>
@@ -309,7 +326,7 @@ const CompleteContactPage = () => {
                     placeholder="Phone Number"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-6 py-4 bg-white/70 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-slate-800 placeholder-slate-500"
+                    className="w-full px-6 py-4 bg-white/70 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200 text-gray-800 placeholder-gray-500"
                   />
                 </motion.div>
                 <motion.div variants={itemVariants}>
@@ -317,14 +334,17 @@ const CompleteContactPage = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full px-6 py-4 bg-white/70 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 text-slate-600"
+                    className="w-full px-6 py-4 bg-white/70 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200 text-gray-600"
                   >
                     <option value="">Select Subject</option>
                     <option>General Inquiry</option>
-                    <option>Membership Information</option>
+                    <option>Church Membership</option>
                     <option>Ministry Information</option>
-                    <option>Event Information</option>
-                    <option>Volunteer Opportunities</option>
+                    <option>Community Outreach</option>
+                    <option>Vacation Bible School</option>
+                    <option>Live Services</option>
+                    <option>Fellowship Events</option>
+                    <option>Prayer Request</option>
                     <option>Other</option>
                   </select>
                 </motion.div>
@@ -335,13 +355,13 @@ const CompleteContactPage = () => {
                     rows="6"
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full px-6 py-4 bg-white/70 border-2 border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 resize-none text-slate-800 placeholder-slate-500"
+                    className="w-full px-6 py-4 bg-white/70 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200 resize-none text-gray-800 placeholder-gray-500"
                   ></textarea>
                 </motion.div>
                 <motion.div className="md:col-span-2 text-center" variants={itemVariants}>
                   <motion.button
                     onClick={handleContactSubmit}
-                    className="bg-gradient-to-r from-slate-800 to-slate-700 text-white py-4 px-12 rounded-xl hover:from-slate-900 hover:to-slate-800 transition duration-300 font-medium shadow-lg hover:shadow-xl"
+                    className="bg-gradient-to-r from-amber-600 to-orange-600 text-white py-4 px-12 rounded-xl hover:from-amber-700 hover:to-orange-700 transition duration-300 font-medium shadow-lg hover:shadow-xl"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -358,7 +378,7 @@ const CompleteContactPage = () => {
       <div className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div 
-            className="bg-slate-800 rounded-3xl shadow-2xl overflow-hidden"
+            className="bg-gray-800 rounded-3xl shadow-2xl overflow-hidden"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
@@ -372,14 +392,15 @@ const CompleteContactPage = () => {
                   className="text-4xl font-bold text-white mb-6 tracking-tight"
                   variants={itemVariants}
                 >
-                  Visit Our Church
+                  Visit Elim Pentecostal Church – Tena
                 </motion.h2>
                 <motion.p 
-                  className="text-slate-300 mb-10 text-lg leading-relaxed"
+                  className="text-gray-300 mb-10 text-lg leading-relaxed"
                   variants={itemVariants}
                 >
-                  Join us for worship every Sunday! We're located in the heart of the community 
-                  and look forward to welcoming you with open arms.
+                  Join us for worship and fellowship! We're located in Tena, Nairobi County and have been 
+                  serving our community since 1990. Come experience the love of Christ and the power of the Holy Spirit 
+                  with our church family.
                 </motion.p>
                 
                 <motion.div 
@@ -387,7 +408,7 @@ const CompleteContactPage = () => {
                   variants={containerVariants}
                 >
                   <motion.div 
-                    className="flex items-start space-x-4 p-6 bg-slate-700/50 rounded-xl backdrop-blur-sm hover:bg-slate-700/70 transition-all duration-300"
+                    className="flex items-start space-x-4 p-6 bg-gray-700/50 rounded-xl backdrop-blur-sm hover:bg-gray-700/70 transition-all duration-300"
                     variants={itemVariants}
                     whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                   >
@@ -395,16 +416,17 @@ const CompleteContactPage = () => {
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <MapPin className="w-6 h-6 text-blue-400 mt-1" />
+                      <MapPin className="w-6 h-6 text-amber-400 mt-1" />
                     </motion.div>
                     <div>
-                      <div className="font-semibold text-white text-lg">Grace Community Church</div>
-                      <div className="text-slate-300 mt-1">123 Faith Avenue<br />Springfield, IL 62701</div>
+                      <div className="font-semibold text-white text-lg">Elim Pentecostal Church – Tena</div>
+                      <div className="text-gray-300 mt-1">Tena, Nairobi County<br />Kenya</div>
+                      <div className="text-amber-300 text-sm mt-2">EPCK Headquarters • Founded 1990</div>
                     </div>
                   </motion.div>
                   
                   <motion.div 
-                    className="flex items-start space-x-4 p-6 bg-slate-700/50 rounded-xl backdrop-blur-sm hover:bg-slate-700/70 transition-all duration-300"
+                    className="flex items-start space-x-4 p-6 bg-gray-700/50 rounded-xl backdrop-blur-sm hover:bg-gray-700/70 transition-all duration-300"
                     variants={itemVariants}
                     whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                   >
@@ -412,13 +434,36 @@ const CompleteContactPage = () => {
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Clock className="w-6 h-6 text-blue-400 mt-1" />
+                      <Clock className="w-6 h-6 text-amber-400 mt-1" />
                     </motion.div>
                     <div>
-                      <div className="font-semibold text-white text-lg">Service Times</div>
-                      <div className="text-slate-300 mt-1">
-                        Sunday: 9:00 AM & 11:00 AM<br />
-                        Wednesday: 7:00 PM (Bible Study)
+                      <div className="font-semibold text-white text-lg">Service Information</div>
+                      <div className="text-gray-300 mt-1">
+                        Live Services: Streamed Online<br />
+                        Church Open: Until 8:00 PM<br />
+                        Special Events: Regular Conferences
+                      </div>
+                      <div className="text-amber-300 text-sm mt-2">1,500+ Community Members</div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div 
+                    className="flex items-start space-x-4 p-6 bg-gray-700/50 rounded-xl backdrop-blur-sm hover:bg-gray-700/70 transition-all duration-300"
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Phone className="w-6 h-6 text-amber-400 mt-1" />
+                    </motion.div>
+                    <div>
+                      <div className="font-semibold text-white text-lg">Contact Information</div>
+                      <div className="text-gray-300 mt-1">
+                        Phone: +254 726 496396<br />
+                        Email: info@elimtena.org<br />
+                        Instagram: @elim.p.church_tena
                       </div>
                     </div>
                   </motion.div>
@@ -426,7 +471,7 @@ const CompleteContactPage = () => {
               </motion.div>
               
               <motion.div 
-                className="min-h-96 lg:min-h-full flex items-center justify-center bg-slate-700"
+                className="min-h-96 lg:min-h-full flex items-center justify-center bg-gray-700"
                 variants={slideInRight}
               >
                 <motion.div 
