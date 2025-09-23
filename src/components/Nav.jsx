@@ -68,28 +68,23 @@ function Nav() {
           }`}
         >
           {/* Logo */}
-          <Link
+          <NavLink
             to="/"
-            className="overflow-hidden w-[6rem] h-[6rem] p-2 flex justify-center items-center"
+            className={`overflow-hidden w-[6rem] h-[6rem] p-2 flex justify-center items-center`}
           >
             <img src={Logo} alt="Logo" />
-          </Link>
+          </NavLink>
 
-          
           {/* Nav items (desktop only) */}
           <ul className="nav-items flex items-center gap-6 font-semibold">
             {navItems.map((item) => (
-              <NavLink
+              <Link
                 key={item.id}
                 to={item.link}
-                className={({ isActive }) =>
-                  `hover:text-secondary transition-colors duration-200 ${
-                    isActive ? "text-secondary" : ""
-                  }`
-                }
+                className="hover:text-secondary transition-colors duration-200"
               >
                 {item.name}
-              </NavLink>
+              </Link>
             ))}
           </ul>
 
@@ -108,23 +103,18 @@ function Nav() {
         </section>
       </section>
 
-
       {/* Mobile Side Nav */}
       <div className={`side-nav ${isOpen ? "open" : ""}`}>
         <div className="flex flex-col gap-6 font-semibold p-6 pt-20">
           {navItems.map((item) => (
-            <NavLink
+            <Link
               key={item.id}
               to={item.link}
               onClick={() => setIsOpen(false)}
-              className={({ isActive }) =>
-                `text-lg hover:text-secondary transition-colors duration-200 ${
-                  isActive ? "text-secondary" : ""
-                }`
-              }
+              className="text-lg hover:text-secondary transition-colors duration-200"
             >
               {item.name}
-            </NavLink>
+            </Link>
           ))}
           <button className="bg-secondary w-[7rem] h-[3rem] cursor-pointer text-white rounded-full hover:bg-[#a00000] transition-colors duration-200 transform hover:scale-105">
             Give now
@@ -171,64 +161,6 @@ function Nav() {
           background: rgba(0, 0, 0, 0.5);
           z-index: 50;
           animation: fadeIn 0.3s ease-in-out;
-        }
-
-        /* Banner Animation Styles - ONLY NEW ADDITION */
-        .banner-curtain {
-          overflow: hidden;
-          height: 0;
-          animation: curtainPull 1.2s ease-out 0.8s forwards;
-        }
-
-        .banner-content {
-          transform: translateY(-100%);
-          animation: contentReveal 1s ease-out 1.5s forwards;
-        }
-
-        .banner-shape {
-          height: 50px;
-          position: relative;
-          clip-path: polygon(
-            30px 0,
-            calc(100% - 30px) 0,
-            calc(100% - 60px) 100%,
-            60px 100%
-          );
-        }
-
-        .banner-text {
-          opacity: 0;
-          transform: scale(0.8);
-          animation: textFadeIn 0.6s ease-out 2s forwards;
-        }
-
-        @keyframes curtainPull {
-          0% {
-            height: 0;
-          }
-          100% {
-            height: 50px;
-          }
-        }
-
-        @keyframes contentReveal {
-          0% {
-            transform: translateY(-100%);
-          }
-          100% {
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes textFadeIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.8);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1);
-          }
         }
 
         @keyframes fadeIn {

@@ -4,29 +4,50 @@ import Preloader from "./components/Loading";
 import AboutUs from "./pages/AboutUs";
 import EventPage from "./pages/EventPage";
 import ContactPage from "./pages/ContactPage";
-import Outreach from "./pages/Outreach";
+import EnhancedCommunityPage from "./components/ChurchOutreachComponent";
+import SubdomainApp from "./subdomain/SubdomainApp";
 
 const Layout = lazy(() => import("./pages/Layout"));
 const MainPage = lazy(() => import("./pages/MainPage"));
+const Dashbaord = lazy(() => import('./pages/Dashbaord'));
 
 function App() {
   const [appReady, setAppReady] = useState(false);
+  const [isSubdomain, setIsSubdomain] = useState(false);
 
   useEffect(() => {
     // Simulate your app load (API, assets, etc.)
-    const timer = setTimeout(() => setAppReady(true), 2000); 
+    const timer = setTimeout(() => setAppReady(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
-  const routes = createBrowserRouter(createRoutesFromElements(
+  useEffect(() => {
+    // Detect if we're on a subdomain
+    const hostname = window.location.hostname;
+    const isSubdomain = hostname.includes('.subdomain.') || hostname.startsWith('subdomain.');
+    setIsSubdomain(isSubdomain);
+  }, []);
+
+  const mainRoutes = createBrowserRouter(createRoutesFromElements(
+    <Route>
     <Route path="/" element={<Layout />}>
       <Route index element={<MainPage />} />
       <Route path="about" element={<AboutUs />} />
       <Route path="events" element={<EventPage />} />
       <Route path="contact" element={<ContactPage />} />
-      <Route path="community" element={<Outreach />} />
+      <Route path="community" element={<EnhancedCommunityPage />} />
     </Route>
-  ))
+    <Route path="dashboard" element={<Dashbaord />} />
+    </Route>
+  ));
+
+  if (isSubdomain) {
+    return (
+      <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
+        <SubdomainApp />
+      </Suspense>
+    );
+  }
 
   return (
     <>
@@ -35,7 +56,7 @@ function App() {
 
       {/* Show routes immediately behind preloader (but hidden by it) */}
       <Suspense fallback={null}>
-        <RouterProvider router={routes} />
+        <RouterProvider router={mainRoutes} />
       </Suspense>
     </>
   );
