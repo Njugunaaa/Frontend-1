@@ -15,7 +15,6 @@ function MainPage() {
         <MinistryCards />
         <CommunityComponent />
         <StatementOfFaith />
-        <TestimonialsComponent />
         {/* <Banner /> */}
     </section>
   )

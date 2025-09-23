@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import HeroImage from '../assets/images/hero.webp'
+import HeroImage from '../assets/images/4.jpg'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 

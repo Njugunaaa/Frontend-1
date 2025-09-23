@@ -220,41 +220,41 @@ const ChurchOutreachComponent = () => {
 
 export default function EnhancedCommunityPage() {
   const filmstripImages = [
-    "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400",
-    "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400",
-    "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400",
-    "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400",
-    "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400",
+    "/src/assets/images/5.jpg",
+    "/src/assets/images/6.jpg",
+    "/src/assets/images/7.jpg",
+    "/src/assets/images/8.jpg",
+    "/src/assets/images/9.jpg",
   ];
 
   const communityImages = [
     {
-      src: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600",
+      src: "/src/assets/images/7.jpg",
       title: "Community Meals",
       description: "Bringing families together"
     },
     {
-      src: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600", 
+      src: "/src/assets/images/5.jpg", 
       title: "Youth Programs",
       description: "Empowering the next generation"
     },
     {
-      src: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600",
+      src: "/src/assets/images/9.jpg",
       title: "Senior Care",
       description: "Supporting our elders"
     },
     {
-      src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600",
+      src: "/src/assets/images/8.jpg",
       title: "Family Support",
       description: "Strengthening homes"
     },
     {
-      src: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600",
+      src: "/src/assets/images/4.jpg",
       title: "Community Events",
       description: "Building connections"
     },
     {
-      src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600",
+      src: "/src/assets/images/3.jpg",
       title: "Volunteer Work", 
       description: "Serving together"
     }
