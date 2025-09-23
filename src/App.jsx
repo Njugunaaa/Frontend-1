@@ -52,7 +52,7 @@ function App() {
   return (
     <>
       {/* Preloader runs until BOTH app is ready & its own 5s animation is done */}
-      {/* <Preloader done={appReady} duration={5000} /> */}
+      <Preloader done={appReady} duration={5000} /> 
 
       {/* Show routes immediately behind preloader (but hidden by it) */}
       <Suspense fallback={null}>
