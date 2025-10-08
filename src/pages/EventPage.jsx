@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import BreadCrumb from '../components/BreadCrump';
+import html2canvas from 'html2canvas';
 
 // Setup localizer with moment
 const localizer = momentLocalizer(moment);
@@ -165,6 +167,157 @@ function generateEventsForMonth(date) {
   return events;
 }
 
+// Random main church events from now to June 2026, with 5 events per month
+const mainChurchEvents = [
+  { title: 'New Year Service', date: '2024-01-01' },
+  { title: 'Prayer Meeting', date: '2024-01-05' },
+  { title: 'Bible Study', date: '2024-01-12' },
+  { title: 'Youth Fellowship', date: '2024-01-19' },
+  { title: 'Community Outreach', date: '2024-01-26' },
+  { title: 'Easter Sunday', date: '2024-03-31' },
+  { title: 'Lent Service', date: '2024-03-10' },
+  { title: 'Spring Revival', date: '2024-03-15' },
+  { title: 'Easter Preparation', date: '2024-03-20' },
+  { title: 'Holy Week', date: '2024-03-25' },
+  { title: 'Church Anniversary', date: '2024-05-15' },
+  { title: 'Mother\'s Day', date: '2024-05-12' },
+  { title: 'Spring Picnic', date: '2024-05-18' },
+  { title: 'Youth Retreat', date: '2024-05-22' },
+  { title: 'Family Day', date: '2024-05-28' },
+  { title: 'Youth Camp', date: '2024-07-20' },
+  { title: 'Summer BBQ', date: '2024-07-15' },
+  { title: 'Vacation Bible School', date: '2024-07-25' },
+  { title: 'Beach Outreach', date: '2024-07-30' },
+  { title: 'Independence Day', date: '2024-07-04' },
+  { title: 'Missionary Conference', date: '2024-09-10' },
+  { title: 'Back to School', date: '2024-09-05' },
+  { title: 'Harvest Festival', date: '2024-09-15' },
+  { title: 'Labor Day', date: '2024-09-02' },
+  { title: 'Fall Retreat', date: '2024-09-20' },
+  { title: 'Christmas Service', date: '2024-12-25' },
+  { title: 'Advent Service', date: '2024-12-01' },
+  { title: 'Carol Singing', date: '2024-12-10' },
+  { title: 'Christmas Eve', date: '2024-12-24' },
+  { title: 'New Year Eve', date: '2024-12-31' },
+  { title: 'New Year Service', date: '2025-01-01' },
+  { title: 'Epiphany', date: '2025-01-06' },
+  { title: 'Martin Luther King Day', date: '2025-01-20' },
+  { title: 'Winter Prayer', date: '2025-01-15' },
+  { title: 'Snow Day Event', date: '2025-01-25' },
+  { title: 'Easter Sunday', date: '2025-04-20' },
+  { title: 'Palm Sunday', date: '2025-04-13' },
+  { title: 'Good Friday', date: '2025-04-18' },
+  { title: 'Easter Egg Hunt', date: '2025-04-21' },
+  { title: 'Spring Cleaning', date: '2025-04-25' },
+  { title: 'Church Anniversary', date: '2025-05-15' },
+  { title: 'Memorial Day', date: '2025-05-26' },
+  { title: 'Pentecost', date: '2025-05-18' },
+  { title: 'Mother\'s Day', date: '2025-05-11' },
+  { title: 'Ascension Day', date: '2025-05-29' },
+  { title: 'Youth Camp', date: '2025-07-20' },
+  { title: 'Fourth of July', date: '2025-07-04' },
+  { title: 'Summer Mission', date: '2025-07-15' },
+  { title: 'Beach Day', date: '2025-07-25' },
+  { title: 'Campfire Night', date: '2025-07-30' },
+  { title: 'Missionary Conference', date: '2025-09-10' },
+  { title: 'Rosh Hashanah', date: '2025-09-15' },
+  { title: 'Yom Kippur', date: '2025-09-24' },
+  { title: 'Labor Day', date: '2025-09-01' },
+  { title: 'Fall Festival', date: '2025-09-20' },
+  { title: 'Christmas Service', date: '2025-12-25' },
+  { title: 'Hanukkah', date: '2025-12-14' },
+  { title: 'Kwanzaa', date: '2025-12-26' },
+  { title: 'Winter Solstice', date: '2025-12-21' },
+  { title: 'New Year Eve', date: '2025-12-31' },
+  { title: 'New Year Service', date: '2026-01-01' },
+  { title: 'Epiphany', date: '2026-01-06' },
+  { title: 'Three Kings Day', date: '2026-01-06' },
+  { title: 'Martin Luther King Day', date: '2026-01-19' },
+  { title: 'Groundhog Day', date: '2026-02-02' },
+  { title: 'Easter Sunday', date: '2026-04-06' },
+  { title: 'Ash Wednesday', date: '2026-02-18' },
+  { title: 'Lent Begins', date: '2026-02-18' },
+  { title: 'St. Patrick\'s Day', date: '2026-03-17' },
+  { title: 'Passover', date: '2026-04-14' },
+  { title: 'Church Anniversary', date: '2026-05-15' },
+  { title: 'Cinco de Mayo', date: '2026-05-05' },
+  { title: 'Mother\'s Day', date: '2026-05-10' },
+  { title: 'Memorial Day', date: '2026-05-25' },
+  { title: 'Pentecost', date: '2026-05-25' },
+];
+
+  // Static calendar component
+  function StaticCalendar({ events }) {
+    // Sort all events by date
+    const sortedEvents = events.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    // Colors from index.css, lighter shades
+    const colors = [
+      'rgba(122, 3, 13, 0.3)', // primary
+      'rgba(235, 50, 55, 0.3)', // secondary
+      'rgba(17, 121, 73, 0.3)', // green
+      'rgba(101, 106, 29, 0.3)', // huegreen
+      'rgba(62, 61, 143, 0.3)', // blue
+    ];
+
+    // Function to get color based on title
+    const getColor = (title) => {
+      let hash = 0;
+      for (let i = 0; i < title.length; i++) {
+        hash = title.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return colors[Math.abs(hash) % colors.length];
+    };
+
+    // Ref for download
+    const calendarRef = useRef(null);
+
+    // Download calendar as image
+    const downloadCalendar = () => {
+      if (calendarRef.current) {
+        html2canvas(calendarRef.current).then((canvas) => {
+          const link = document.createElement('a');
+          link.download = 'church-events-calendar.png';
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+    };
+
+    return (
+      <div className="mt-12 max-w-7xl mx-auto p-4 border rounded shadow bg-white" ref={calendarRef}>
+        <h2 className="text-2xl font-semibold mb-4" style={{ fontFamily: 'serif' }}>
+          Main Church Events Calendar
+        </h2>
+        {sortedEvents.length === 0 && <p>No events available.</p>}
+        <div className="grid grid-cols-7 gap-1">
+          {sortedEvents.map((event, index) => {
+            const d = new Date(event.date);
+            const day = d.getDate();
+            const month = moment(d).format('MMM');
+            const bgColor = getColor(event.title);
+            return (
+              <div
+                key={index}
+                className="border-dotted border-2 rounded p-2 text-black text-center min-h-[60px] flex flex-col justify-center"
+                style={{ backgroundColor: bgColor, borderColor: 'rgba(156, 163, 175, 0.5)' }}
+              >
+                <div className="font-bold">{day} {month}</div>
+                <div className="text-xs mt-1">{event.title}</div>
+              </div>
+            );
+          })}
+        </div>
+        <button
+          onClick={downloadCalendar}
+          className="mt-4 px-4 py-2 bg-red-900 text-white rounded hover:bg-red-700 transition"
+        >
+          Download Calendar
+        </button>
+      </div>
+    );
+  }
+
 export default function EventPage() {
   const [date, setDate] = useState(new Date());
   const [view, setView] = useState(Views.MONTH);
@@ -258,6 +411,8 @@ export default function EventPage() {
             }
           }}
         />
+        {/* Static calendar added below */}
+        <StaticCalendar events={mainChurchEvents} />
       </div>
     </div>
   );
