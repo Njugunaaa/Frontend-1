@@ -74,7 +74,7 @@ export default function OurHistory() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Over 30 Years of<br />
               Faithful Ministry<br />
-              in Tena
+              in Kenya and Beyond
             </h2>
 
             <div className="space-y-6 mb-8">

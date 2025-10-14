@@ -13,7 +13,7 @@ function Nav() {
   const navItems = [
     { id: 0, name: "Home", link: "/" },
     { id: 1, name: "About us", link: "/about" },
-    { id: 1, name: "Community Impact", link: "/community" },
+    { id: 1, name: "Mission work and Church Planting", link: "/missions" },
     { id: 3, name: "Events", link: "/events" },
     { id: 4, name: "Contact", link: "/contact" },
   ];
