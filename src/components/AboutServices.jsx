@@ -11,7 +11,7 @@ export default function AboutServices() {
     },
     {
       icon: Calendar,
-      title: "Conferences & Leadership Training",
+      title: "Conferences & Leadership Trainings",
       description:
         "We host annual conferences and leadership seminars to equip pastors, leaders, and volunteers for impactful ministry across all EPCK churches in Kenya.",
     },
