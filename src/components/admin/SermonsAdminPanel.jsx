@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API = 'http://localhost:8000';
+const API = 'https://elim-backend.onrender.com';
 
 const SermonsAdminPanel = () => {
   const [sermons, setSermons] = useState([]);
