@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API = 'https://elim-backend.onrender.com';
 
 const SermonsPage = () => {
   const [sermons, setSermons] = useState([]);
