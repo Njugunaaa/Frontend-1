@@ -9,8 +9,11 @@ import Preloader from "./components/Loading";
 import AboutUs from "./pages/AboutUs";
 import EventPage from "./pages/EventPage";
 import ContactPage from "./pages/ContactPage";
-import MissionsAndChurchPlantingPage from "./components/MissionsAndChurchPlanting"; // ✅ Fixed import
+import MissionsAndChurchPlantingPage from "./components/MissionsAndChurchPlanting";
 import SubdomainApp from "./subdomain/SubdomainApp";
+import SermonsPage from "./pages/SermonsPage";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 const Layout = lazy(() => import("./pages/Layout"));
 const MainPage = lazy(() => import("./pages/MainPage"));
@@ -38,8 +41,8 @@ function App() {
           <Route index element={<MainPage />} />
           <Route path="about" element={<AboutUs />} />
           <Route path="events" element={<EventPage />} />
+          <Route path="sermons" element={<SermonsPage />} />
           <Route path="contact" element={<ContactPage />} />
-          {/* ✅ Fixed route element to match correct import */}
           <Route
             path="missions"
             element={<MissionsAndChurchPlantingPage />}
@@ -47,6 +50,8 @@ function App() {
         </Route>
 
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="admin" element={<AdminLogin />} />
+        <Route path="admin/dashboard/*" element={<AdminDashboard />} />
       </Route>
     )
   );

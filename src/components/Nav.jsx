@@ -15,6 +15,7 @@ function Nav() {
     { id: 1, name: "About us", link: "/about" },
     { id: 1, name: "Mission work and Church Planting", link: "/missions" },
     { id: 3, name: "Events", link: "/events" },
+    { id: 5, name: "Sermons & Churches", link: "/sermons" },
     { id: 4, name: "Contact", link: "/contact" },
   ];
 

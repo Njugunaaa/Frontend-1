@@ -318,10 +318,14 @@ const mainChurchEvents = [
     );
   }
 
+const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 export default function EventPage() {
   const [date, setDate] = useState(new Date());
   const [view, setView] = useState(Views.MONTH);
   const [events, setEvents] = useState(() => generateEventsForMonth(new Date()));
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [pastEvents, setPastEvents] = useState([]);
 
   // Update events when date changes (month changes)
   const onNavigate = useCallback(
@@ -344,6 +348,24 @@ export default function EventPage() {
     window.addEventListener('resize', handleResize);
     handleResize(); // initial call
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Fetch upcoming and past events from backend
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const upcomingRes = await fetch(`${API}/api/events/upcoming`);
+        const upcomingData = await upcomingRes.json();
+        setUpcomingEvents(upcomingData);
+
+        const pastRes = await fetch(`${API}/api/events/past`);
+        const pastData = await pastRes.json();
+        setPastEvents(pastData);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
+    fetchEvents();
   }, []);
 
   // Event style getter for custom colors
@@ -413,6 +435,90 @@ export default function EventPage() {
         />
         {/* Static calendar added below */}
         <StaticCalendar events={mainChurchEvents} />
+
+        {/* Upcoming Events Section */}
+        <div className="mt-16">
+          <h2 className="text-3xl font-bold mb-6" style={{ color: '#7A030D' }}>
+            Upcoming Events
+          </h2>
+          {upcomingEvents.length === 0 ? (
+            <p className="text-gray-600">No upcoming events scheduled.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {upcomingEvents.map((event) => (
+                <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  {event.image_path && (
+                    <img
+                      src={`${API}${event.image_path}`}
+                      alt={event.title}
+                      className="w-full h-48 object-cover"
+                    />
+                  )}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2" style={{ color: '#7A030D' }}>
+                      {event.title}
+                    </h3>
+                    <div className="text-sm mb-2" style={{ color: '#EB3237' }}>
+                      {moment(event.date).format('MMMM DD, YYYY')}
+                      {event.time && ` at ${event.time}`}
+                    </div>
+                    {event.location && (
+                      <p className="text-sm text-gray-500 mb-2">📍 {event.location}</p>
+                    )}
+                    {event.category && (
+                      <span className="inline-block px-3 py-1 text-xs rounded-full mb-3" style={{ backgroundColor: '#FDF0D5', color: '#7A030D' }}>
+                        {event.category}
+                      </span>
+                    )}
+                    <p className="text-gray-600 text-sm">{event.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Past Events Section */}
+        <div className="mt-16 mb-8">
+          <h2 className="text-3xl font-bold mb-6" style={{ color: '#7A030D' }}>
+            Past Events
+          </h2>
+          {pastEvents.length === 0 ? (
+            <p className="text-gray-600">No past events to display.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {pastEvents.map((event) => (
+                <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden opacity-90">
+                  {event.image_path && (
+                    <img
+                      src={`${API}${event.image_path}`}
+                      alt={event.title}
+                      className="w-full h-48 object-cover grayscale"
+                    />
+                  )}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2" style={{ color: '#7A030D' }}>
+                      {event.title}
+                    </h3>
+                    <div className="text-sm mb-2 text-gray-500">
+                      {moment(event.date).format('MMMM DD, YYYY')}
+                      {event.time && ` at ${event.time}`}
+                    </div>
+                    {event.location && (
+                      <p className="text-sm text-gray-500 mb-2">📍 {event.location}</p>
+                    )}
+                    {event.category && (
+                      <span className="inline-block px-3 py-1 text-xs rounded-full mb-3" style={{ backgroundColor: '#FDF0D5', color: '#7A030D' }}>
+                        {event.category}
+                      </span>
+                    )}
+                    <p className="text-gray-600 text-sm">{event.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -34,13 +34,13 @@ const CurvedLoader = ({ done, duration = 5000 }) => {
     requestAnimationFrame(animate);
   }, [duration]);
 
-  // When both animation is done & app is ready → fade out and unmount
+  // When app is ready → fade out and unmount
   useEffect(() => {
-    if (done && progress === 1) {
+    if (done) {
       const timer = setTimeout(() => setIsVisible(false), 500); // small fade buffer
       return () => clearTimeout(timer);
     }
-  }, [done, progress]);
+  }, [done]);
 
   const getLoaderHeight = () => {
     if (progress < 0.2) return 100;
