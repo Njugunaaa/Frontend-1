@@ -245,79 +245,6 @@ const mainChurchEvents = [
   { title: 'Memorial Day', date: '2026-05-25' },
   { title: 'Pentecost', date: '2026-05-25' },
 ];
-
-  // Static calendar component
-  function StaticCalendar({ events }) {
-    // Sort all events by date
-    const sortedEvents = events.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    // Colors from index.css, lighter shades
-    const colors = [
-      'rgba(122, 3, 13, 0.3)', // primary
-      'rgba(235, 50, 55, 0.3)', // secondary
-      'rgba(17, 121, 73, 0.3)', // green
-      'rgba(101, 106, 29, 0.3)', // huegreen
-      'rgba(62, 61, 143, 0.3)', // blue
-    ];
-
-    // Function to get color based on title
-    const getColor = (title) => {
-      let hash = 0;
-      for (let i = 0; i < title.length; i++) {
-        hash = title.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      return colors[Math.abs(hash) % colors.length];
-    };
-
-    // Ref for download
-    const calendarRef = useRef(null);
-
-    // Download calendar as image
-    const downloadCalendar = () => {
-      if (calendarRef.current) {
-        html2canvas(calendarRef.current).then((canvas) => {
-          const link = document.createElement('a');
-          link.download = 'church-events-calendar.png';
-          link.href = canvas.toDataURL();
-          link.click();
-        });
-      }
-    };
-
-    return (
-      <div className="mt-12 max-w-7xl mx-auto p-4 border rounded shadow bg-white" ref={calendarRef}>
-        <h2 className="text-2xl font-semibold mb-4" style={{ fontFamily: 'serif' }}>
-          Main Church Events Calendar
-        </h2>
-        {sortedEvents.length === 0 && <p>No events available.</p>}
-        <div className="grid grid-cols-7 gap-1">
-          {sortedEvents.map((event, index) => {
-            const d = new Date(event.date);
-            const day = d.getDate();
-            const month = moment(d).format('MMM');
-            const bgColor = getColor(event.title);
-            return (
-              <div
-                key={index}
-                className="border-dotted border-2 rounded p-2 text-black text-center min-h-[60px] flex flex-col justify-center"
-                style={{ backgroundColor: bgColor, borderColor: 'rgba(156, 163, 175, 0.5)' }}
-              >
-                <div className="font-bold">{day} {month}</div>
-                <div className="text-xs mt-1">{event.title}</div>
-              </div>
-            );
-          })}
-        </div>
-        <button
-          onClick={downloadCalendar}
-          className="mt-4 px-4 py-2 bg-red-900 text-white rounded hover:bg-red-700 transition"
-        >
-          Download Calendar
-        </button>
-      </div>
-    );
-  }
-
 const API = 'https://elim-backend.onrender.com';
 
 export default function EventPage() {
@@ -523,5 +450,78 @@ export default function EventPage() {
     </div>
   );
 }
+
+  // Static calendar component
+  function StaticCalendar({ events }) {
+    // Sort all events by date
+    const sortedEvents = events.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    // Colors from index.css, lighter shades
+    const colors = [
+      'rgba(122, 3, 13, 0.3)', // primary
+      'rgba(235, 50, 55, 0.3)', // secondary
+      'rgba(17, 121, 73, 0.3)', // green
+      'rgba(101, 106, 29, 0.3)', // huegreen
+      'rgba(62, 61, 143, 0.3)', // blue
+    ];
+
+    // Function to get color based on title
+    const getColor = (title) => {
+      let hash = 0;
+      for (let i = 0; i < title.length; i++) {
+        hash = title.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return colors[Math.abs(hash) % colors.length];
+    };
+
+    // Ref for download
+    const calendarRef = useRef(null);
+
+    // Download calendar as image
+    const downloadCalendar = () => {
+      if (calendarRef.current) {
+        html2canvas(calendarRef.current).then((canvas) => {
+          const link = document.createElement('a');
+          link.download = 'church-events-calendar.png';
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+    };
+
+    return (
+      <div className="mt-12 max-w-7xl mx-auto p-4 border rounded shadow bg-white" ref={calendarRef}>
+        <h2 className="text-2xl font-semibold mb-4" style={{ fontFamily: 'serif' }}>
+          Main Church Events Calendar
+        </h2>
+        {sortedEvents.length === 0 && <p>No events available.</p>}
+        <div className="grid grid-cols-7 gap-1">
+          {sortedEvents.map((event, index) => {
+            const d = new Date(event.date);
+            const day = d.getDate();
+            const month = moment(d).format('MMM');
+            const bgColor = getColor(event.title);
+            return (
+              <div
+                key={index}
+                className="border-dotted border-2 rounded p-2 text-black text-center min-h-[60px] flex flex-col justify-center"
+                style={{ backgroundColor: bgColor, borderColor: 'rgba(156, 163, 175, 0.5)' }}
+              >
+                <div className="font-bold">{day} {month}</div>
+                <div className="text-xs mt-1">{event.title}</div>
+              </div>
+            );
+          })}
+        </div>
+        <button
+          onClick={downloadCalendar}
+          className="mt-4 px-4 py-2 bg-red-900 text-white rounded hover:bg-red-700 transition"
+        >
+          Download Calendar
+        </button>
+      </div>
+    );
+  }
+
 
 
