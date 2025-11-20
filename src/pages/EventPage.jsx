@@ -318,7 +318,7 @@ const mainChurchEvents = [
     );
   }
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API = 'https://elim-backend.onrender.com';
 
 export default function EventPage() {
   const [date, setDate] = useState(new Date());
