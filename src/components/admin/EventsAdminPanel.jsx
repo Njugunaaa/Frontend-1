@@ -20,7 +20,7 @@ const EventsAdminPanel = () => {
   const getAuthHeaders = () => {
     const pw = localStorage.getItem('elim_admin_pw');
     return {
-      'X-ADMIN-PASSWORD': pw || 'boltchurch@2025'
+      'X-ADMIN-PASSWORD': pw || 'Elim@2025'
     };
   };
 

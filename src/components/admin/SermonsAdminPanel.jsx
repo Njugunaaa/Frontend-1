@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API = 'http://localhost:8000';
 
 const SermonsAdminPanel = () => {
   const [sermons, setSermons] = useState([]);
@@ -16,12 +16,12 @@ const SermonsAdminPanel = () => {
   });
 
   const getAuthHeaders = () => {
-    const pw = localStorage.getItem('elim_admin_pw');
-    return {
-      'X-ADMIN-PASSWORD': pw || 'boltchurch@2025',
-      'Content-Type': 'application/json'
-    };
+  return {
+    'X-ADMIN-PASSWORD': 'Elim@2025',
+    'Content-Type': 'application/json'
   };
+};
+
 
   const fetchSermons = async () => {
     try {
@@ -40,32 +40,41 @@ const SermonsAdminPanel = () => {
   }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
+  
+  const url = editingSermon 
+    ? `${API}/api/sermons/${editingSermon.id}`
+    : `${API}/api/sermons`;
 
-    try {
-      const url = editingSermon 
-        ? `${API}/api/sermons/${editingSermon.id}`
-        : `${API}/api/sermons`;
-      
-      const response = await fetch(url, {
-        method: editingSermon ? 'PUT' : 'POST',
-        headers: getAuthHeaders(),
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        fetchSermons();
-        resetForm();
-        setShowModal(false);
-      } else {
-        const error = await response.json();
-        alert(`Error: ${error.error}`);
-      }
-    } catch (error) {
-      console.error('Error saving sermon:', error);
-      alert('Failed to save sermon');
-    }
+  const payload = {
+    title: formData.title,
+    speaker_or_leader: formData.speaker_or_leader || '',
+    date: formData.date,
+    description: formData.description || '',
+    media_url: formData.media_url || ''
   };
+
+  try {
+    const response = await fetch(url, {
+      method: editingSermon ? 'PUT' : 'POST',
+      headers: getAuthHeaders(),
+      body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+      fetchSermons();
+      resetForm();
+      setShowModal(false);
+    } else {
+      const error = await response.json();
+      alert(`Error: ${error.error}`);
+    }
+  } catch (error) {
+    console.error('Error saving sermon:', error);
+    alert('Failed to save sermon');
+  }
+};
+
 
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this sermon?')) return;
