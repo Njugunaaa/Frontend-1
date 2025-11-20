@@ -9,7 +9,7 @@ const AdminLogin = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     
-    if (password === 'boltchurch@2025') {
+    if (password === 'Elim@2025') {
       localStorage.setItem('elim_admin_auth', '1');
       localStorage.setItem('elim_admin_pw', password);
       navigate('/admin/dashboard');
