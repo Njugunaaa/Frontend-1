@@ -371,15 +371,19 @@ export default function EventPage() {
           {upcomingEvents.length === 0 ? (
             <p className="text-gray-600">No upcoming events scheduled.</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               {upcomingEvents.map((event) => (
                 <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                   {event.image_path && (
-                    <img
-                      src={`${API}${event.image_path}`}
-                      alt={event.title}
-                      className="w-full h-48 object-cover"
-                    />
+                    <div className="w-full h-[600px] overflow-hidden rounded shadow mb-4">
+  <img
+    src={`${API}${event.image_path}`}
+    alt={event.title}
+    className="w-full h-full object-contain"
+  />
+</div>
+
+
                   )}
                   <div className="p-6">
                     <h3 className="text-xl font-bold mb-2" style={{ color: '#7A030D' }}>
@@ -413,15 +417,19 @@ export default function EventPage() {
           {pastEvents.length === 0 ? (
             <p className="text-gray-600">No past events to display.</p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               {pastEvents.map((event) => (
                 <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden opacity-90">
                   {event.image_path && (
-                    <img
-                      src={`${API}${event.image_path}`}
-                      alt={event.title}
-                      className="w-full h-48 object-cover grayscale"
-                    />
+                    <div className="w-full h-[600px] overflow-hidden rounded shadow mb-4">
+  <img
+    src={`${API}${event.image_path}`}
+    alt={event.title}
+    className="w-full h-full object-contain"
+  />
+</div>
+
+
                   )}
                   <div className="p-6">
                     <h3 className="text-xl font-bold mb-2" style={{ color: '#7A030D' }}>
