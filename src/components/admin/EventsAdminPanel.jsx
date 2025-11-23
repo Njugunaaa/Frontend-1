@@ -178,11 +178,14 @@ const EventsAdminPanel = () => {
                 {event.location && <p>Location: {event.location}</p>}
                 {event.category && <p>Category: {event.category}</p>}
                 {event.image_path && (
-                  <img 
-  src={`${API}${event.image_path}`} 
-  alt={event.title} 
-  className="mt-2 w-full max-w-[1131px] h-auto object-contain rounded" 
-/>
+                  <div className="mt-2 w-full max-w-[300px] h-[400px] overflow-hidden rounded shadow">
+  <img
+    src={`${API}${event.image_path}`}
+    alt={event.title}
+    className="w-full h-full object-contain"
+  />
+</div>
+
 
                 )}
               </div>
