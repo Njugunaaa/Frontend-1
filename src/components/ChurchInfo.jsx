@@ -6,7 +6,7 @@ export default function ChurchInfo() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-            About Elim Pentecostal Church Tena
+            About Elim Pentecostal Church
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
@@ -14,10 +14,10 @@ export default function ChurchInfo() {
               <h3 className="text-xl font-bold text-gray-900 mb-4">Church Information</h3>
               <ul className="space-y-2 text-gray-600">
                 <li><strong>Founded:</strong> 1990</li>
-                <li><strong>Location:</strong> Tena, Nairobi, Kenya</li>
+                <li><strong>Location:</strong> Headquarters - Tena, Nairobi, Kenya</li>
                 <li><strong>Full Name:</strong> Elim Pentecostal Church of Kenya – Headquarters (EPCK)</li>
                 <li><strong>Phone:</strong> +254 726 496396</li>
-                <li><strong>Instagram:</strong> @elim.p.church_tena (1.9K+ followers)</li>
+                <li><strong>Instagram:</strong> @elim.p.church_ (1.9K+ followers)</li>
                 <li><strong>Facebook:</strong> 1,542+ likes, 263 check-ins</li>
               </ul>
             </div>

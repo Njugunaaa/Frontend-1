@@ -5,7 +5,7 @@ const Intro = () => {
     <div className="intro-section bg-gray-100 p-6 rounded-lg mb-8">
       <h2 className="text-2xl font-bold mb-4">Intro</h2>
       <p className="mb-2">
-        <strong>Elim Pentecostal Church of Kenya - HQ</strong>, was found in 1990.
+        <strong>Elim Pentecostal Church of Kenya </strong>, was found in 1990.
       </p>
       <p className="mb-2">
         We believe in Jesus Christ as the <strong>SAVIOR, HEALER, BAPTISER with the HOLYSPIRIT and SOON COMING KING</strong>.
@@ -17,13 +17,13 @@ const Intro = () => {
         <strong>Page · Religious organisation</strong>
       </p>
       <p className="mb-2">
-        <strong>Address:</strong> Manyanja Road- A few metres after Gertrudes Hospital, Nairobi, Kenya
+        <strong>Headquarters Address:</strong> Manyanja Road- A few metres after Gertrudes Hospital, Nairobi, Kenya
       </p>
       <p className="mb-2">
         <strong>Phone:</strong> 0726 496396
       </p>
       <p>
-        <strong>Email:</strong> elimtenachurch@gmail.com
+        <strong>Email:</strong> elimkenya@gmail.com
       </p>
     </div>
   );

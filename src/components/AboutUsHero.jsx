@@ -73,8 +73,7 @@ export default function AboutUsHero() {
                 </div>
                 <div>
                   <p className="text-gray-900 font-medium">
-                    Tena, Nairobi County <br />
-                    Kenya
+                    In all branches around the country 
                   </p>
                 </div>
               </div>
@@ -108,7 +107,7 @@ export default function AboutUsHero() {
           <div className="order-1 lg:order-2">
             <img
               src="/images/arch.jpg"
-              alt="Elim Pentecostal Church Tena Building"
+              alt="Elim Pentecostal Church Building"
               className="w-full h-auto rounded-xl shadow-xl object-cover"
             />
             <p className="text-center text-gray-500 text-sm mt-3 italic">

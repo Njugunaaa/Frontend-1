@@ -11,7 +11,7 @@ export default function TestimonialsComponent() {
     },
     {
       quote: "Experiencing God's Love Through Fellowship",
-      content: "Since joining this church family in Tena, I've witnessed the power of the Holy Spirit in action. The children's programs are excellent - my kids love Vacation Bible School. The community here truly believes in Jesus as our Soon Coming King, and it shows in everything they do.",
+      content: "Since joining this church family in my local branch in Nyeri, I've witnessed the power of the Holy Spirit in action. The children's programs are excellent - my kids love Vacation Bible School. The community here truly believes in Jesus as our Soon Coming King, and it shows in everything they do.",
       author: "David Mwangi",
       avatar: "DM"
     }
@@ -46,7 +46,7 @@ export default function TestimonialsComponent() {
             Growing Together in God's Word
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
-            Hear from our church family about how Elim Pentecostal Church – Tena has 
+            Hear from our church family about how Elim Pentecostal Church Kenya has 
             impacted their spiritual journey and strengthened their faith in Christ.
           </p>
           <button className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded text-sm font-medium transition-colors duration-200">

@@ -12,10 +12,10 @@ function MainPage() {
     <section className='flex-1'>
         <Hero />
         <EventCountdownTimer />
-        <MinistryCards />
-        <CommunityComponent />
+        {/* <MinistryCards /> */}
         <StatementOfFaith />
-        {/* <Banner /> */}
+        <CommunityComponent />
+        { <Banner /> }
     </section>
   )
 }

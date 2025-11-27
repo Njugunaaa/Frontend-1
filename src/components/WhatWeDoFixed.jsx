@@ -6,7 +6,7 @@ export default function WhatWeDoFixed() {
     {
       icon: Users,
       title: "Our Community",
-      description: "With over 1,500 Facebook likes and 263 check-ins, our growing community in Tena, Nairobi actively engages in fellowship, worship services, and local outreach programs.",
+      description: "With over 1,500 Facebook likes and 263 check-ins, our growing community in Kenya actively engages in fellowship, worship services, and local outreach programs.",
       color: "text-orange-400"
     },
     {

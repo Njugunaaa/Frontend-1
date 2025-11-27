@@ -24,7 +24,7 @@ export default function WhatWeDo() {
     {
       icon: Target,
       title: "Evangelical Mission",
-      description: "Spreading the Gospel message throughout Tena and beyond, believing in Jesus Christ as our Savior, Healer, Baptiser with the Holy Spirit, and Soon Coming King.",
+      description: "Spreading the Gospel message throughout Kenya and beyond, believing in Jesus Christ as our Savior, Healer, Baptiser with the Holy Spirit, and Soon Coming King.",
       color: "text-amber-600"
     },
     {
@@ -56,7 +56,7 @@ export default function WhatWeDo() {
             Community Since 1990
           </h2>
           <p className="text-gray-600 text-lg mt-6 max-w-3xl mx-auto">
-            At Elim Pentecostal Church – Tena, we are committed to spreading God's love, 
+            At Elim Pentecostal Church Kenya, we are committed to spreading God's love, 
             building strong community bonds, and helping believers grow in their spiritual journey.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function WhatWeDo() {
             </h3>
             <p className="text-gray-600 text-lg mb-6 max-w-2xl mx-auto">
               Be part of our church family with over 1,500+ followers across social media 
-              and growing community of believers in Tena, Nairobi.
+              and growing community of believers in Kenya.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center space-x-2 text-gray-700">

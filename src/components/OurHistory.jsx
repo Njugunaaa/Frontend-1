@@ -36,7 +36,7 @@ export default function OurHistory() {
                   <img
                     key={index}
                     src={image}
-                    alt={`Elim Pentecostal Church Tena history ${index + 1}`}
+                    alt={`Elim Pentecostal Church history ${index + 1}`}
                     className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
                       index === currentImageIndex
                         ? 'translate-x-0 opacity-100'
@@ -80,7 +80,7 @@ export default function OurHistory() {
             <div className="space-y-6 mb-8">
               <p className="text-gray-600 text-lg leading-relaxed">
                 Since our founding in 1990, Elim Pentecostal Church of Kenya (EPCK) 
-                Headquarters has been a beacon of hope and faith in the Tena community. 
+              has been a beacon of hope and faith in the various kenyan communities across the country. 
                 For over three decades, we have remained steadfast in our mission to 
                 spread the Gospel and serve our neighbors.
               </p>

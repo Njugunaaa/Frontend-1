@@ -153,7 +153,7 @@ const CompleteContactPage = () => {
               <p className="text-xl text-gray-100 mb-10 leading-relaxed">
                 We'd love to hear from you! Whether you have questions about our services, 
                 want to learn more about our community, or need prayer support, our church family at 
-                Elim Pentecostal Church – Tena is here for you.
+                Elim Pentecostal Church Kenya is here for you.Feel free to contact our number and  get to find a branch near you.
               </p>
 
               <motion.div 
@@ -172,7 +172,7 @@ const CompleteContactPage = () => {
                     </div>
                     <div className="flex items-center space-x-3">
                       <Mail className="w-5 h-5 text-amber-300" />
-                      <span className="text-amber-100">info@elimtena.org</span>
+                      <span className="text-amber-100">elimkenya@gmail.com</span>
                     </div>
                   </div>
                 </motion.div>
@@ -189,7 +189,7 @@ const CompleteContactPage = () => {
                     </div>
                     <div className="flex items-center space-x-3">
                       <Mail className="w-5 h-5 text-amber-300" />
-                      <span className="text-amber-100">pastor@elimtena.org</span>
+                      <span className="text-amber-100">elimkenya@gmail.com</span>
                     </div>
                   </div>
                 </motion.div>
@@ -272,7 +272,7 @@ const CompleteContactPage = () => {
       </div>
 
       {/* Contact Form Section */}
-      <div className="py-20 px-6">
+      {/* <div className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <motion.div 
             className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-12 border border-white/50"
@@ -372,7 +372,7 @@ const CompleteContactPage = () => {
             </div>
           </motion.div>
         </div>
-      </div>
+      </div> */}
 
       {/* Visit Us Section */}
       <div className="py-20 px-6">
@@ -392,13 +392,13 @@ const CompleteContactPage = () => {
                   className="text-4xl font-bold text-white mb-6 tracking-tight"
                   variants={itemVariants}
                 >
-                  Visit Elim Pentecostal Church – Tena
+                  Visit Elim Pentecostal Churches
                 </motion.h2>
                 <motion.p 
                   className="text-gray-300 mb-10 text-lg leading-relaxed"
                   variants={itemVariants}
                 >
-                  Join us for worship and fellowship! We're located in Tena, Nairobi County and have been 
+                  Join us for worship and fellowship! We're located in various branches around the country and have been 
                   serving our community since 1990. Come experience the love of Christ and the power of the Holy Spirit 
                   with our church family.
                 </motion.p>
@@ -419,8 +419,7 @@ const CompleteContactPage = () => {
                       <MapPin className="w-6 h-6 text-amber-400 mt-1" />
                     </motion.div>
                     <div>
-                      <div className="font-semibold text-white text-lg">Elim Pentecostal Church – Tena</div>
-                      <div className="text-gray-300 mt-1">Tena, Nairobi County<br />Kenya</div>
+                      <div className="font-semibold text-white text-lg">Elim Pentecostal Church Kenya</div>
                       <div className="text-amber-300 text-sm mt-2">EPCK Headquarters • Founded 1990</div>
                     </div>
                   </motion.div>
@@ -462,8 +461,8 @@ const CompleteContactPage = () => {
                       <div className="font-semibold text-white text-lg">Contact Information</div>
                       <div className="text-gray-300 mt-1">
                         Phone: +254 726 496396<br />
-                        Email: info@elimtena.org<br />
-                        Instagram: @elim.p.church_tena
+                        Email: elimkenya@gmail.com<br />
+                        Instagram: @elim.p.church
                       </div>
                     </div>
                   </motion.div>

@@ -12,7 +12,7 @@ export default function InvestmentHeroSection() {
 
   useEffect(() => {
     // trigger shift animation after mount
-    const timer = setTimeout(() => setShift(true), 300);
+    const timer = setTimeout(() => setShift(true), 10000);
     return () => clearTimeout(timer);
   }, []);
 

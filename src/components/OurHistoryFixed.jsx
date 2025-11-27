@@ -44,7 +44,7 @@ export default function OurHistoryFixed() {
             </h2>
 
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Founded in 1990, Elim Pentecostal Church of Kenya – Headquarters (EPCK) has been a beacon of faith in Tena, Nairobi. We believe Jesus Christ is our Savior, Healer, Baptiser with the Holy Spirit, and Soon Coming King. Our church family continues to grow and serve the community with dedication and love.
+              Founded in 1990, Elim Pentecostal Church of Kenya (EPCK) has been a beacon of faith in many communities across Kenya. We believe Jesus Christ is our Savior, Healer, Baptiser with the Holy Spirit, and Soon Coming King. Our church family continues to grow and serve the community with dedication and love.
             </p>
 
             {/* Navigation arrows */}
