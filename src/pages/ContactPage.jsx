@@ -168,7 +168,7 @@ const CompleteContactPage = () => {
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <Phone className="w-5 h-5 text-amber-300" />
-                      <span className="text-amber-100">+254 726 496396</span>
+                      <span className="text-amber-100">+254 722 693833</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Mail className="w-5 h-5 text-amber-300" />
@@ -185,7 +185,7 @@ const CompleteContactPage = () => {
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <Phone className="w-5 h-5 text-amber-300" />
-                      <span className="text-amber-100">+254 726 496396</span>
+                      <span className="text-amber-100">+254 722 693833</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <Mail className="w-5 h-5 text-amber-300" />
@@ -460,7 +460,7 @@ const CompleteContactPage = () => {
                     <div>
                       <div className="font-semibold text-white text-lg">Contact Information</div>
                       <div className="text-gray-300 mt-1">
-                        Phone: +254 726 496396<br />
+                        Phone: +254 722 693833<br />
                         Email: elimkenya@gmail.com<br />
                         Instagram: @elim.p.church
                       </div>

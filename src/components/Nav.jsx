@@ -90,9 +90,9 @@ function Nav() {
           </ul>
 
           {/* Desktop button */}
-          {/* <button className="give-btn mr-4 bg-primary flex justify-center items-center w-[7rem] h-[3rem] cursor-pointer text-white rounded-full hover:bg-secondary transition-colors duration-200 transform hover:scale-105">
+          <button className="give-btn mr-4 bg-primary flex justify-center items-center w-[7rem] h-[3rem] cursor-pointer text-white rounded-full hover:bg-secondary transition-colors duration-200 transform hover:scale-105">
             Give now
-          </button> */}
+          </button>
 
           {/* Hamburger (mobile only) */}
           <button
@@ -117,9 +117,9 @@ function Nav() {
               {item.name}
             </Link>
           ))}
-          {/* <button className="bg-secondary w-[7rem] h-[3rem] cursor-pointer text-white rounded-full hover:bg-[#a00000] transition-colors duration-200 transform hover:scale-105">
+          <button className="bg-secondary w-[7rem] h-[3rem] cursor-pointer text-white rounded-full hover:bg-[#a00000] transition-colors duration-200 transform hover:scale-105">
             Give now
-          </button> */}
+          </button>
         </div>
       </div>
 
