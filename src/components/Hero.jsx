@@ -11,7 +11,7 @@ const heroContent = [
   {
     title: "Welcome to Elim Pentecostal Church of Kenya (EPCK)",
     subtitle:
-      "Rooted in the rich heritage of the global Elim movement, we are a Christ-centered, Spirit-filled church committed to transforming lives and communities holistically.",
+      "A Christ-centered, Spirit-filled family committed to raising healthy believers, strong families, and thriving communities. Rooted in prayer, revival, and the power of the Holy Spirit, we exist to bring transformation across Kenya and beyond.",
     buttons: [
       { text: "Join Us", link: "/join" },
       { text: "Our Ministries", link: "/ministries" },
@@ -20,7 +20,7 @@ const heroContent = [
   {
     title: "Transforming Lives and Communities",
     subtitle:
-      "Join us as we raise healthy churches, nurture strong families, and extend the love of Christ through service, compassion, and impact-driven programs across Kenya and beyond.",
+      "Through worship, discipleship, outreach, and missions, we are passionate about seeing lives restored and destinies awakened. EPCK continues to spread God’s love across towns, cities, and nations.",
     buttons: [
       { text: "Learn More", link: "/about" },
       { text: "Contact Us", link: "/contact" },
@@ -28,25 +28,28 @@ const heroContent = [
   },
 ];
 
-function Hero() {
+export default function Hero() {
   const [imgIndex, setImgIndex] = useState(0);
   const [contentIndex, setContentIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
-  // rotate background images
+  // Slower background rotation
   useEffect(() => {
+    if (paused) return;
     const interval = setInterval(() => {
       setImgIndex((prev) => (prev + 1) % heroImages.length);
-    }, 6000);
+    }, 12000); // 12 seconds
     return () => clearInterval(interval);
-  }, []);
+  }, [paused]);
 
-  // rotate text content (optional: match images or independent)
+  // Slower content rotation
   useEffect(() => {
+    if (paused) return;
     const interval = setInterval(() => {
       setContentIndex((prev) => (prev + 1) % heroContent.length);
-    }, 7000);
+    }, 14000); // 14 seconds
     return () => clearInterval(interval);
-  }, []);
+  }, [paused]);
 
   return (
     <section className="relative w-full h-[32rem] md:h-[36rem] px-4 mt-[6rem] mb-5">
@@ -61,22 +64,22 @@ function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.6 }} // slower fade
           />
         </AnimatePresence>
 
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/50" />
 
-        {/* Text Content (with animations) */}
+        {/* Text Content */}
         <div className="relative z-10 flex items-center h-full max-w-2xl p-6 md:p-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={contentIndex}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ duration: 0.8 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ duration: 1.2 }}
               className="text-white"
             >
               <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
@@ -85,6 +88,7 @@ function Hero() {
               <p className="text-base md:text-lg mb-6 opacity-90">
                 {heroContent[contentIndex].subtitle}
               </p>
+
               <div className="flex flex-col sm:flex-row gap-3">
                 {heroContent[contentIndex].buttons.map((button, i) => (
                   <a
@@ -99,9 +103,30 @@ function Hero() {
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* Progress Indicators + Pause Button */}
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center gap-4 z-20">
+          {/* Dots */}
+          <div className="flex gap-2">
+            {heroImages.map((_, i) => (
+              <div
+                key={i}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  imgIndex === i ? "bg-red-500 scale-110" : "bg-white/50"
+                }`}
+              ></div>
+            ))}
+          </div>
+
+          {/* Pause/Play Button */}
+          <button
+            onClick={() => setPaused((p) => !p)}
+            className="text-white text-sm bg-black/40 px-3 py-1 rounded-md border border-white/30 hover:bg-black/60 transition"
+          >
+            {paused ? "Play" : "Pause"}
+          </button>
+        </div>
       </div>
     </section>
   );
 }
-
-export default Hero;

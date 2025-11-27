@@ -82,9 +82,9 @@ export default function WhatWeDo() {
               </p>
 
               {/* Arrow */}
-              <div className="flex justify-end">
+              {/* <div className="flex justify-end">
                 <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-amber-600 transition-colors duration-300" />
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

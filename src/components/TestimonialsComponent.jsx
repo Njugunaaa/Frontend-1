@@ -49,9 +49,9 @@ export default function TestimonialsComponent() {
             Hear from our church family about how Elim Pentecostal Church Kenya has 
             impacted their spiritual journey and strengthened their faith in Christ.
           </p>
-          <button className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded text-sm font-medium transition-colors duration-200">
+          {/* <button className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded text-sm font-medium transition-colors duration-200">
             Join Our Community
-          </button>
+          </button> */}
         </div>
 
         {/* Testimonials Slider */}
