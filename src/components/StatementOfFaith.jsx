@@ -22,11 +22,11 @@ export default function StatementOfFaith() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-primary leading-tight">
+          <h1 className="text-2xl md:text-4xl font-bold mb-6 text-primary leading-tight">
             Welcome to Elim Pentecostal <br className="hidden md:block" />Church Kenya
           </h1>
           <div className="w-32 h-1 bg-primary mx-auto mb-8"></div>
-          <p className="text-xl md:text-2xl leading-relaxed text-gray-600 max-w-4xl mx-auto font-light">
+          <p className="text-l md:text-xl leading-relaxed text-gray-600 max-w-4xl mx-auto font-light">
             Born out of a powerful move of God in Ndunyu, Nyeri in the mid-80s, EPCK has grown into a vibrant, 
             Spirit-filled family committed to spreading the gospel, transforming communities, and raising a generation 
             grounded in truth, love, and kingdom purpose.
@@ -78,7 +78,7 @@ export default function StatementOfFaith() {
           >
             <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="public/images/10.jpg"
+                src="/images/10.jpg"
                 alt="EPCK History"
                 className="w-full h-[400px] lg:h-[500px] object-cover"
               />
