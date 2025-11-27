@@ -168,7 +168,7 @@ function generateEventsForMonth(date) {
 }
 
 // Random main church events from now to June 2026, with 5 events per month
-const mainChurchEvents = [
+/* const mainChurchEvents = [
   { title: 'New Year Service', date: '2024-01-01' },
   { title: 'Prayer Meeting', date: '2024-01-05' },
   { title: 'Bible Study', date: '2024-01-12' },
@@ -244,7 +244,7 @@ const mainChurchEvents = [
   { title: 'Mother\'s Day', date: '2026-05-10' },
   { title: 'Memorial Day', date: '2026-05-25' },
   { title: 'Pentecost', date: '2026-05-25' },
-];
+]; */
 const API = 'https://elim-backend.onrender.com';
 
 export default function EventPage() {
@@ -361,7 +361,7 @@ export default function EventPage() {
           }}
         />
         {/* Static calendar added below */}
-        <StaticCalendar events={mainChurchEvents} />
+        {/* <StaticCalendar events={mainChurchEvents} /> */}
 
         {/* Upcoming Events Section */}
         <div className="mt-16">

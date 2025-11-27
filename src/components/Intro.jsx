@@ -20,7 +20,7 @@ const Intro = () => {
         <strong>Headquarters Address:</strong> Manyanja Road- A few metres after Gertrudes Hospital, Nairobi, Kenya
       </p>
       <p className="mb-2">
-        <strong>Phone:</strong> 0726 496396
+        <strong>Phone:</strong> 0722693833
       </p>
       <p>
         <strong>Email:</strong> elimkenya@gmail.com

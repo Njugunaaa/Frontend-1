@@ -34,7 +34,7 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-2">Contact</h3>
-            <p className="text-red-100 text-sm">📞 0726 496396</p>
+            <p className="text-red-100 text-sm">📞 0722693833</p>
             <p className="text-red-100 text-sm">✉ elimkenya@gmail.com</p>
           </div>
 

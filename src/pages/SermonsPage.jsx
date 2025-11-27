@@ -108,8 +108,6 @@ const SermonsPage = () => {
           )}
         </div>
       </div>
-      
-      <Footer />
     </div>
   );
 };

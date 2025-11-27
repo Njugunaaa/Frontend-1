@@ -83,7 +83,7 @@ export default function AboutUsHero() {
                   <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-gray-900 font-medium">+254 726 496396</p>
+                  <p className="text-gray-900 font-medium">+254 722693833</p>
                   <p className="text-gray-600 text-sm">
                     Call us for more information
                   </p>
@@ -91,16 +91,7 @@ export default function AboutUsHero() {
               </div>
             </div>
 
-            {/* Signature */}
-            <div className="mb-8">
-              <img src={sig} alt="Archbishop Simon Githigi Signature" />
-              <p className="text-gray-700 mt-2 font-medium">
-                Archbishop Dr. Simon Githigi <br />
-                <span className="text-amber-700 text-sm">
-                  Founder & Presiding Bishop
-                </span>
-              </p>
-            </div>
+            
           </div>
 
           {/* RIGHT CONTENT - Church Image (Google Maps) */}

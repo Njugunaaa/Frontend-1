@@ -168,7 +168,7 @@ const MissionsAndChurchPlantingPage = () => {
                 ]}/>
 
         <motion.h1
-          className="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-900 via-orange-700 to-amber-800 mb-8 leading-tight"
+          className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-900 via-orange-700 to-amber-800 mb-8 leading-tight"
           variants={itemVariants}
         >
           Spreading Hope. Planting Churches. Transforming Nations.

@@ -77,7 +77,7 @@ function Layout() {
   };
 
   const WhatsappButton = () => {
-  const whatsappNumber = "254114872974"; // Replace with your number in international format
+  const whatsappNumber = "254722693833"; // Replace with your number in international format
   const message = "Hello, I’d like to get in touch!"; // Prefilled text
 
   const openWhatsapp = () => {
