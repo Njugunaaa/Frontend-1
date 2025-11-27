@@ -13,7 +13,7 @@ const heroContent = [
     subtitle:
       "A Christ-centered, Spirit-filled family committed to raising healthy believers, strong families, and thriving communities. Rooted in prayer, revival, and the power of the Holy Spirit, we exist to bring transformation across Kenya and beyond.",
     buttons: [
-      { text: "Join Us", link: "/join" },
+      { text: "Join Us", link: "/contact" },
       { text: "Our Ministries", link: "/ministries" },
     ],
   },
