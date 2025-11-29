@@ -54,7 +54,7 @@ const EventsAdminPanel = () => {
         : `${API}/api/events`;
 
       const response = await fetch(url, {
-        method: editingEvent ? "PATCH" : "POST",
+        method: editingEvent ? "PUT" : "POST",
         headers: getAuthHeaders(),
         body: fd
       });
