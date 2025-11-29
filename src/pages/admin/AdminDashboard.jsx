@@ -46,7 +46,7 @@ const AdminDashboard = () => {
 
         <nav className="space-y-2">
           <Link
-            to=""
+            to="events"
             className={`block px-4 py-3 rounded-lg text-white transition-colors ${
               activeTab === 'events' ? 'bg-white/20' : 'hover:bg-white/10'
             }`}
