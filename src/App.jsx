@@ -15,9 +15,21 @@ import SermonsPage from "./pages/SermonsPage";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 
+// NEW MINISTRY PAGES
+import YouthMinistryPage from "./pages/YouthMinistryPage";
+import DorcasMinistryPage from "./pages/DorcasMinistryPage";
+import MinistryOfHelpsPage from "./pages/MinistryOfHelpsPage";
+import CalebMinistryPage from "./pages/CalebMinistryPage";
+import ChildrenMinistryPage from "./pages/ChildrenMinistryPage";
+
+// NEW JOIN-US PAGES
+import SupportMissionsPage from "./pages/SupportMissionsPage";
+import PartnerWithUsPage from "./pages/PartnerWithUsPage";
+import GiveNowPage from "./pages/GiveNowPage";
+
 const Layout = lazy(() => import("./pages/Layout"));
 const MainPage = lazy(() => import("./pages/MainPage"));
-const Dashboard = lazy(() => import("./pages/Dashbaord")); // small typo fix if file name matches
+const Dashboard = lazy(() => import("./pages/Dashbaord"));
 
 function App() {
   const [appReady, setAppReady] = useState(false);
@@ -30,7 +42,8 @@ function App() {
 
   useEffect(() => {
     const hostname = window.location.hostname;
-    const isSub = hostname.includes(".subdomain.") || hostname.startsWith("subdomain.");
+    const isSub =
+      hostname.includes(".subdomain.") || hostname.startsWith("subdomain.");
     setIsSubdomain(isSub);
   }, []);
 
@@ -47,6 +60,18 @@ function App() {
             path="missions"
             element={<MissionsAndChurchPlantingPage />}
           />
+
+          {/* MINISTRIES */}
+          <Route path="ministries/youth" element={<YouthMinistryPage />} />
+          <Route path="ministries/dorcas" element={<DorcasMinistryPage />} />
+          <Route path="ministries/helps" element={<MinistryOfHelpsPage />} />
+          <Route path="ministries/caleb" element={<CalebMinistryPage />} />
+          <Route path="ministries/children" element={<ChildrenMinistryPage />} />
+
+          {/* JOIN US */}
+          <Route path="join/support" element={<SupportMissionsPage />} />
+          <Route path="join/join" element={<PartnerWithUsPage />} />
+          <Route path="join/give" element={<GiveNowPage />} />
         </Route>
 
         <Route path="dashboard" element={<Dashboard />} />
@@ -73,7 +98,6 @@ function App() {
   return (
     <>
       <Preloader done={appReady} duration={5000} />
-
       <Suspense fallback={null}>
         <RouterProvider router={mainRoutes} />
       </Suspense>

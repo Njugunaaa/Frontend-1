@@ -39,14 +39,14 @@ export default function AboutUsHero() {
               <strong>Archbishop Dr. Simon Githigi</strong> and his wife{" "}
               <strong>Beatrice Githigi</strong> in the late 1980s. What began
               with humble gatherings of faith has grown into a powerful national
-              movement — planting churches, empowering communities, and raising
+              movement planting churches, empowering communities, and raising
               disciples across the nation.
             </p>
 
             {/* Faith Statement */}
             <p className="text-gray-700 text-base lg:text-lg mb-8 italic border-l-4 border-amber-500 pl-4 leading-relaxed">
               “We believe in the power of the Holy Spirit to transform lives,
-              restore hope, and equip believers for the work of ministry — all
+              restore hope, and equip believers for the work of ministry all
               for the glory of God and the advancement of His Kingdom.”
             </p>
 

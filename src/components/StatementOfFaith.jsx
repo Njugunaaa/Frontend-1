@@ -51,7 +51,7 @@ export default function StatementOfFaith() {
               <p>
                 What began in <strong>1986</strong> through intense prayer, fasting, and evangelism led by 
                 <strong> Bishop Simon Githigi</strong> sparked a spiritual awakening that transformed entire communities. 
-                As people encountered God—through healing, deliverance, conviction, and the baptism of the Holy Spirit—villages 
+                As people encountered Godthrough healing, deliverance, conviction, and the baptism of the Holy Spirit,villages 
                 changed, crime decreased, and revival spread like wildfire across the region.
               </p>
               
@@ -153,7 +153,7 @@ export default function StatementOfFaith() {
           className="bg-white p-10 md:p-16 rounded-3xl shadow-2xl border border-gray-100"
         >
           <p className="text-lg md:text-xl leading-relaxed text-gray-700">
-            We believe in <strong className="text-primary">one God—Father, Son, and Holy Spirit</strong>—co-equally 
+            We believe in <strong className="text-primary">one God Father, Son, and Holy Spirit</strong> co-equally 
             and co-eternally existing in perfect unity. We affirm the{" "}
             <strong className="text-primary">Bible as the inspired, infallible Word of God</strong>, our ultimate 
             authority for faith and practice. We acknowledge{" "}

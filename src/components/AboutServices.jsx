@@ -25,7 +25,7 @@ export default function AboutServices() {
       icon: Users,
       title: "Community Outreach & Church Planting",
       description:
-        "EPCK reaches communities through church planting, humanitarian initiatives, and social support programs — from food drives to water projects in underserved areas.",
+        "EPCK reaches communities through church planting, humanitarian initiatives, and social support programs from food drives to water projects in underserved areas.",
     },
     {
       icon: Heart,

@@ -69,7 +69,7 @@ const MissionsAndChurchPlantingPage = () => {
       title: "Parnay Church Opening",
       date: "October 18, 2025",
       description:
-        "After months of dedicated effort — from drilling wells to empower local communities, to nurturing faith and hope — the Parnay Church finally stands as a beacon of transformation in Maasai land. This is more than a building; it's a testimony of God’s faithfulness and the community’s resilience.",
+        "After months of dedicated effort from drilling wells to empower local communities, to nurturing faith and hope the Parnay Church finally stands as a beacon of transformation in Maasai land. This is more than a building; it's a testimony of God’s faithfulness and the community’s resilience.",
       location: "Parnay, Kenya",
       image: "/images/missions/parnay-church.jpg",
       video: "/videos/parnay-opening.mp4",
@@ -126,14 +126,14 @@ const MissionsAndChurchPlantingPage = () => {
   const testimonials = [
     {
       quote:
-        "Elim didn’t just build a church—they transformed our community. They brought water, hope, and faith to a place that once felt forgotten.",
+        "Elim didn’t just build a church they transformed our community. They brought water, hope, and faith to a place that once felt forgotten.",
       name: "Samuel Kipchoge",
       role: "Community Leader, Kajiado County",
       image: "/images/missions/testimonial-1.jpg",
     },
     {
       quote:
-        "The well changed everything. Clean water, fellowship, and joy—Elim helped us rebuild both our bodies and our souls.",
+        "The well changed everything. Clean water, fellowship, and joy. Elim helped us rebuild both our bodies and our souls.",
       name: "Grace Mwangi",
       role: "Teacher, Parnay",
       image: "/images/missions/testimonial-2.jpg",
@@ -178,7 +178,7 @@ const MissionsAndChurchPlantingPage = () => {
           className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-medium mb-8"
           variants={itemVariants}
         >
-          Elim Pentecostal Church of Kenya doesn’t just preach the Gospel—we{" "}
+          Elim Pentecostal Church of Kenya doesn’t just preach the Gospel we{" "}
           <span className="text-amber-700 font-bold">live it</span>. Through
           church planting, leadership training, and practical outreach, we bring
           transformation to both hearts and communities across Kenya.
@@ -205,7 +205,7 @@ const MissionsAndChurchPlantingPage = () => {
       transition={{ duration: 4, repeat: Infinity }}
     />
     <p className="text-gray-700 text-lg max-w-2xl mx-auto mt-6 font-medium">
-      Every church we plant tells a story — of faith, water, leadership, and a
+      Every church we plant tells a story of faith, water, leadership, and a
       community rising together.
     </p>
   </motion.div>
@@ -429,7 +429,7 @@ const MissionsAndChurchPlantingPage = () => {
       Stories That Speak Louder Than Words
     </h2>
     <p className="text-gray-700 text-lg max-w-3xl mx-auto font-medium">
-      What Elim does speaks volumes — transforming communities, empowering families, and spreading the Gospel through love in action.
+      What Elim does speaks volumes transforming communities, empowering families, and spreading the Gospel through love in action.
     </p>
   </motion.div>
 
@@ -503,7 +503,7 @@ const MissionsAndChurchPlantingPage = () => {
     {/* Bottom Overlay */}
     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 md:p-8 text-white z-10">
       <p className="text-base md:text-lg font-semibold mb-3 leading-relaxed max-w-2xl">
-        Through compassion, faith, and action — Elim continues to bring hope, healing, and growth to countless lives across Kenya.
+        Through compassion, faith, and action Elim continues to bring hope, healing, and growth to countless lives across Kenya.
       </p>
       <div className="flex flex-wrap gap-2">
         <span className="bg-purple-600/80 text-white px-3 py-1 rounded-full text-xs md:text-sm font-bold">
@@ -535,7 +535,7 @@ const MissionsAndChurchPlantingPage = () => {
           className="text-lg md:text-xl text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed font-medium"
           variants={itemVariants}
         >
-          Whether through prayer, financial partnership, volunteer service, or advocacy—your support directly impacts church planting, community development, and Gospel advancement across Kenya. Together, we're not just building churches; we're <span className="font-black text-amber-700">transforming nations</span>.
+          Whether through prayer, financial partnership, volunteer service, or advocacy your support directly impacts church planting, community development, and Gospel advancement across Kenya. Together, we're not just building churches; we're <span className="font-black text-amber-700">transforming nations</span>.
         </motion.p>
 
         <motion.div
