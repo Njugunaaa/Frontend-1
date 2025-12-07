@@ -1,60 +1,58 @@
-
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import BreadCrumb from '../components/BreadCrump';
 import html2canvas from 'html2canvas';
+import { API } from '../config/api';
 
-// Setup localizer with moment
 const localizer = momentLocalizer(moment);
 
-// Weekly recurring events data
 const weeklyEvents = [
   {
     title: 'Pastors Rest Day',
-    daysOfWeek: [1], // Monday
+    daysOfWeek: [1],
     allDay: true,
     description: 'Pastors rest day - no scheduled activities.',
   },
   {
     title: 'Home Fellowships',
-    daysOfWeek: [2], // Tuesday
+    daysOfWeek: [2],
     startTime: '19:00',
     endTime: '20:00',
     description: 'Weekly home fellowships for community and spiritual growth.',
   },
   {
     title: 'Midweek Service',
-    daysOfWeek: [3], // Wednesday
+    daysOfWeek: [3],
     startTime: '18:30',
     endTime: '19:30',
     description: 'Midweek service for worship and teaching.',
   },
   {
     title: 'Praise and Worship Practice',
-    daysOfWeek: [3, 6], // Wednesday and Saturday
+    daysOfWeek: [3, 6],
     startTime: '20:00',
     endTime: '22:00',
     description: 'Weekly praise and worship practice session.',
   },
   {
     title: 'PAC Class for Leaders',
-    daysOfWeek: [4], // Thursday
+    daysOfWeek: [4],
     startTime: '20:00',
     endTime: '22:00',
     description: 'Leadership development class for PAC members.',
   },
   {
     title: 'Prayers',
-    daysOfWeek: [5], // Friday
+    daysOfWeek: [5],
     startTime: '18:00',
     endTime: '21:00',
     description: 'Weekly prayer meeting.',
   },
   {
     title: 'Full Kesha (Last Friday)',
-    daysOfWeek: [5], // Friday
+    daysOfWeek: [5],
     startTime: '22:00',
     endTime: '05:00',
     description: 'Last Friday Full Kesha',
@@ -62,28 +60,28 @@ const weeklyEvents = [
   },
   {
     title: 'Children Ministry Choir Practice',
-    daysOfWeek: [6], // Saturday
+    daysOfWeek: [6],
     startTime: '15:00',
     endTime: '16:00',
     description: 'Choir practice for children ministry.',
   },
   {
     title: 'Praise and Worship Practice',
-    daysOfWeek: [6], // Saturday
+    daysOfWeek: [6],
     startTime: '18:00',
     endTime: '21:00',
     description: 'Weekly praise and worship practice session.',
   },
   {
     title: '1st Service - Youth & Highschoolers',
-    daysOfWeek: [0], // Sunday
+    daysOfWeek: [0],
     startTime: '08:30',
     endTime: '09:45',
     description: 'First service dedicated to youth and highschoolers.',
   },
   {
     title: '2nd Service - Main Service',
-    daysOfWeek: [0], // Sunday
+    daysOfWeek: [0],
     startTime: '10:00',
     endTime: '12:30',
     description: 'Main Sunday service.',
@@ -91,7 +89,6 @@ const weeklyEvents = [
   },
 ];
 
-// Helper to get date of last Friday of a month
 function getLastFriday(year, month) {
   const lastDay = new Date(year, month + 1, 0);
   const day = lastDay.getDay();
@@ -99,13 +96,10 @@ function getLastFriday(year, month) {
   return new Date(year, month + 1, 0 - diff);
 }
 
-// Generate events for the current visible month
 function generateEventsForMonth(date) {
   const events = [];
   const year = date.getFullYear();
   const month = date.getMonth();
-
-  // Iterate days in month
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   for (let day = 1; day <= daysInMonth; day++) {
@@ -114,14 +108,13 @@ function generateEventsForMonth(date) {
 
     weeklyEvents.forEach((event) => {
       if (event.daysOfWeek.includes(dayOfWeek)) {
-        // Handle last Friday special event
         if (event.isLastFriday) {
           const lastFriday = getLastFriday(year, month);
           if (
             currentDate.getDate() !== lastFriday.getDate() ||
             currentDate.getMonth() !== lastFriday.getMonth()
           ) {
-            return; // skip if not last Friday
+            return;
           }
         }
 
@@ -138,7 +131,6 @@ function generateEventsForMonth(date) {
           start.setHours(startHour, startMinute, 0);
           end = new Date(currentDate);
           end.setHours(endHour, endMinute, 0);
-          // Handle overnight events (end time less than start time)
           if (end < start) {
             end.setDate(end.getDate() + 1);
           }
@@ -167,94 +159,14 @@ function generateEventsForMonth(date) {
   return events;
 }
 
-// Random main church events from now to June 2026, with 5 events per month
-/* const mainChurchEvents = [
-  { title: 'New Year Service', date: '2024-01-01' },
-  { title: 'Prayer Meeting', date: '2024-01-05' },
-  { title: 'Bible Study', date: '2024-01-12' },
-  { title: 'Youth Fellowship', date: '2024-01-19' },
-  { title: 'Community Outreach', date: '2024-01-26' },
-  { title: 'Easter Sunday', date: '2024-03-31' },
-  { title: 'Lent Service', date: '2024-03-10' },
-  { title: 'Spring Revival', date: '2024-03-15' },
-  { title: 'Easter Preparation', date: '2024-03-20' },
-  { title: 'Holy Week', date: '2024-03-25' },
-  { title: 'Church Anniversary', date: '2024-05-15' },
-  { title: 'Mother\'s Day', date: '2024-05-12' },
-  { title: 'Spring Picnic', date: '2024-05-18' },
-  { title: 'Youth Retreat', date: '2024-05-22' },
-  { title: 'Family Day', date: '2024-05-28' },
-  { title: 'Youth Camp', date: '2024-07-20' },
-  { title: 'Summer BBQ', date: '2024-07-15' },
-  { title: 'Vacation Bible School', date: '2024-07-25' },
-  { title: 'Beach Outreach', date: '2024-07-30' },
-  { title: 'Independence Day', date: '2024-07-04' },
-  { title: 'Missionary Conference', date: '2024-09-10' },
-  { title: 'Back to School', date: '2024-09-05' },
-  { title: 'Harvest Festival', date: '2024-09-15' },
-  { title: 'Labor Day', date: '2024-09-02' },
-  { title: 'Fall Retreat', date: '2024-09-20' },
-  { title: 'Christmas Service', date: '2024-12-25' },
-  { title: 'Advent Service', date: '2024-12-01' },
-  { title: 'Carol Singing', date: '2024-12-10' },
-  { title: 'Christmas Eve', date: '2024-12-24' },
-  { title: 'New Year Eve', date: '2024-12-31' },
-  { title: 'New Year Service', date: '2025-01-01' },
-  { title: 'Epiphany', date: '2025-01-06' },
-  { title: 'Martin Luther King Day', date: '2025-01-20' },
-  { title: 'Winter Prayer', date: '2025-01-15' },
-  { title: 'Snow Day Event', date: '2025-01-25' },
-  { title: 'Easter Sunday', date: '2025-04-20' },
-  { title: 'Palm Sunday', date: '2025-04-13' },
-  { title: 'Good Friday', date: '2025-04-18' },
-  { title: 'Easter Egg Hunt', date: '2025-04-21' },
-  { title: 'Spring Cleaning', date: '2025-04-25' },
-  { title: 'Church Anniversary', date: '2025-05-15' },
-  { title: 'Memorial Day', date: '2025-05-26' },
-  { title: 'Pentecost', date: '2025-05-18' },
-  { title: 'Mother\'s Day', date: '2025-05-11' },
-  { title: 'Ascension Day', date: '2025-05-29' },
-  { title: 'Youth Camp', date: '2025-07-20' },
-  { title: 'Fourth of July', date: '2025-07-04' },
-  { title: 'Summer Mission', date: '2025-07-15' },
-  { title: 'Beach Day', date: '2025-07-25' },
-  { title: 'Campfire Night', date: '2025-07-30' },
-  { title: 'Missionary Conference', date: '2025-09-10' },
-  { title: 'Rosh Hashanah', date: '2025-09-15' },
-  { title: 'Yom Kippur', date: '2025-09-24' },
-  { title: 'Labor Day', date: '2025-09-01' },
-  { title: 'Fall Festival', date: '2025-09-20' },
-  { title: 'Christmas Service', date: '2025-12-25' },
-  { title: 'Hanukkah', date: '2025-12-14' },
-  { title: 'Kwanzaa', date: '2025-12-26' },
-  { title: 'Winter Solstice', date: '2025-12-21' },
-  { title: 'New Year Eve', date: '2025-12-31' },
-  { title: 'New Year Service', date: '2026-01-01' },
-  { title: 'Epiphany', date: '2026-01-06' },
-  { title: 'Three Kings Day', date: '2026-01-06' },
-  { title: 'Martin Luther King Day', date: '2026-01-19' },
-  { title: 'Groundhog Day', date: '2026-02-02' },
-  { title: 'Easter Sunday', date: '2026-04-06' },
-  { title: 'Ash Wednesday', date: '2026-02-18' },
-  { title: 'Lent Begins', date: '2026-02-18' },
-  { title: 'St. Patrick\'s Day', date: '2026-03-17' },
-  { title: 'Passover', date: '2026-04-14' },
-  { title: 'Church Anniversary', date: '2026-05-15' },
-  { title: 'Cinco de Mayo', date: '2026-05-05' },
-  { title: 'Mother\'s Day', date: '2026-05-10' },
-  { title: 'Memorial Day', date: '2026-05-25' },
-  { title: 'Pentecost', date: '2026-05-25' },
-]; */
-const API = 'https://elim-backend.onrender.com';
-
 export default function EventPage() {
   const [date, setDate] = useState(new Date());
   const [view, setView] = useState(Views.MONTH);
   const [events, setEvents] = useState(() => generateEventsForMonth(new Date()));
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [pastEvents, setPastEvents] = useState([]);
+  const [loadingEvents, setLoadingEvents] = useState(true);
 
-  // Update events when date changes (month changes)
   const onNavigate = useCallback(
     (newDate) => {
       setDate(newDate);
@@ -263,7 +175,6 @@ export default function EventPage() {
     []
   );
 
-  // Responsive view based on screen size
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -273,13 +184,13 @@ export default function EventPage() {
       }
     };
     window.addEventListener('resize', handleResize);
-    handleResize(); // initial call
+    handleResize();
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Fetch upcoming and past events from backend
   useEffect(() => {
     const fetchEvents = async () => {
+      setLoadingEvents(true);
       try {
         const upcomingRes = await fetch(`${API}/api/events/upcoming`);
         const upcomingData = await upcomingRes.json();
@@ -290,14 +201,15 @@ export default function EventPage() {
         setPastEvents(pastData);
       } catch (error) {
         console.error('Error fetching events:', error);
+      } finally {
+        setLoadingEvents(false);
       }
     };
     fetchEvents();
   }, []);
 
-  // Event style getter for custom colors
   const eventStyleGetter = (event) => {
-    const backgroundColor = '#7A030D'; // Primary color from index.css
+    const backgroundColor = '#7A030D';
     const style = {
       backgroundColor,
       borderRadius: '5px',
@@ -308,9 +220,11 @@ export default function EventPage() {
       paddingLeft: '10px',
       paddingRight: '10px',
     };
-    return {
-      style,
-    };
+    return { style };
+  };
+
+  const formatDate = (dateString) => {
+    return moment(dateString).format('MMMM DD, YYYY');
   };
 
   return (
@@ -323,11 +237,12 @@ export default function EventPage() {
       />
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2" style={{ fontFamily: 'serif' }}>
+          <h1 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#7A030D', fontFamily: 'Georgia, serif' }}>
             Our Events
           </h1>
-          <p className="text-gray-600">Discover and manage your upcoming events</p>
+          <p className="text-gray-600" style={{ fontFamily: 'Georgia, serif' }}>Discover and join our upcoming events</p>
         </div>
+        
         <Calendar
           localizer={localizer}
           events={events}
@@ -360,37 +275,38 @@ export default function EventPage() {
             }
           }}
         />
-        {/* Static calendar added below */}
-        {/* <StaticCalendar events={mainChurchEvents} /> */}
 
-        {/* Upcoming Events Section */}
         <div className="mt-16">
-          <h2 className="text-3xl font-bold mb-6" style={{ color: '#7A030D' }}>
+          <h2 className="text-3xl font-bold mb-6" style={{ color: '#7A030D', fontFamily: 'Georgia, serif' }}>
             Upcoming Events
           </h2>
-          {upcomingEvents.length === 0 ? (
-            <p className="text-gray-600">No upcoming events scheduled.</p>
+          {loadingEvents ? (
+            <div className="flex justify-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderColor: '#7A030D' }}></div>
+            </div>
+          ) : upcomingEvents.length === 0 ? (
+            <div className="text-center py-12 bg-gray-50 rounded-xl">
+              <p className="text-gray-600 text-lg" style={{ fontFamily: 'Georgia, serif' }}>No upcoming events scheduled.</p>
+            </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {upcomingEvents.map((event) => (
-                <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div key={event.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                   {event.image_path && (
-                    <div className="w-full h-[600px] overflow-hidden rounded shadow mb-4">
-  <img
-    src={`${API}${event.image_path}`}
-    alt={event.title}
-    className="w-full h-full object-contain"
-  />
-</div>
-
-
+                    <div className="w-full h-80 overflow-hidden">
+                      <img
+                        src={event.image_path}
+                        alt={event.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   )}
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2" style={{ color: '#7A030D' }}>
+                    <h3 className="text-xl font-bold mb-2" style={{ color: '#7A030D', fontFamily: 'Georgia, serif' }}>
                       {event.title}
                     </h3>
-                    <div className="text-sm mb-2" style={{ color: '#EB3237' }}>
-                      {moment(event.date).format('MMMM DD, YYYY')}
+                    <div className="text-sm font-medium mb-2" style={{ color: '#EB3237' }}>
+                      {formatDate(event.date)}
                       {event.time && ` at ${event.time}`}
                     </div>
                     {event.location && (
@@ -401,7 +317,7 @@ export default function EventPage() {
                         {event.category}
                       </span>
                     )}
-                    <p className="text-gray-600 text-sm">{event.description}</p>
+                    <p className="text-gray-600 text-sm" style={{ fontFamily: 'Georgia, serif' }}>{event.description}</p>
                   </div>
                 </div>
               ))}
@@ -409,34 +325,37 @@ export default function EventPage() {
           )}
         </div>
 
-        {/* Past Events Section */}
         <div className="mt-16 mb-8">
-          <h2 className="text-3xl font-bold mb-6" style={{ color: '#7A030D' }}>
+          <h2 className="text-3xl font-bold mb-6" style={{ color: '#7A030D', fontFamily: 'Georgia, serif' }}>
             Past Events
           </h2>
-          {pastEvents.length === 0 ? (
-            <p className="text-gray-600">No past events to display.</p>
+          {loadingEvents ? (
+            <div className="flex justify-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderColor: '#7A030D' }}></div>
+            </div>
+          ) : pastEvents.length === 0 ? (
+            <div className="text-center py-12 bg-gray-50 rounded-xl">
+              <p className="text-gray-600 text-lg" style={{ fontFamily: 'Georgia, serif' }}>No past events to display.</p>
+            </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {pastEvents.map((event) => (
-                <div key={event.id} className="bg-white rounded-lg shadow-md overflow-hidden opacity-90">
+                <div key={event.id} className="bg-white rounded-xl shadow-md overflow-hidden opacity-90">
                   {event.image_path && (
-                    <div className="w-full h-[600px] overflow-hidden rounded shadow mb-4">
-  <img
-    src={`${API}${event.image_path}`}
-    alt={event.title}
-    className="w-full h-full object-contain"
-  />
-</div>
-
-
+                    <div className="w-full h-80 overflow-hidden">
+                      <img
+                        src={event.image_path}
+                        alt={event.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   )}
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2" style={{ color: '#7A030D' }}>
+                    <h3 className="text-xl font-bold mb-2" style={{ color: '#7A030D', fontFamily: 'Georgia, serif' }}>
                       {event.title}
                     </h3>
-                    <div className="text-sm mb-2 text-gray-500">
-                      {moment(event.date).format('MMMM DD, YYYY')}
+                    <div className="text-sm text-gray-500 mb-2">
+                      {formatDate(event.date)}
                       {event.time && ` at ${event.time}`}
                     </div>
                     {event.location && (
@@ -447,7 +366,7 @@ export default function EventPage() {
                         {event.category}
                       </span>
                     )}
-                    <p className="text-gray-600 text-sm">{event.description}</p>
+                    <p className="text-gray-600 text-sm" style={{ fontFamily: 'Georgia, serif' }}>{event.description}</p>
                   </div>
                 </div>
               ))}
@@ -458,78 +377,3 @@ export default function EventPage() {
     </div>
   );
 }
-
-  // Static calendar component
-  function StaticCalendar({ events }) {
-    // Sort all events by date
-    const sortedEvents = events.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    // Colors from index.css, lighter shades
-    const colors = [
-      'rgba(122, 3, 13, 0.3)', // primary
-      'rgba(235, 50, 55, 0.3)', // secondary
-      'rgba(17, 121, 73, 0.3)', // green
-      'rgba(101, 106, 29, 0.3)', // huegreen
-      'rgba(62, 61, 143, 0.3)', // blue
-    ];
-
-    // Function to get color based on title
-    const getColor = (title) => {
-      let hash = 0;
-      for (let i = 0; i < title.length; i++) {
-        hash = title.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      return colors[Math.abs(hash) % colors.length];
-    };
-
-    // Ref for download
-    const calendarRef = useRef(null);
-
-    // Download calendar as image
-    const downloadCalendar = () => {
-      if (calendarRef.current) {
-        html2canvas(calendarRef.current).then((canvas) => {
-          const link = document.createElement('a');
-          link.download = 'church-events-calendar.png';
-          link.href = canvas.toDataURL();
-          link.click();
-        });
-      }
-    };
-
-    return (
-      <div className="mt-12 max-w-7xl mx-auto p-4 border rounded shadow bg-white" ref={calendarRef}>
-        <h2 className="text-2xl font-semibold mb-4" style={{ fontFamily: 'serif' }}>
-          Main Church Events Calendar
-        </h2>
-        {sortedEvents.length === 0 && <p>No events available.</p>}
-        <div className="grid grid-cols-7 gap-1">
-          {sortedEvents.map((event, index) => {
-            const d = new Date(event.date);
-            const day = d.getDate();
-            const month = moment(d).format('MMM');
-            const bgColor = getColor(event.title);
-            return (
-              <div
-                key={index}
-                className="border-dotted border-2 rounded p-2 text-black text-center min-h-[60px] flex flex-col justify-center"
-                style={{ backgroundColor: bgColor, borderColor: 'rgba(156, 163, 175, 0.5)' }}
-              >
-                <div className="font-bold">{day} {month}</div>
-                <div className="text-xs mt-1">{event.title}</div>
-              </div>
-            );
-          })}
-        </div>
-        <button
-          onClick={downloadCalendar}
-          className="mt-4 px-4 py-2 bg-red-900 text-white rounded hover:bg-red-700 transition"
-        >
-          Download Calendar
-        </button>
-      </div>
-    );
-  }
-
-
-

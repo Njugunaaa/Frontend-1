@@ -1,4 +1,13 @@
 #!/bin/bash
 
-# Start Vite frontend on port 5000
-npm run dev
+node server/index.js &
+BACKEND_PID=$!
+
+sleep 2
+
+npm run dev &
+FRONTEND_PID=$!
+
+wait -n
+
+exit $?
