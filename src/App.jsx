@@ -62,16 +62,16 @@ function App() {
           />
 
           {/* MINISTRIES */}
-          {/* <Route path="ministries/youth" element={<YouthMinistryPage />} />
+          <Route path="ministries/youth" element={<YouthMinistryPage />} />
           <Route path="ministries/dorcas" element={<DorcasMinistryPage />} />
           <Route path="ministries/helps" element={<MinistryOfHelpsPage />} />
           <Route path="ministries/caleb" element={<CalebMinistryPage />} />
           <Route path="ministries/children" element={<ChildrenMinistryPage />} />
- */}
+
           {/* JOIN US */}
-{/*           <Route path="join/support" element={<SupportMissionsPage />} />
+          <Route path="join/support" element={<SupportMissionsPage />} />
           <Route path="join/join" element={<PartnerWithUsPage />} />
-          <Route path="join/give" element={<GiveNowPage />} /> */}
+          <Route path="join/give" element={<GiveNowPage />} />
         </Route>
 
         <Route path="dashboard" element={<Dashboard />} />
