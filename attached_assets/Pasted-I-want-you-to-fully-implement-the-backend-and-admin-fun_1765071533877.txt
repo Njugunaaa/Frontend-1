@@ -1,0 +1,111 @@
+I want you to fully implement the backend and admin functionality for my React website, Elim Pentecostal Church of Kenya, such that it is self-contained and does not rely on any previous backend I had. Here is what needs to be done:
+
+1. Repositories & Credentials
+
+I will provide you with a ready-made GitHub repository of the frontend.
+
+You will integrate this frontend with a backend that manages all sermons and events.
+
+I will provide Cloudinary credentials (cloud name, API key, API secret) for all event images.
+
+I will provide JSONBin master keys and bin IDs for sermons and events.
+
+2. CRUD Functionality
+
+The admin panel must be able to create, read, update, and delete sermons and events.
+
+Sermons: store YouTube video URLs, with no image uploads needed. Fields: id, title, speaker_or_leader, date, description, media_url.
+
+Events: images must be uploaded to Cloudinary; the URL returned should be saved in JSONBin. Fields: id, title, description, date, time, location, category, image_path.
+
+All changes in JSONBin should immediately reflect on the user side without delay.
+
+Event editing should allow replacing images.
+
+The admin panel should see all events in a list, not worrying about upcoming vs. past events; if you think it looks better sorted that way, you may do so.
+
+3. Frontend Integration
+
+The React frontend should continue working as-is.
+
+Pages under ministries (missions, churchplanting, ministry of helps, sundayschool, youth, dorcas, caleb) and join (support missions, partner with us, give now) must have uniform fonts, styling, and formatting that matches the main pages like home and about us.
+
+Routing should work correctly and be stable.
+
+The UI may be modernized slightly, but must remain consistent with the church brand.
+
+4. Data & Performance
+
+JSONBin will hold two separate bins: one for sermons and one for events. Ensure the React frontend fetches and filters them appropriately.
+
+All data should load quickly and instantly; avoid large payloads or unnecessary API calls.
+
+Store only URLs for images and media; do not embed large files.
+
+5. Images
+
+Only event images will be uploaded to Cloudinary.
+
+Maintain image dimensions and quality as-is; images should be displayed properly in the admin panel and on the user side.
+
+Ensure that replacing images in events works seamlessly.
+
+6. Backend Requirements
+
+The backend should be lightweight, can be serverless or minimal API server, and should handle:
+
+Uploading event images to Cloudinary
+
+Updating the correct JSONBin with the new or edited data
+
+Returning data for the frontend instantly
+
+No dependencies on the old Flask backend; everything should be self-contained.
+
+7. Optional Improvements
+
+You may improve text content on ministry pages based on the church’s style and messaging.
+
+You may slightly modernize the look of events and sermons list, as long as it remains uniform with the main pages.
+
+Final Objective:
+When implemented, the system should allow an admin to manage sermons and events with full CRUD, instant updates, image uploads for events, and the frontend should display everything properly for public users with uniform styling and smooth routing.
+
+This prompt now:
+
+Removes dependencies on your old backend.
+
+Clearly separates sermons vs events.
+
+Covers image uploading to Cloudinary.
+
+Ensures JSONBin CRUD works immediately.
+
+Protects frontend integration and UI consistency.
+
+Mentions performance and instant loading.
+
+
+
+
+
+Cloudinary Credentials for my cloudinary app.
+Cloud name	
+dgzyfeumy
+API key	
+864314542448916
+API secret	
+GcWRtYUdPXxcjNILw89oiUG09Zo
+
+API environment variable	
+CLOUDINARY_URL=cloudinary://864314542448916:**********@dgzyfeumy
+
+
+JSon bin Credentials: USe master Key in all :
+$2a$10$xSp4u1Y3iLb5bmRCQyG4WOtKRJELsKS3BAzd7O72PJcpOhtlNVrji
+
+Events bin ID:6934b021ae596e708f882d96
+Semons bin ID: 6934b00643b1c97be9dc6e37
+
+
+Make it lovely remember you are hte best engineer there is follow through and make sure it is noce uniform and functional for a high paying client and thanks in advance
