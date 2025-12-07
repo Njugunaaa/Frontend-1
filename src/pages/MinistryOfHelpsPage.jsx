@@ -236,7 +236,7 @@ export default function MinistryOfHelps() {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                icon: Heart,
+                icon: HandHeart,
                 title: "Discover Your Calling",
                 desc: "Serving helps you uncover gifts you didn't know you had. Many of our pastors, worship leaders, and ministry directors started in the Ministry of Helps.",
                 color: "rose"
