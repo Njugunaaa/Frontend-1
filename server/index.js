@@ -40,36 +40,56 @@ const verifyAdmin = (req, res, next) => {
   next();
 };
 
-async function getJsonBinData(binId) {
+async function getEventsFromBin() {
   try {
-    const response = await fetch(`${JSONBIN_BASE_URL}/${binId}/latest`, {
-      headers: {
-        'X-Master-Key': JSONBIN_MASTER_KEY,
-      },
+    const response = await fetch(`${JSONBIN_BASE_URL}/${JSONBIN_EVENTS_BIN_ID}/latest`, {
+      headers: { 'X-Master-Key': JSONBIN_MASTER_KEY },
     });
     const data = await response.json();
-    return data.record || [];
+    const record = data.record || {};
+    return Array.isArray(record) ? record : (record.events || []);
   } catch (error) {
-    console.error('Error fetching from JSONBin:', error);
+    console.error('Error fetching events:', error);
     return [];
   }
 }
 
-async function updateJsonBinData(binId, data) {
+async function getSermonsFromBin() {
   try {
-    const response = await fetch(`${JSONBIN_BASE_URL}/${binId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Master-Key': JSONBIN_MASTER_KEY,
-      },
-      body: JSON.stringify(data),
+    const response = await fetch(`${JSONBIN_BASE_URL}/${JSONBIN_SERMONS_BIN_ID}/latest`, {
+      headers: { 'X-Master-Key': JSONBIN_MASTER_KEY },
     });
-    return await response.json();
+    const data = await response.json();
+    const record = data.record || {};
+    return Array.isArray(record) ? record : (record.sermons || []);
   } catch (error) {
-    console.error('Error updating JSONBin:', error);
-    throw error;
+    console.error('Error fetching sermons:', error);
+    return [];
   }
+}
+
+async function updateEventsBin(events) {
+  const response = await fetch(`${JSONBIN_BASE_URL}/${JSONBIN_EVENTS_BIN_ID}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-Key': JSONBIN_MASTER_KEY,
+    },
+    body: JSON.stringify({ events }),
+  });
+  return await response.json();
+}
+
+async function updateSermonsBin(sermons) {
+  const response = await fetch(`${JSONBIN_BASE_URL}/${JSONBIN_SERMONS_BIN_ID}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-Key': JSONBIN_MASTER_KEY,
+    },
+    body: JSON.stringify({ sermons }),
+  });
+  return await response.json();
 }
 
 async function uploadToCloudinary(buffer, filename) {
@@ -91,17 +111,18 @@ async function uploadToCloudinary(buffer, filename) {
 
 app.get('/api/events', async (req, res) => {
   try {
-    const events = await getJsonBinData(JSONBIN_EVENTS_BIN_ID);
+    const events = await getEventsFromBin();
     const sortedEvents = events.sort((a, b) => new Date(b.date) - new Date(a.date));
     res.json(sortedEvents);
   } catch (error) {
+    console.error('Error in /api/events:', error);
     res.status(500).json({ error: 'Failed to fetch events' });
   }
 });
 
 app.get('/api/events/upcoming', async (req, res) => {
   try {
-    const events = await getJsonBinData(JSONBIN_EVENTS_BIN_ID);
+    const events = await getEventsFromBin();
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const upcoming = events
@@ -109,13 +130,14 @@ app.get('/api/events/upcoming', async (req, res) => {
       .sort((a, b) => new Date(a.date) - new Date(b.date));
     res.json(upcoming);
   } catch (error) {
+    console.error('Error in /api/events/upcoming:', error);
     res.status(500).json({ error: 'Failed to fetch upcoming events' });
   }
 });
 
 app.get('/api/events/past', async (req, res) => {
   try {
-    const events = await getJsonBinData(JSONBIN_EVENTS_BIN_ID);
+    const events = await getEventsFromBin();
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const past = events
@@ -123,6 +145,7 @@ app.get('/api/events/past', async (req, res) => {
       .sort((a, b) => new Date(b.date) - new Date(a.date));
     res.json(past);
   } catch (error) {
+    console.error('Error in /api/events/past:', error);
     res.status(500).json({ error: 'Failed to fetch past events' });
   }
 });
@@ -141,7 +164,7 @@ app.post('/api/events', verifyAdmin, upload.single('image'), async (req, res) =>
       image_path = result.secure_url;
     }
 
-    const events = await getJsonBinData(JSONBIN_EVENTS_BIN_ID);
+    const events = await getEventsFromBin();
     const newEvent = {
       id: Date.now().toString(),
       title,
@@ -155,7 +178,7 @@ app.post('/api/events', verifyAdmin, upload.single('image'), async (req, res) =>
     };
 
     events.push(newEvent);
-    await updateJsonBinData(JSONBIN_EVENTS_BIN_ID, events);
+    await updateEventsBin(events);
     
     res.status(201).json(newEvent);
   } catch (error) {
@@ -169,8 +192,8 @@ app.put('/api/events/:id', verifyAdmin, upload.single('image'), async (req, res)
     const { id } = req.params;
     const { title, description, date, time, location, category } = req.body;
 
-    const events = await getJsonBinData(JSONBIN_EVENTS_BIN_ID);
-    const eventIndex = events.findIndex(e => e.id === id);
+    const events = await getEventsFromBin();
+    const eventIndex = events.findIndex(e => e.id === id || e.id === parseInt(id));
     
     if (eventIndex === -1) {
       return res.status(404).json({ error: 'Event not found' });
@@ -185,16 +208,16 @@ app.put('/api/events/:id', verifyAdmin, upload.single('image'), async (req, res)
     events[eventIndex] = {
       ...events[eventIndex],
       title: title || events[eventIndex].title,
-      description: description || events[eventIndex].description,
+      description: description !== undefined ? description : events[eventIndex].description,
       date: date || events[eventIndex].date,
-      time: time || events[eventIndex].time,
-      location: location || events[eventIndex].location,
-      category: category || events[eventIndex].category,
+      time: time !== undefined ? time : events[eventIndex].time,
+      location: location !== undefined ? location : events[eventIndex].location,
+      category: category !== undefined ? category : events[eventIndex].category,
       image_path,
       updated_at: new Date().toISOString(),
     };
 
-    await updateJsonBinData(JSONBIN_EVENTS_BIN_ID, events);
+    await updateEventsBin(events);
     res.json(events[eventIndex]);
   } catch (error) {
     console.error('Error updating event:', error);
@@ -205,14 +228,14 @@ app.put('/api/events/:id', verifyAdmin, upload.single('image'), async (req, res)
 app.delete('/api/events/:id', verifyAdmin, async (req, res) => {
   try {
     const { id } = req.params;
-    const events = await getJsonBinData(JSONBIN_EVENTS_BIN_ID);
-    const filteredEvents = events.filter(e => e.id !== id);
+    const events = await getEventsFromBin();
+    const filteredEvents = events.filter(e => e.id !== id && e.id !== parseInt(id));
     
     if (filteredEvents.length === events.length) {
       return res.status(404).json({ error: 'Event not found' });
     }
 
-    await updateJsonBinData(JSONBIN_EVENTS_BIN_ID, filteredEvents);
+    await updateEventsBin(filteredEvents);
     res.json({ message: 'Event deleted successfully' });
   } catch (error) {
     console.error('Error deleting event:', error);
@@ -222,10 +245,11 @@ app.delete('/api/events/:id', verifyAdmin, async (req, res) => {
 
 app.get('/api/sermons', async (req, res) => {
   try {
-    const sermons = await getJsonBinData(JSONBIN_SERMONS_BIN_ID);
+    const sermons = await getSermonsFromBin();
     const sortedSermons = sermons.sort((a, b) => new Date(b.date) - new Date(a.date));
     res.json(sortedSermons);
   } catch (error) {
+    console.error('Error in /api/sermons:', error);
     res.status(500).json({ error: 'Failed to fetch sermons' });
   }
 });
@@ -238,7 +262,7 @@ app.post('/api/sermons', verifyAdmin, async (req, res) => {
       return res.status(400).json({ error: 'Title and date are required' });
     }
 
-    const sermons = await getJsonBinData(JSONBIN_SERMONS_BIN_ID);
+    const sermons = await getSermonsFromBin();
     const newSermon = {
       id: Date.now().toString(),
       title,
@@ -250,7 +274,7 @@ app.post('/api/sermons', verifyAdmin, async (req, res) => {
     };
 
     sermons.push(newSermon);
-    await updateJsonBinData(JSONBIN_SERMONS_BIN_ID, sermons);
+    await updateSermonsBin(sermons);
     
     res.status(201).json(newSermon);
   } catch (error) {
@@ -264,8 +288,8 @@ app.put('/api/sermons/:id', verifyAdmin, async (req, res) => {
     const { id } = req.params;
     const { title, speaker_or_leader, date, description, media_url } = req.body;
 
-    const sermons = await getJsonBinData(JSONBIN_SERMONS_BIN_ID);
-    const sermonIndex = sermons.findIndex(s => s.id === id);
+    const sermons = await getSermonsFromBin();
+    const sermonIndex = sermons.findIndex(s => s.id === id || s.id === parseInt(id));
     
     if (sermonIndex === -1) {
       return res.status(404).json({ error: 'Sermon not found' });
@@ -274,14 +298,14 @@ app.put('/api/sermons/:id', verifyAdmin, async (req, res) => {
     sermons[sermonIndex] = {
       ...sermons[sermonIndex],
       title: title || sermons[sermonIndex].title,
-      speaker_or_leader: speaker_or_leader || sermons[sermonIndex].speaker_or_leader,
+      speaker_or_leader: speaker_or_leader !== undefined ? speaker_or_leader : sermons[sermonIndex].speaker_or_leader,
       date: date || sermons[sermonIndex].date,
-      description: description || sermons[sermonIndex].description,
-      media_url: media_url || sermons[sermonIndex].media_url,
+      description: description !== undefined ? description : sermons[sermonIndex].description,
+      media_url: media_url !== undefined ? media_url : sermons[sermonIndex].media_url,
       updated_at: new Date().toISOString(),
     };
 
-    await updateJsonBinData(JSONBIN_SERMONS_BIN_ID, sermons);
+    await updateSermonsBin(sermons);
     res.json(sermons[sermonIndex]);
   } catch (error) {
     console.error('Error updating sermon:', error);
@@ -292,14 +316,14 @@ app.put('/api/sermons/:id', verifyAdmin, async (req, res) => {
 app.delete('/api/sermons/:id', verifyAdmin, async (req, res) => {
   try {
     const { id } = req.params;
-    const sermons = await getJsonBinData(JSONBIN_SERMONS_BIN_ID);
-    const filteredSermons = sermons.filter(s => s.id !== id);
+    const sermons = await getSermonsFromBin();
+    const filteredSermons = sermons.filter(s => s.id !== id && s.id !== parseInt(id));
     
     if (filteredSermons.length === sermons.length) {
       return res.status(404).json({ error: 'Sermon not found' });
     }
 
-    await updateJsonBinData(JSONBIN_SERMONS_BIN_ID, filteredSermons);
+    await updateSermonsBin(filteredSermons);
     res.json({ message: 'Sermon deleted successfully' });
   } catch (error) {
     console.error('Error deleting sermon:', error);
