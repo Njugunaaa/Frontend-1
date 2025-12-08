@@ -192,11 +192,11 @@ export default function EventPage() {
     const fetchEvents = async () => {
       setLoadingEvents(true);
       try {
-        const upcomingRes = await fetch(`${API}/api/events/upcoming`);
+        const upcomingRes = await fetch(`${API}https://elim-backend-jqo7.onrender.com/api/events/upcoming`);
         const upcomingData = await upcomingRes.json();
         setUpcomingEvents(upcomingData);
 
-        const pastRes = await fetch(`${API}/api/events/past`);
+        const pastRes = await fetch(`${API}https://elim-backend-jqo7.onrender.com/api/events/past`);
         const pastData = await pastRes.json();
         setPastEvents(pastData);
       } catch (error) {

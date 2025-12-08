@@ -23,7 +23,7 @@ const EventsAdminPanel = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch(`${API}/api/events`);
+      const response = await fetch(`${API}https://elim-backend-jqo7.onrender.com/api/events`);
       const data = await response.json();
       setEvents(data);
     } catch (err) {
@@ -51,8 +51,8 @@ const EventsAdminPanel = () => {
       if (formData.image) fd.append("image", formData.image);
 
       const url = editingEvent
-        ? `${API}/api/events/${editingEvent.id}`
-        : `${API}/api/events`;
+        ? `${API}https://elim-backend-jqo7.onrender.com/api/events/${editingEvent.id}`
+        : `${API}https://elim-backend-jqo7.onrender.com/api/events`;
 
       const response = await fetch(url, {
         method: editingEvent ? "PUT" : "POST",
@@ -80,7 +80,7 @@ const EventsAdminPanel = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this event?")) return;
     try {
-      const response = await fetch(`${API}/api/events/${id}`, {
+      const response = await fetch(`${API}https://elim-backend-jqo7.onrender.com/api/events/${id}`, {
         method: "DELETE",
         headers: getAuthHeaders()
       });

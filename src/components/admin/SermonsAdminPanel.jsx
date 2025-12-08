@@ -22,7 +22,7 @@ const SermonsAdminPanel = () => {
 
   const fetchSermons = async () => {
     try {
-      const response = await fetch(`${API}/api/sermons`);
+      const response = await fetch(`${API}https://elim-backend-jqo7.onrender.com/api/sermons`);
       const data = await response.json();
       setSermons(data);
     } catch (error) {
@@ -41,8 +41,8 @@ const SermonsAdminPanel = () => {
     setSubmitting(true);
     
     const url = editingSermon 
-      ? `${API}/api/sermons/${editingSermon.id}`
-      : `${API}/api/sermons`;
+      ? `${API}https://elim-backend-jqo7.onrender.com/api/sermons/${editingSermon.id}`
+      : `${API}https://elim-backend-jqo7.onrender.com/api/sermons`;
 
     const payload = {
       title: formData.title,
@@ -79,7 +79,7 @@ const SermonsAdminPanel = () => {
     if (!window.confirm('Are you sure you want to delete this sermon?')) return;
 
     try {
-      const response = await fetch(`${API}/api/sermons/${id}`, {
+      const response = await fetch(`${API}https://elim-backend-jqo7.onrender.com/api/sermons/${id}`, {
         method: 'DELETE',
         headers: getAuthHeaders()
       });

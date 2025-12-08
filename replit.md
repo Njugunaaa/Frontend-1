@@ -63,21 +63,21 @@ Preferred communication style: Simple, everyday language.
 ### API Endpoints
 
 **Events**
-- `GET /api/events` - Get all events (sorted by date desc)
-- `GET /api/events/upcoming` - Get future events
-- `GET /api/events/past` - Get past events
-- `POST /api/events` - Create event (protected, supports image upload)
-- `PUT /api/events/:id` - Update event (protected)
-- `DELETE /api/events/:id` - Delete event (protected)
+- `GET https://elim-backend-jqo7.onrender.com/api/events` - Get all events (sorted by date desc)
+- `GET https://elim-backend-jqo7.onrender.com/api/events/upcoming` - Get future events
+- `GET https://elim-backend-jqo7.onrender.com/api/events/past` - Get past events
+- `POST https://elim-backend-jqo7.onrender.com/api/events` - Create event (protected, supports image upload)
+- `PUT https://elim-backend-jqo7.onrender.com/api/events/:id` - Update event (protected)
+- `DELETE https://elim-backend-jqo7.onrender.com/api/events/:id` - Delete event (protected)
 
 **Sermons**
-- `GET /api/sermons` - Get all sermons (sorted by date desc)
-- `POST /api/sermons` - Create sermon (protected)
-- `PUT /api/sermons/:id` - Update sermon (protected)
-- `DELETE /api/sermons/:id` - Delete sermon (protected)
+- `GET https://elim-backend-jqo7.onrender.com/api/sermons` - Get all sermons (sorted by date desc)
+- `POST https://elim-backend-jqo7.onrender.com/api/sermons` - Create sermon (protected)
+- `PUT https://elim-backend-jqo7.onrender.com/api/sermons/:id` - Update sermon (protected)
+- `DELETE https://elim-backend-jqo7.onrender.com/api/sermons/:id` - Delete sermon (protected)
 
 **Health Check**
-- `GET /api/health` - Server health status
+- `GET https://elim-backend-jqo7.onrender.com/api/health` - Server health status
 
 ### Authentication
 
@@ -156,6 +156,6 @@ The application features a branded preloader showing the Elim Pentecostal Church
 
 ## Notes
 
-- The Vite dev server proxies `/api/*` requests to the backend on port 8000
+- The Vite dev server proxies `https://elim-backend-jqo7.onrender.com/api/*` requests to the backend on port 8000
 - Frontend must have `allowedHosts: true` in vite.config.js for Replit iframe access
 - Ministry routes are currently commented out in App.jsx - uncomment to enable

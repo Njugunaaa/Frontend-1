@@ -13,7 +13,7 @@ const SermonsPage = () => {
 
   const fetchSermons = async () => {
     try {
-      const response = await fetch(`${API}/api/sermons`);
+      const response = await fetch(`${API}https://elim-backend-jqo7.onrender.com/api/sermons`);
       const data = await response.json();
       setSermons(data);
     } catch (error) {
