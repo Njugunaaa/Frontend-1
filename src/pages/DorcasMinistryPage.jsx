@@ -16,7 +16,7 @@ export default function DorcasMinistry() {
         <div className="absolute inset-0 bg-black/30" />
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{ backgroundImage: "url('/images/dorcas-hero.jpg')" }}
+          style={{ backgroundImage: "url('/images/dorcas-hero.webp')" }}
         />
         {/* Decorative Elements */}
         <div className="absolute top-20 right-20 text-white/10">
@@ -120,7 +120,7 @@ export default function DorcasMinistry() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                src="/images/dorcas-1.jpg" 
+                src="/images/dorcas-1.webp" 
                 alt="Women's fellowship"
                 className="rounded-3xl shadow-2xl w-full h-[500px] object-cover border-8 border-white"
               />
@@ -305,9 +305,9 @@ export default function DorcasMinistry() {
           
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { img: "/images/dorcas-2.jpg", caption: "Monthly Fellowship" },
-              { img: "/images/dorcas-3.jpg", caption: "Serving Together" },
-              { img: "/images/dorcas-4.jpg", caption: "Bible Study" }
+              { img: "/images/dorcas-2.webp", caption: "Monthly Fellowship" },
+              { img: "/images/dorcas-3.webp", caption: "Serving Together" },
+              { img: "/images/dorcas-4.webp", caption: "Bible Study" }
             ].map((item, index) => (
               <motion.div 
                 key={index}

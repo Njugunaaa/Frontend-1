@@ -43,7 +43,7 @@ export default function PartnerWithUs() {
         <div className="absolute inset-0 bg-black/40" />
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: "url('/images/partnership-hero.jpg')" }}
+          style={{ backgroundImage: "url('/images/partnership-hero.webp')" }}
         />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <motion.div
@@ -88,7 +88,7 @@ export default function PartnerWithUs() {
           >
             <div>
               <img 
-                src="/images/partnership-1.jpg" 
+                src="/images/partnership-1.webp" 
                 alt="Church community together"
                 className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
               />

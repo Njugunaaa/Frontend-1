@@ -47,7 +47,7 @@ export default function SupportMissions() {
         <div className="absolute inset-0 bg-black/40" />
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: "url('/images/missions-support.jpg')" }}
+          style={{ backgroundImage: "url('/images/missions-support.webp')" }}
         />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <motion.div
@@ -88,7 +88,7 @@ export default function SupportMissions() {
           >
             <div>
               <img 
-                src="/images/mission-impact.jpg" 
+                src="/images/mission-impact.webp" 
                 alt="Mission impact"
                 className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
               />
@@ -212,7 +212,7 @@ export default function SupportMissions() {
               className="bg-white p-6 rounded-xl shadow-lg"
             >
               <img 
-                src="/images/story-1.jpg" 
+                src="/images/story-1.webp" 
                 alt="Mission story"
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
@@ -230,7 +230,7 @@ export default function SupportMissions() {
               className="bg-white p-6 rounded-xl shadow-lg"
             >
               <img 
-                src="/images/story-2.jpg" 
+                src="/images/story-2.webp" 
                 alt="Mission story"
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
@@ -248,7 +248,7 @@ export default function SupportMissions() {
               className="bg-white p-6 rounded-xl shadow-lg"
             >
               <img 
-                src="/images/story-3.jpg" 
+                src="/images/story-3.webp" 
                 alt="Mission story"
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />

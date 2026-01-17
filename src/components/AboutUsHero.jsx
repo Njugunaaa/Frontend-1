@@ -1,6 +1,5 @@
 import React from "react";
 import { Clock, MapPin, Phone } from "lucide-react";
-import sig from "/images/sig-img.webp";
 import BreadCrumb from "./BreadCrump";
 
 export default function AboutUsHero() {
@@ -97,7 +96,7 @@ export default function AboutUsHero() {
           {/* RIGHT CONTENT - Church Image (Google Maps) */}
           <div className="order-1 lg:order-2">
             <img
-              src="/images/arch.jpg"
+              src="/images/arch.webp"
               alt="Elim Pentecostal Church Building"
               className="w-full h-auto rounded-xl shadow-xl object-cover"
             />

@@ -16,7 +16,7 @@ export default function CalebMinistry() {
         <div className="absolute inset-0 bg-black/40" />
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: "url('/images/caleb-hero.jpg')" }}
+          style={{ backgroundImage: "url('/images/caleb-hero.webp')" }}
         />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <motion.div
@@ -68,7 +68,7 @@ export default function CalebMinistry() {
             </div>
             <div>
               <img 
-                src="/images/caleb-1.jpg" 
+                src="/images/caleb-1.webp" 
                 alt="Men's fellowship"
                 className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
               />

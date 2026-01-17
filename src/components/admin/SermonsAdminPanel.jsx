@@ -164,7 +164,7 @@ const SermonsAdminPanel = () => {
                 {videoId && (
                   <div className="flex-shrink-0 w-64">
                     <img
-                      src={`https://img.youtube.com/vi/${videoId}/mqdefault.jpg`}
+                      src={`https://img.youtube.com/vi/${videoId}/mqdefault.webp`}
                       alt={sermon.title}
                       className="w-full h-36 object-cover rounded-lg shadow"
                     />

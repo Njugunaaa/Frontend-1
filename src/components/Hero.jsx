@@ -4,7 +4,7 @@ import { Play, Pause } from "lucide-react";
 
 const heroSlides = [
   {
-    image: "/images/7.jpg",
+    image: "/images/7.webp",
     title: "Welcome to Elim Pentecostal Church of Kenya",
     subtitle: "A Christ-centered, Spirit-filled family committed to raising healthy believers, strong families, and thriving communities.",
     cta: [
@@ -13,7 +13,7 @@ const heroSlides = [
     ],
   },
   {
-    image: "/images/6.jpg",
+    image: "/images/6.webp",
     title: "Transforming Lives and Communities",
     subtitle: "Through worship, discipleship, outreach, and missions, we are passionate about seeing lives restored and destinies awakened.",
     cta: [
@@ -22,7 +22,7 @@ const heroSlides = [
     ],
   },
   {
-    image: "/images/9.jpg",
+    image: "/images/9.webp",
     title: "Rooted in Prayer, Revival & the Holy Spirit",
     subtitle: "Experience the transforming power of God through vibrant worship, fervent prayer, and Spirit-led ministry that impacts Kenya and beyond.",
     cta: [

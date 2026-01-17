@@ -16,7 +16,7 @@ export default function YouthMinistry() {
         <div className="absolute inset-0 bg-black/40" />
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: "url('/images/youth-hero.jpg')" }}
+          style={{ backgroundImage: "url('/images/youth-hero.webp')" }}
         />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <motion.div
@@ -57,7 +57,7 @@ export default function YouthMinistry() {
           >
             <div>
               <img 
-                src="/images/youth-1.jpg" 
+                src="/images/youth-1.webp" 
                 alt="Youth worship session"
                 className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
               />
@@ -174,7 +174,7 @@ export default function YouthMinistry() {
               </div>
               <div className="hidden md:block">
                 <img 
-                  src="/images/youth-2.jpg" 
+                  src="/images/youth-2.webp" 
                   alt="Youth event"
                   className="rounded-xl shadow-2xl w-full h-[300px] object-cover"
                 />

@@ -78,7 +78,7 @@ export default function StatementOfFaith() {
           >
             <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="/images/10.jpg"
+                src="/images/10.webp"
                 alt="EPCK History"
                 className="w-full h-[400px] lg:h-[500px] object-cover"
               />

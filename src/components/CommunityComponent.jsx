@@ -1,6 +1,6 @@
 import React from 'react';
 import {  Smile , HandCoins, HandHelping } from 'lucide-react';
-import ch_2 from '/images/people-inchurch.jpg'
+import ch_2 from '/images/people-inchurch.webp'
 
 export default function CommunityComponent() {
   const impactHighlights = [

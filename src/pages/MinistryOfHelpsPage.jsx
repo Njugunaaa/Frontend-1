@@ -12,10 +12,11 @@ export default function MinistryOfHelps() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative h-[70vh] bg-gradient-to-br from-[#A00000] via-orange-600 to-amber-600 overflow-hidden">
+      <section className="relative h-[50vh] bg-gradient-to-br from-[#A00000] via-orange-600 to-amber-600 overflow-hidden">
         <div className="absolute inset-0 bg-black/30" />
         
-        <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
+        <div className="relative z-10 h-f flex items-center justify-center text-center px-4">
+          <p></p>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -30,7 +31,7 @@ export default function MinistryOfHelps() {
             >
               <HandHeart className="w-10 h-10 text-white" />
             </motion.div>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="text-2xl md:text-7xl font-bold text-white mb-6">
               Ministry of Helps
             </h1>
             <p className="text-xl md:text-2xl text-white/95 max-w-3xl mx-auto">

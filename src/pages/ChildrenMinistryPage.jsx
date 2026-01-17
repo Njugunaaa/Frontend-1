@@ -23,7 +23,7 @@ export default function ChildrenMinistryPage() {
         <div className="absolute inset-0 bg-black/40" />
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: "url('/images/children-hero.jpg')" }}
+          style={{ backgroundImage: "url('/images/children-hero.webp')" }}
         />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <motion.div
@@ -64,7 +64,7 @@ export default function ChildrenMinistryPage() {
           >
             <div>
               <img 
-                src="/images/children-1.jpg" 
+                src="/images/children-1.webp" 
                 alt="Children learning Bible stories"
                 className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
               />

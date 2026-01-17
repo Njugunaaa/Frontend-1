@@ -40,7 +40,7 @@ export default function GiveNow() {
         <div className="absolute inset-0 bg-black/40" />
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: "url('/images/give-hero.jpg')" }}
+          style={{ backgroundImage: "url('/images/give-hero.webp')" }}
         />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <motion.div

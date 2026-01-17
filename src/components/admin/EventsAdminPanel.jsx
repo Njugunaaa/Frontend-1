@@ -279,7 +279,7 @@ const EventsAdminPanel = () => {
                 </label>
                 <input
                   type="file"
-                  accept=".jpg,.jpeg,.png,.webp"
+                  accept=".webp,.jpeg,.png,.webp"
                   onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg"
                 />

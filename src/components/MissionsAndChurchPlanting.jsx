@@ -71,16 +71,16 @@ const MissionsAndChurchPlantingPage = () => {
       description:
         "After months of dedicated effort from drilling wells to empower local communities, to nurturing faith and hope the Parnay Church finally stands as a beacon of transformation in Maasai land. This is more than a building; it's a testimony of God’s faithfulness and the community’s resilience.",
       location: "Parnay, Kenya",
-      image: "/images/missions/parnay-church.jpg",
+      image: "/images/missions/parnay-church.webp",
       video: "/videos/parnay-opening.mp4",
       icon: Church,
       highlights: ["Water Access", "Local Leadership", "Community Empowerment"],
       bgColor: "from-amber-600/20 to-orange-600/20",
       sliderImages: [
-        "/images/parnay.jpg",
-        "/images/parnay1.jpg",
-        "/images/parnay2.jpg",
-        "/images/parnay3.jpg",
+        "/images/parnay.webp",
+        "/images/parnay1.webp",
+        "/images/parnay2.webp",
+        "/images/parnay3.webp",
       ],
     },
     {
@@ -89,15 +89,15 @@ const MissionsAndChurchPlantingPage = () => {
       description:
         "At the heart of Kenya’s coast, the Malindi Church project reflects the beauty of unity, service, and sustainable ministry. Through partnerships and outreach, Elim Church has brought not only spiritual renewal but also education, healthcare, and empowerment to families across this vibrant region.",
       location: "Malindi, Kenya",
-      image: "/images/missions/malindi-church.jpg",
+      image: "/images/missions/malindi-church.webp",
       video: "/videos/malindi-project.mp4",
       icon: Users,
       highlights: ["Coastal Ministry", "Education Focus", "Holistic Care"],
       bgColor: "from-blue-600/20 to-cyan-600/20",
       sliderImages: [
-        "/images/malindi.jpg",
-        "/images/malindi1.jpg",
-        "/images/malindi2.jpg",
+        "/images/malindi.webp",
+        "/images/malindi1.webp",
+        "/images/malindi2.webp",
       ],
     },
   ];
@@ -129,14 +129,14 @@ const MissionsAndChurchPlantingPage = () => {
         "Elim didn’t just build a church they transformed our community. They brought water, hope, and faith to a place that once felt forgotten.",
       name: "Samuel Kipchoge",
       role: "Community Leader, Kajiado County",
-      image: "/images/missions/testimonial-1.jpg",
+      image: "/images/missions/testimonial-1.webp",
     },
     {
       quote:
         "The well changed everything. Clean water, fellowship, and joy. Elim helped us rebuild both our bodies and our souls.",
       name: "Grace Mwangi",
       role: "Teacher, Parnay",
-      image: "/images/missions/testimonial-2.jpg",
+      image: "/images/missions/testimonial-2.webp",
     },
   ];
 
@@ -353,7 +353,7 @@ const MissionsAndChurchPlantingPage = () => {
     <video
       id="drill-video"
       className="w-full h-auto max-h-[650px] object-contain"
-      poster="/images/parnay4.jpg"
+      poster="/images/parnay4.webp"
       preload="auto"
       controls
     >
@@ -443,7 +443,7 @@ const MissionsAndChurchPlantingPage = () => {
     <video
       id="review-video"
       className="absolute inset-0 w-full h-full object-contain bg-black"
-      poster="/images/parnay3.jpg"
+      poster="/images/parnay3.webp"
       preload="auto"
       controls={false}
     >
