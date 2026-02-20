@@ -16,7 +16,7 @@ export default function YouthMinistry() {
         <div className="absolute inset-0 bg-black/40" />
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: "url('/images/youth1.webp')" }}
+          style={{ backgroundImage: "url('/images/youth4.webp')" }}
         />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <motion.div
