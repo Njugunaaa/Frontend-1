@@ -120,7 +120,7 @@ export default function DorcasMinistry() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                src="/images/dorcas-1.webp" 
+                src="/images/2.webp" 
                 alt="Women's fellowship"
                 className="rounded-3xl shadow-2xl w-full h-[500px] object-cover border-8 border-white"
               />
