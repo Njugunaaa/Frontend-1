@@ -22,8 +22,8 @@ export default function ChildrenMinistryPage() {
       <section className="relative h-[60vh] bg-gradient-to-r from-[#A00000] to-[#8B0000] overflow-hidden">
         <div className="absolute inset-0 bg-black/40" />
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: "url('/images/children-hero.webp')" }}
+          className="absolute inset-0 bg-cover bg-center opacity5"
+          style={{ backgroundImage: "url('/images/child1.webp')" }}
         />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <motion.div
@@ -64,7 +64,7 @@ export default function ChildrenMinistryPage() {
           >
             <div>
               <img 
-                src="/images/children-1.webp" 
+                src="/images/child.webp" 
                 alt="Children learning Bible stories"
                 className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
               />

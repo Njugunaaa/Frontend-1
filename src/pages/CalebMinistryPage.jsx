@@ -68,7 +68,7 @@ export default function CalebMinistry() {
             </div>
             <div>
               <img 
-                src="/images/child.webp" 
+                src="/images/1.webp" 
                 alt="Men's fellowship"
                 className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
               />
