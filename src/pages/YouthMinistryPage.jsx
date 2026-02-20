@@ -15,8 +15,8 @@ export default function YouthMinistry() {
       <section className="relative h-[60vh] bg-gradient-to-r from-[#A00000] to-[#8B0000] overflow-hidden">
         <div className="absolute inset-0 bg-black/40" />
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: "url('/images/youth4.webp')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-1"
+          style={{ backgroundImage: "url('/images/youth1.webp')" }}
         />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
           <motion.div
@@ -174,7 +174,7 @@ export default function YouthMinistry() {
               </div>
               <div className="hidden md:block">
                 <img 
-                  src="/images/youth2.webp" 
+                  src="/images/youth4.webp" 
                   alt="Youth event"
                   className="rounded-xl shadow-2xl w-full h-[300px] object-cover"
                 />
