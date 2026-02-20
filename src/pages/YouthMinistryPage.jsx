@@ -15,7 +15,7 @@ export default function YouthMinistry() {
       <section className="relative h-[60vh] bg-gradient-to-r from-[#A00000] to-[#8B0000] overflow-hidden">
         <div className="absolute inset-0 bg-black/40" />
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-1"
+          className="absolute inset-0 bg-cover bg-center opacity10"
           style={{ backgroundImage: "url('/images/youth1.webp')" }}
         />
         <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
