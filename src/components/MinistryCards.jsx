@@ -7,54 +7,42 @@ export default function MinistryCards() {
       icon: <Users className="w-8 h-8 text-white" />,
       title: "Dorcas Ministry (Women's Ministry)",
       description: "Empowering women spiritually, socially, and economically through training, fellowship, and outreach.",
+      href: "/ministries/dorcas",
       link: "Learn More"
     },
     {
       icon: <PersonStanding className="w-8 h-8 text-white" />,
       title: "Youth Ministry",
       description: "Equipping young people (13–35 years) with biblical teaching, leadership skills, and opportunities to serve and lead in society.",
+      href: "/ministries/youth",  
       link: "Learn More"
     },
     {
       icon: <Users className="w-8 h-8 text-white" />,
       title: "Caleb Ministry (Men's Fellowship)",
       description: "Building strong, responsible men of faith who influence families, communities, and the nation.",
+      href: "/ministries/caleb",
       link: "Learn More"
     },
     {
       icon: <PersonStanding className="w-8 h-8 text-white" />,
       title: "Children & Sunday School Ministry",
       description: "Nurturing the next generation in biblical truth and holistic development.",
-      link: "Learn More"
-    },
-    {
-      icon: <GraduationCap className="w-8 h-8 text-white" />,
-      title: "Elim Bible College",
-      description: "Training leaders and workers for effective ministry and mission.",
-      link: "Learn More"
-    },
-    {
-      icon: <BookOpen className="w-8 h-8 text-white" />,
-      title: "Education Board (ENEB)",
-      description: "Advancing Christian education and equipping students for holistic transformation.",
+      href: "/ministries/children",
       link: "Learn More"
     },
     {
       icon: <MapPin className="w-8 h-8 text-white" />,
       title: "Missions & Church Growth Department",
       description: "Driving evangelism, discipleship, and church planting across Kenya and beyond.",
-      link: "Learn More"
-    },
-    {
-      icon: <Building className="w-8 h-8 text-white" />,
-      title: "General Development & Projects Department",
-      description: "Overseeing sustainable projects, infrastructure, and community development initiatives.",
+      href: "/missions", 
       link: "Learn More"
     },
     {
       icon: <HandHeart className="w-8 h-8 text-white" />,
-      title: "Pastors' Welfare & Elim Welfare",
-      description: "Ensuring the holistic well-being of our ministers and members through fellowship, support systems, and empowerment programs.",
+      title: "Ministrty of Helps",
+      description: "Ensuring the holistic well-being of our communities through fellowship,donations, support systems, and empowerment programs.",
+      href: "/ministries/helps",
       link: "Learn More"
     }
   ];
@@ -98,7 +86,7 @@ export default function MinistryCards() {
               
               {/* Learn More Link */}
               <a 
-                href="#" 
+                href={ministry.href} 
                 className="inline-flex items-center text-primary/90 text-sm font-medium hover:text-secondary transition-colors duration-200"
               >
                 {ministry.link}
