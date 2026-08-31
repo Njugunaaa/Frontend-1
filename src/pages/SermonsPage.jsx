@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
-import Nav from '../components/Nav';
-import Footer from '../components/Footer';
-import { API } from '../config/api';
+import { getPublishedSermons } from '../lib/sermonApi';
 
 const SermonsPage = () => {
   const [sermons, setSermons] = useState([]);
@@ -9,13 +7,13 @@ const SermonsPage = () => {
 
   useEffect(() => {
     fetchSermons();
+    const refresh = setInterval(fetchSermons, 60000);
+    return () => clearInterval(refresh);
   }, []);
 
   const fetchSermons = async () => {
     try {
-      const response = await fetch(`${API}https://elim-backend-jqo7.onrender.com/api/sermons`);
-      const data = await response.json();
-      setSermons(data);
+      setSermons(await getPublishedSermons());
     } catch (error) {
       console.error('Error fetching sermons:', error);
     } finally {
@@ -36,9 +34,7 @@ const SermonsPage = () => {
   };
 
   return (
-    <div>
-      <Nav />
-      <div className="min-h-screen pt-24" style={{ backgroundColor: '#FDF0D5' }}>
+    <div className="min-h-screen pt-24" style={{ backgroundColor: '#FDF0D5' }}>
         <div className="container mx-auto px-4 py-16">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-4" style={{ color: '#7A030D', fontFamily: 'Georgia, serif' }}>
             Sermons & Messages
@@ -60,11 +56,11 @@ const SermonsPage = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {sermons.map((sermon) => {
-                const videoId = extractYouTubeId(sermon.media_url);
+                const videoId = extractYouTubeId(sermon.mediaUrl);
                 
                 return (
                   <div key={sermon.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    {videoId ? (
+                      {videoId ? (
                       <div className="aspect-video">
                         <iframe
                           width="100%"
@@ -77,25 +73,26 @@ const SermonsPage = () => {
                           loading="lazy"
                         />
                       </div>
-                    ) : (
-                      <div className="aspect-video bg-gray-100 flex items-center justify-center">
-                        <span className="text-6xl">🎤</span>
-                      </div>
-                    )}
+                      ) : sermon.mediaUrl ? (
+                        <a href={sermon.mediaUrl} target="_blank" rel="noopener noreferrer" className="aspect-video bg-gray-100 flex flex-col gap-2 items-center justify-center text-[#7A030D] font-semibold hover:bg-gray-200 transition-colors">
+                          <span className="text-5xl">🔗</span><span>Open message</span>
+                        </a>
+                      ) : <div className="aspect-video bg-gray-100 flex items-center justify-center"><span className="text-6xl">🎤</span></div>
+                    }
                     
                     <div className="p-6">
                       <h3 className="text-xl font-bold mb-2" style={{ color: '#7A030D', fontFamily: 'Georgia, serif' }}>
                         {sermon.title}
                       </h3>
                       
-                      {sermon.speaker_or_leader && (
+                      {sermon.speaker && (
                         <p className="text-sm font-medium mb-2" style={{ color: '#EB3237' }}>
-                          {sermon.speaker_or_leader}
+                          {sermon.speaker}
                         </p>
                       )}
                       
                       <p className="text-sm text-gray-500 mb-3">
-                        {formatDate(sermon.date)}
+                        {formatDate(sermon.publishedAt)}
                       </p>
                       
                       {sermon.description && (
@@ -110,8 +107,6 @@ const SermonsPage = () => {
             </div>
           )}
         </div>
-      </div>
-      <Footer />
     </div>
   );
 };
