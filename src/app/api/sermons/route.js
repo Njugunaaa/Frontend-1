@@ -1,0 +1,10 @@
+import { randomUUID } from 'node:crypto';
+import { readSermons, writeSermons } from '../../../lib/server/jsonbin';
+import { requireAdmin } from '../../../lib/server/firebaseAdmin';
+
+export const dynamic = 'force-dynamic';
+const reply = (data, status = 200) => Response.json(data, { status, headers: { 'Cache-Control': 'no-store' } });
+const statusFor = (error) => /required|access|sign in/i.test(error.message) ? 401 : 500;
+function sermon(input, existing = {}) { const title = String(input.title || '').trim(); const mediaUrl = String(input.mediaUrl || '').trim(); const publishedAt = String(input.publishedAt || '').trim(); if (!title || title.length > 160) throw new Error('Enter a sermon title of up to 160 characters.'); if (!mediaUrl || !/^https:\/\//i.test(mediaUrl)) throw new Error('Enter a valid https:// message link.'); if (!publishedAt || Number.isNaN(new Date(publishedAt).getTime())) throw new Error('Enter a valid sermon date.'); return { ...existing, title, mediaUrl, publishedAt, speaker: String(input.speaker || '').trim(), description: String(input.description || '').trim(), isPublished: Boolean(input.isPublished), updatedAt: new Date().toISOString() }; }
+export async function GET(request) { try { const isAdmin = new URL(request.url).searchParams.get('scope') === 'admin'; if (isAdmin) await requireAdmin(request); const sermons = await readSermons(); return reply((isAdmin ? sermons : sermons.filter((item) => item.isPublished)).sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))); } catch (error) { return reply({ error: error.message || 'Unable to load sermons.' }, statusFor(error)); } }
+export async function POST(request) { try { await requireAdmin(request); const sermons = await readSermons(); const item = sermon(await request.json(), { id: randomUUID(), createdAt: new Date().toISOString() }); sermons.push(item); await writeSermons(sermons); return reply(item, 201); } catch (error) { return reply({ error: error.message || 'Unable to save sermon.' }, statusFor(error)); } }
