@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Logo from '../assets/logo-white.svg'
+
+const LOGO_SRC = Logo.src || Logo;
 // Smooth easing
 const easeInOutCubic = (t) =>
   t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -96,7 +98,7 @@ const CurvedLoader = ({ done, duration = 5000 }) => {
           <div className="relative flex flex-col items-center justify-center gap-4">
             <div className="w-[7rem] overflow-hidden h-[7rem] border-4 border-white border-t-transparent rounded-full animate-spin">
             </div>
-              <img src={Logo} className="w-[6rem] absolute"/>
+              <img src={LOGO_SRC} alt="Elim Pentecostal Church" className="w-[6rem] absolute"/>
           </div>
         </div>
       </div>
