@@ -14,6 +14,7 @@ import SubdomainApp from "./subdomain/SubdomainApp";
 import SermonsPage from "./pages/SermonsPage";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminResetPassword from "./pages/admin/AdminResetPassword";
 
 // NEW MINISTRY PAGES
 import YouthMinistryPage from "./pages/YouthMinistryPage";
@@ -76,6 +77,7 @@ function App() {
 
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="admin" element={<AdminLogin />} />
+        <Route path="admin/reset" element={<AdminResetPassword />} />
         <Route path="admin/dashboard/*" element={<AdminDashboard />} />
       </Route>
     )
