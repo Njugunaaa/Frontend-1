@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Import carousel images
-import img1 from '/images/1.webp';
-import img2 from '/images/2.webp';
-import img3 from '/images/3.webp';
-import img4 from '/images/4.webp';
+// Images in public/ are served from the site root in Next.js.
+const carouselImages = [
+  '/images/1.webp',
+  '/images/2.webp',
+  '/images/3.webp',
+  '/images/4.webp',
+];
 
 export default function OurHistory() {
-  const carouselImages = [img1, img2, img3, img4];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = () => {
