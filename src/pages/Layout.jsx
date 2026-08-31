@@ -5,6 +5,8 @@ import Footer from '../components/Footer'
 import{ ChevronUp, MessageCircle } from 'lucide-react'
 import whatsapplogo from '../assets/whatsapp.svg'
 
+const WHATSAPP_LOGO_SRC = whatsapplogo.src || whatsapplogo;
+
 function Layout() {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -93,7 +95,7 @@ function Layout() {
         onClick={openWhatsapp}
         className="relative cursor-pointer w-12 h-12 rounded-full transition-all duration-300 hover:shadow-xl active:scale-95"
       >
-        <img src={whatsapplogo}/>
+        <img src={WHATSAPP_LOGO_SRC} alt="WhatsApp" />
       </button>
     </div>
   );
