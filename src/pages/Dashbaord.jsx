@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import PrayerRequestPopup from '../components/PrayerRequestPopup';
+import Logo from '../assets/logo-white.svg';
+
+const LOGO_SRC = Logo.src || Logo;
 
 function Dashbaord() {
   const [events, setEvents] = useState([]);
@@ -65,7 +68,7 @@ function Dashbaord() {
               </button>
               <a href="#" className="flex ms-2 md:me-24">
                 <img
-                  src="/src/assets/logo-white.svg"
+                  src={LOGO_SRC}
                   className="h-8"
                   alt="Church Logo"
                 />
