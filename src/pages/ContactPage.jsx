@@ -131,7 +131,7 @@ const CompleteContactPage = () => {
       <div 
         className="relative min-h-screen py-20 px-6"
         style={{
-          backgroundImage: `linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(75, 85, 99, 0.8)), url('/src/assets/images/church-about-img.webp')`,
+          backgroundImage: `linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(75, 85, 99, 0.8)), url('/images/arch.webp')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
