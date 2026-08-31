@@ -1,64 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { isFirebaseConfigured, sendAdministratorReset, signInAdministrator } from '../../lib/firebase';
 
-const AdminLogin = () => {
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    
-    if (password === 'Elim@2025') {
-      localStorage.setItem('elim_admin_auth', '1');
-      localStorage.setItem('elim_admin_pw', password);
-      navigate('/admin/dashboard');
-    } else {
-      setError('Invalid password');
-    }
-  };
-
-  return (
-    <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FDF0D5' }}>
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-        <h1 className="text-3xl font-bold mb-6 text-center" style={{ color: '#7A030D' }}>
-          Admin Login
-        </h1>
-        
-        <form onSubmit={handleLogin}>
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
-              style={{ focusRingColor: '#EB3237' }}
-              placeholder="Enter admin password"
-              required
-            />
-          </div>
-          
-          {error && (
-            <p className="text-red-600 text-sm mb-4">{error}</p>
-          )}
-          
-          <button
-            type="submit"
-            className="w-full py-3 rounded-lg font-semibold text-white transition-colors"
-            style={{ backgroundColor: '#EB3237' }}
-            onMouseOver={(e) => e.target.style.backgroundColor = '#7A030D'}
-            onMouseOut={(e) => e.target.style.backgroundColor = '#EB3237'}
-          >
-            Login
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-};
-
-export default AdminLogin;
+export default function AdminLogin() {
+  const [email, setEmail] = useState(''); const [password, setPassword] = useState(''); const [message, setMessage] = useState(''); const [loading, setLoading] = useState(false); const navigate = useNavigate();
+  const login = async (event) => { event.preventDefault(); if (!isFirebaseConfigured) return setMessage('Firebase has not been configured yet. Follow EVENT_STACK_SETUP.md.'); setLoading(true); setMessage(''); try { await signInAdministrator(email, password); navigate('/admin/dashboard/events'); } catch (error) { setMessage(error.message); } finally { setLoading(false); } };
+  const resetPassword = async () => { if (!email) return setMessage('Enter the administrator email address first.'); try { await sendAdministratorReset(email); setMessage('Password-reset email sent. Check the administrator inbox.'); } catch (error) { setMessage(error.message); } };
+  return <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FDF0D5' }}><div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full"><h1 className="text-3xl font-bold mb-6 text-center" style={{ color: '#7A030D' }}>Admin Login</h1><form onSubmit={login}><div className="mb-4"><label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email</label><input id="email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="admin@example.com" required /></div><div className="mb-4"><label htmlFor="password" className="block text-gray-700 font-medium mb-2">Password</label><input id="password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} className="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Enter password" required /></div>{message && <p className="text-sm mb-4 text-gray-700">{message}</p>}<button disabled={loading} type="submit" className="w-full py-3 rounded-lg font-semibold text-white disabled:opacity-50" style={{ backgroundColor: '#EB3237' }}>{loading ? 'Signing in...' : 'Login'}</button></form><button onClick={resetPassword} className="block mx-auto mt-4 text-sm text-[#7A030D] hover:underline">Forgot password?</button></div></div>;
+}
