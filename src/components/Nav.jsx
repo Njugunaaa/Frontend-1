@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import Logo from "../assets/mainlogo.png";
 
+const LOGO_SRC = Logo.src || Logo;
+
 /** Constants */
 const ICON_COLOR_CLASS = "text-[#A00000]";
 const NAV_BG = "bg-[#FDF0D5]";
@@ -184,7 +186,7 @@ export default function Nav() {
         >
           {/* Logo */}
           <NavLink to="/" className="flex items-center gap-3 z-10">
-            <img src={Logo} alt="Logo" className="w-20 h-20 object-contain" />
+            <img src={LOGO_SRC} alt="Elim Pentecostal Church of Kenya" className="w-20 h-20 object-contain" />
           </NavLink>
 
           {/* Desktop nav */}
@@ -316,7 +318,7 @@ export default function Nav() {
           {/* Mobile Header - Single Close Button */}
           <div className="flex items-center justify-between p-5 border-b border-[#A00000]/10">
             <NavLink to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3">
-              <img src={Logo} alt="Logo" className="w-14 h-14 object-contain" />
+              <img src={LOGO_SRC} alt="Elim Pentecostal Church of Kenya" className="w-14 h-14 object-contain" />
               <span className="font-bold text-[#A00000]">Menu</span>
             </NavLink>
             <button 
