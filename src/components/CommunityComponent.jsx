@@ -1,6 +1,7 @@
 import React from 'react';
 import {  Smile , HandCoins, HandHelping } from 'lucide-react';
-import ch_2 from '/images/people-inchurch.webp'
+
+const COMMUNITY_IMAGE = '/images/people-inchurch.webp';
 
 export default function CommunityComponent() {
   const impactHighlights = [
@@ -44,7 +45,7 @@ export default function CommunityComponent() {
               {/* Main Image Container */}
               <div className="aspect-[4/3] overflow-hidden">
                 {/* Placeholder for church interior image */}
-                <img src={ch_2} alt='' />
+                <img src={COMMUNITY_IMAGE} alt="Church community" />
               </div>
               
               {/* Floating Icons */}
