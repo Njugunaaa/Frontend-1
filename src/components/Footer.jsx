@@ -2,6 +2,8 @@ import React from 'react';
 import { Facebook, Twitter, Mail } from 'lucide-react';
 import Logo from '../assets/logo-white.svg';
 
+const LOGO_SRC = Logo.src || Logo;
+
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-red-900 to-red-950 text-white mt-auto w-full">
@@ -10,7 +12,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">
           <div className="flex items-center mb-4 md:mb-0">
             <div className="w-16 h-16 mr-3">
-              <img src={Logo} alt="Elim Pentecostal Church Logo" className="w-full h-full object-contain" />
+              <img src={LOGO_SRC} alt="Elim Pentecostal Church Logo" className="w-full h-full object-contain" />
             </div>
             <h2 className="text-2xl font-bold">Elim Pentecostal Church of Kenya</h2>
           </div>
