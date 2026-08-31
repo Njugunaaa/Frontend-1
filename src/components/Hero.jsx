@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, Pause } from "lucide-react";
+import { Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
 
 const heroSlides = [
   {
@@ -32,29 +32,44 @@ const heroSlides = [
   },
 ];
 
+const SLIDE_DURATION = 8000;
+
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [direction, setDirection] = useState(1);
+
+  const running = !isPaused;
 
   const nextSlide = useCallback(() => {
+    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % heroSlides.length);
   }, []);
 
-  const goToSlide = useCallback((index) => {
-    setCurrentIndex(index);
+  const prevSlide = useCallback(() => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
   }, []);
+
+  const goToSlide = useCallback((index) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  }, [currentIndex]);
 
   // Auto-advance carousel
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(nextSlide, 8000);
+    if (!running) return;
+    const interval = setInterval(nextSlide, SLIDE_DURATION);
     return () => clearInterval(interval);
-  }, [isPaused, nextSlide]);
+  }, [running, nextSlide]);
 
   return (
-    <section className="relative w-full h-[75vh] md:h-[85vh] mt-[5rem] mb-8">
-      <div className="relative w-full h-full overflow-hidden">
-        {/* Image Carousel */}
+    <section
+      className="relative w-full h-[75vh] md:h-[85vh] mt-[5rem] mb-8"
+      
+    >
+      <div className="relative w-full h-full overflow-hidden rounded-none">
+        {/* Image Carousel with a subtle Ken Burns drift for a more premium feel */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
@@ -62,49 +77,53 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0"
+            className="absolute inset-0 overflow-hidden"
           >
-            <img
+            <motion.img
               src={heroSlides[currentIndex].image}
               alt={heroSlides[currentIndex].title}
               className="w-full h-full object-cover"
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.08 }}
+              transition={{ duration: SLIDE_DURATION / 1000 + 0.8, ease: "linear" }}
             />
           </motion.div>
         </AnimatePresence>
 
-        {/* Gradient Overlay - Only behind text area at bottom left */}
-        <div className="absolute bottom-0 left-0 w-full md:w-1/2 h-auto pointer-events-none">
-          <div className="bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6 md:p-12 pb-20">
-            <div className="h-48 md:h-64"></div>
-          </div>
-        </div>
+        {/* Light bottom-only gradient so the image reads clean; the frosted panel below carries the text contrast */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 32%)",
+          }}
+        />
 
-        {/* Content Container - Bottom Left */}
-        <div className="absolute bottom-20 left-0 p-6 md:p-12 max-w-2xl">
+        {/* Content — smaller glass panel, sitting close to the bottom of the image */}
+        <div className="absolute bottom-2 left-0 right-0 px-6 md:px-12 z-10 flex justify-start">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-white"
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="max-w-xs sm:max-w-sm md:max-w-md rounded-xl border border-white/25 bg-white/10 p-4 md:p-5 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl"
             >
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 leading-tight">
+              <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold mb-2 leading-tight text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.35)]">
                 {heroSlides[currentIndex].title}
               </h1>
 
-              <p className="text-sm md:text-base mb-5 leading-relaxed text-gray-100 max-w-xl">
+              <p className="text-xs md:text-sm mb-3 leading-relaxed text-white/90">
                 {heroSlides[currentIndex].subtitle}
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {heroSlides[currentIndex].cta.map((button, i) => (
                   <a
                     key={i}
                     href={button.link}
                     className={`
-                      px-5 py-2.5 text-sm font-semibold rounded-lg
+                      px-3.5 py-2 text-xs md:text-sm font-semibold rounded-lg
                       transition-all duration-300 hover:scale-105
                       ${
                         button.primary
@@ -135,20 +154,21 @@ export default function Hero() {
                 >
                   <div
                     className={`
-                      relative rounded-full transition-all duration-300
+                      relative rounded-full overflow-hidden transition-all duration-300
                       ${
                         currentIndex === index
-                          ? "w-10 h-3 bg-red-600"
-                          : "w-3 h-3 bg-white/50 hover:bg-white/80"
+                          ? "w-10 h-2.5 bg-white/25"
+                          : "w-2.5 h-2.5 bg-white/50 hover:bg-white/80"
                       }
                     `}
                   >
-                    {currentIndex === index && !isPaused && (
+                    {currentIndex === index && (
                       <motion.div
-                        className="absolute inset-0 bg-white rounded-full"
+                        key={running ? "running" : "paused"}
+                        className="absolute inset-0 bg-red-600 rounded-full"
                         initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: 8, ease: "linear" }}
+                        animate={{ scaleX: running ? 1 : 0 }}
+                        transition={{ duration: running ? SLIDE_DURATION / 1000 : 0.2, ease: "linear" }}
                         style={{ transformOrigin: "left" }}
                       />
                     )}
